@@ -1,5 +1,12 @@
 local db = require('dashboard')
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+  callback = function()
+    vim.g.miniindentscope_disable = true
+  end,
+})
+
 db.hide_statusline = true
 db.hide_tabline = true
 db.hide_winbar = true

@@ -15,6 +15,7 @@ require("catppuccin").setup({
     notify = true,
     dashboard = true,
     symbols_outline = true,
+    bufferline = true,
     navic = {
       enabled = false,
       custom_bg = "NONE",
