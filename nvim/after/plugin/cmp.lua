@@ -8,26 +8,39 @@ end
 cmp.setup({
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require('luasnip').lsp_expand(args.body)
     end,
   },
 
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'cmp-path' },
-    { name = 'buffer' },
-    { name = 'nvim_lsp_signature_help' }
+    {
+      name = 'nvim_lsp',
+      group_index = 1,
+      entry_filter = function(entry)
+        if entry:get_kind() == 1 then
+          return false
+        end
+        return true
+      end
+    },
+    {
+      name = 'luasnip',
+      group_index = 2,
+      option = {
+        use_show_condition = true
+      },
+    },
+    { name = 'cmp-path', group_index = 2},
+    { name = 'buffer', group_index = 2 },
+    { name = 'nvim_lsp_signature_help' },
   }),
-
-  preselect = cmp.PreselectMode.Item,
 
   window = {
     completion = merge(
       cmp.config.window.bordered(),
       {
         max_height = 45,
-        max_width = 60,
+        max_width = 20,
         side_padding = 0
       }
     ),
@@ -42,22 +55,30 @@ cmp.setup({
   },
 
   formatting = {
-    format = require("lspkind").cmp_format({ with_text = true, menu = ({}) }),
+    format = require('lspkind').cmp_format({
+      maxwidth = 60,
+      ellipsis_char = '...',
+      with_text = true,
+      menu = ({
+          buffer   = '[Buffer]',
+          nvim_lsp = '[LSP]',
+          path     = '[Path]',
+          luasnip  = '[LuaSnip]',
+      })
+    }),
   },
 
   mapping = {
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-        -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-        -- they way you will only jump inside the snippet region
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
         fallback()
       end
-    end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -65,8 +86,8 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s" }),
-    ['<CR>'] = cmp.mapping.confirm({ select = false }),
+    end, { 'i', 's' }),
+    ['<CR>']  = cmp.mapping.confirm({ select = false }),
     ['<C-j>'] = cmp.mapping.scroll_docs(5),
     ['<C-k>'] = cmp.mapping.scroll_docs(-5),
     ['<C-e>'] = cmp.mapping(function()
@@ -95,8 +116,3 @@ cmp.setup.cmdline(':', {
   })
 })
 
-
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['jdtls'].setup {
-  capabilities = capabilities
-}

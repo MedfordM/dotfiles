@@ -1,12 +1,4 @@
 local db = require('dashboard')
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
-  callback = function()
-    vim.g.miniindentscope_disable = true
-  end,
-})
-
 db.hide_statusline = true
 db.hide_tabline = true
 db.hide_winbar = true
@@ -14,7 +6,7 @@ db.session_directory = '~/.local/state/nvim/sessions'
 db.session_auto_save_on_exit = true
 
 db.setup({
-  theme = "doom",
+  theme = 'doom',
   config = {
     header = {
       '',
@@ -41,19 +33,23 @@ db.setup({
       },
       { icon = '  ',
         desc = 'Find  File                              ',
-        action = 'Telescope find_files find_command=rg,--hidden,--files',
+        action = 'Telescope find_files find_command=fd,--base-directory,.',
       },
       { icon = '  ',
         desc = 'File Browser                            ',
         action = 'NeoTreeFloatToggle',
       },
-      { icon = '  ',
+      { icon = '  ',
         desc = 'Find  word                              ',
         action = 'Telescope live_grep',
       },
       { icon = '  ',
-        desc = 'Open Personal dotfiles                  ',
-        action = 'Telescope find_files path="~/.config"',
+        desc = 'Open .config files                  ',
+        action = 'Telescope find_files find_command=fd,-a,--base-directory,/home/mike/.config',
+      },
+      { icon = '  ',
+        desc = 'Open Neovim Config files                      ',
+        action = 'Telescope find_files find_command=fd,-a,--base-directory,/home/mike/.config/nvim',
       }
     }
   }

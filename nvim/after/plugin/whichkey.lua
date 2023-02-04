@@ -1,6 +1,6 @@
-local wk = require("which-key")
+local wk = require('which-key')
 
-require("which-key").setup {}
+require('which-key').setup {}
 
 local opts = {
   plugins = {
@@ -15,4 +15,4 @@ local opts = {
     },
   }
 }
-wk.register(mappings, opts)
+wk.register({}, opts)

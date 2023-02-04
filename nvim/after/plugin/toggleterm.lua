@@ -1,4 +1,4 @@
-require("toggleterm").setup({
+require('toggleterm').setup({
   open_mapping = '<leader>t',
   hide_numbers = true,
   autochdir = false,
@@ -29,11 +29,4 @@ require("toggleterm").setup({
     width = 150
   },
 })
-
-local wk = require('which-key')
-wk.register({
-  ['<leader>t'] = { '<cmd>ToggleTerm<CR>', 'Terminal' }
-})
-
-vim.keymap.set('t', '<esc>', '<cmd>ToggleTerm<CR>', {})
 

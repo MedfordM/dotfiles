@@ -1,18 +1,50 @@
-require("noice").setup({
+require('noice').setup({
+  views = {
+    -- hover = {
+    --   size = {
+    --     width = '20%',
+    --     height = '30%'
+    --   },
+    --   relative = 'window'
+    -- }
+  },
   lsp = {
-    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
-      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      ["vim.lsp.util.stylize_markdown"] = true,
-      ["cmp.entry.get_documentation"] = false,
+      ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+      ['vim.lsp.util.stylize_markdown'] = true,
+      ['cmp.entry.get_documentation'] = true,
+    },
+
+    documentation = {
+      view = 'hover',
+      opts = {
+        lang = 'markdown',
+        replace = true,
+        render = 'plain',
+        format = { '{message}' },
+        win_options = { concealcursor = 'n', conceallevel = 3 },
+      },
     },
   },
-  -- you can enable a preset for easier configuration
+  markdown = {
+    hover = {
+      ['|(%S-)|'] = vim.cmd.help, -- vim help links
+      ['%[.-%]%((%S-)%)'] = require('noice.util').open, -- markdown links
+    },
+    highlights = {
+      ['|%S-|'] = '@text.reference',
+      ['@%S+'] = '@parameter',
+      ['^%s*(Parameters:)'] = '@text.title',
+      ['^%s*(Return:)'] = '@text.title',
+      ['^%s*(See also:)'] = '@text.title',
+      ['{%S-}'] = '@parameter',
+    },
+  },
   presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
-    long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = true, -- add a border to hover docs and signature help
+    bottom_search = true,
+    command_palette = true,
+    long_message_to_split = true,
+    inc_rename = false,
+    lsp_doc_border = true,
   },
 })
