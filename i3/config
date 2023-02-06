@@ -44,22 +44,22 @@ bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.s
 bindsym $mod+Shift+x exec --no-startup-id flameshot gui
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+i focus up
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+i move up
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+e layout toggle split
 
 # split in horizontal orientation
-bindsym $mod+h split v
+bindsym $mod+s split v
 
 # split in vertical orientation
 bindsym $mod+v split h
@@ -116,9 +116,6 @@ bindsym $mod+Shift+7 nop
 bindsym $mod+Shift+8 nop
 bindsym $mod+Shift+9 nop
 bindsym $mod+Shift+0 nop
-
-bindsym $mod+s scratchpad show
-bindsym $mod+Shift+s move scratchpad
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
