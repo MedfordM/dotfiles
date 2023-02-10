@@ -23,7 +23,7 @@ wk.register({
     a = { vim.lsp.buf.code_action, 'Quick action' },
     f = { vim.lsp.buf.format, 'Format' },
     j = { vim.cmd.Neogen, 'Gen Docs' },
-    D = { '<cmd>lua require("dapui").toggle()', 'DapUI'},
+    D = { '<cmd>lua require("dapui").toggle()<cr>', 'DapUI'},
 
     g = {
       name  = 'Goto',

@@ -54,4 +54,5 @@ return require('packer').startup(function(use)
   use { 'fladson/vim-kitty' }
   use { 'danymat/neogen' }
   use { 'abecodes/tabout.nvim' }
+  use { 'windwp/nvim-spectre' }
 end)

@@ -39,6 +39,9 @@ wk.register({
     b  = { telescope.buffers, 'Pick buffer' },
     t  = { vim.cmd.ToggleTerm, 'Terminal' },
     u  = { vim.cmd.UndotreeToggle, 'Undo Tree' },
+    g  = { '<cmd>Telescope live_grep<CR>', 'Search files' },
+    D  = { vim.cmd.Dashboard, 'Open Dashboard' },
+    S  = { vim.cmd.Spectre, 'Open Spectre' },
 
     s = {
       name = 'Session',
