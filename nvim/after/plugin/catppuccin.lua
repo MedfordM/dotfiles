@@ -15,12 +15,11 @@ require('catppuccin').setup({
     notify = true,
     dashboard = true,
     symbols_outline = true,
-    -- navic = {
-    --   enabled = false,
-    --   custom_bg = 'NONE',
-    -- },
     native_lsp = {
       enabled = true,
+      signs = {
+        errors = {'bold'}
+      },
       virtual_text = {
         errors = { 'italic' },
         hints = { 'italic' },

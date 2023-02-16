@@ -15,6 +15,16 @@ wk.register({
   ['[C'] = { '<cmd>TSTextobjectGotoPrevStart @class.outer<cr>', 'Class start' },
   ['vm'] = { '<cmd>TSTextobjectSelect @function.outer<cr>', 'Select method' },
   ['vc'] = { '<cmd>TSTextobjectSelect @class.outer<cr>', 'Select class' },
+  [']d'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
+  ['[d'] = { vim.diagnostic.goto_prev, 'Prev diagnostic' },
+  g = {
+    name  = 'Goto',
+    r = { telescope.lsp_references, 'References' },
+    i = { telescope.lsp_implementations, 'Implementations'},
+    d = { vim.lsp.buf.definition, 'Definition' },
+    t = { vim.lsp.buf.type_definition, 'Type' },
+    s = { telescope.lsp_document_symbols, 'Goto Symbol' },
+  },
 
   ['<leader>c'] = {
     name  = 'Code',
@@ -25,21 +35,10 @@ wk.register({
     j = { vim.cmd.Neogen, 'Gen Docs' },
     D = { '<cmd>lua require("dapui").toggle()<cr>', 'DapUI'},
 
-    g = {
-      name  = 'Goto',
-      r = { telescope.lsp_references, 'References' },
-      i = { telescope.lsp_implementations, 'Implementations'},
-      d = { vim.lsp.buf.definition, 'Definition' },
-      t = { vim.lsp.buf.type_definition, 'Type' },
-      s = { telescope.lsp_document_symbols, 'Goto Symbol' },
-    },
-
     d = {
       name  = 'Diagnostics',
       p = { vim.diagnostic.open_float, 'Diagnostic info' },
       l = { telescope.diagnostics, 'Goto diagnostic'},
-      [']'] = { vim.diagnostic.goto_next, 'Next diagnostic' },
-      ['['] = { vim.diagnostic.goto_prev, 'Prev diagnostic' },
       d = { '<cmd>TroubleToggle document_diagnostics<cr>', 'List document issues' },
       w = { '<cmd>TroubleToggle workspace_diagnostics<cr>', 'List workspace issues' },
       c = { vim.cmd.TroubleClose, 'Close diagnostics' }

@@ -2,6 +2,9 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
+  use { 'williamboman/mason.nvim' }
+  use { 'williamboman/mason-lspconfig.nvim' }
+  use { 'neovim/nvim-lspconfig' }
   use { 'nvim-tree/nvim-web-devicons' }
   use { "RRethy/vim-illuminate", event = 'BufReadPost' }
   use { "catppuccin/nvim", as = "catppuccin" }
@@ -16,9 +19,6 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter-textobjects' }
   use { 'lewis6991/gitsigns.nvim' }
   use { 'mfussenegger/nvim-jdtls' }
-  use { 'neovim/nvim-lspconfig' }
-  use { 'williamboman/mason.nvim' }
-  use { 'williamboman/mason-lspconfig.nvim' }
   use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-buffer' }
   use { 'hrsh7th/cmp-path' }
@@ -55,4 +55,5 @@ return require('packer').startup(function(use)
   use { 'danymat/neogen' }
   use { 'abecodes/tabout.nvim' }
   use { 'windwp/nvim-spectre' }
+  use { 'editorconfig/editorconfig-vim' }
 end)

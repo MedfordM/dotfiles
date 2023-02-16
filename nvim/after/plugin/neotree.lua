@@ -200,6 +200,7 @@ require('neo-tree').setup({
       handler = function(_)
         if vim.bo.filetype == 'neo-tree' then
           vim.wo.signcolumn = 'auto'
+          vim.opt_local.statuscolumn = ''
         end
       end,
     },

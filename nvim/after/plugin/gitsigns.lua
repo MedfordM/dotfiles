@@ -1,11 +1,11 @@
 require('gitsigns').setup {
   signs = {
-    add          = { text = '│' },
-    change       = { text = '│' },
-    delete       = { text = '_' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = '~' },
-    untracked    = { text = '┆' },
+    add          = { text = Icons.git.status_added },
+    change       = { text = Icons.git.status_modified },
+    delete       = { text = Icons.git.status_removed },
+    topdelete    = { text = Icons.git.topdelete },
+    changedelete = { text = Icons.git.changedelete },
+    untracked    = { text = Icons.git.untracked },
   },
   signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
   numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -24,7 +24,7 @@ require('gitsigns').setup {
     ignore_whitespace = false,
   },
   current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-  sign_priority = 1,
+  sign_priority = 0,
   update_debounce = 100,
   status_formatter = nil, -- Use default
   max_file_length = 40000, -- Disable if file is longer than this (in lines)
@@ -34,7 +34,7 @@ require('gitsigns').setup {
     style = 'minimal',
     relative = 'cursor',
     row = 0,
-    col = 1
+    col = 0
   },
   yadm = {
     enable = false
