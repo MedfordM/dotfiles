@@ -9,7 +9,6 @@ vim.g.mapleader = ' '
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '>-2<CR>gv=gv")
 vim.keymap.set('i', '<C-BS>', '<C-w>')
-vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next)
 vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous)
 vim.keymap.set({'n', 'i'}, '<C-Tab>', '<cmd>BufferLineCycleNext<CR>')
