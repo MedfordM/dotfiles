@@ -1,2 +1,4 @@
-require('luasnip')
+require('luasnip').setup({
+  history = false,
+})
 
