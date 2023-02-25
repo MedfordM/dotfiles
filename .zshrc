@@ -24,5 +24,5 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --icons --git --group-direct
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
 source ~/.oh-my-zsh/oh-my-zsh.sh
-source /home/mike/Source/scripts/alias.sh
+source ~/Source/scripts/alias.sh
 
