@@ -12,7 +12,14 @@ PATH="$M2_HOME/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 export PATH
 export MAVEN_OPTS="-Dconfig.file=$HOME/Source/darwin/localFiles/local.conf"
+export EDITOR=nvim
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_TYPE=en_US.UTF-8
+eval "$(tmuxifier init -)"
 
+export QT_QPA_PLATFORMTHEME="qt5ct"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/Misc/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Misc/google-cloud-sdk/path.zsh.inc"; fi
 
