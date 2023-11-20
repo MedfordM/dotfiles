@@ -1,0 +1,393 @@
+(defvar home_dir "/home/$USER/.config/eww/Scripts")
+
+(defpoll time 
+  :interval "15s"
+	`date +" %a, %b %d %H:%M %p"`
+)
+
+(defpoll calendar_day 
+  :interval "10h"
+  :initial 1
+  `date "+%d"`
+)
+
+(defpoll calendar_month 
+  :interval "10h"
+  :initial 1
+  `date "+%m"`
+)
+
+(defpoll calendar_year 
+  :interval "10h"
+  :initial 2022
+  `date "+%Y"`
+)
+
+(defvar showSysControl false)
+
+(defpoll gpuTemp
+  :interval "2s"
+  :initial 0
+  `nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader`
+)
+
+(defpoll gpuUsage
+  :interval "2s"
+  :initial 0
+  `nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | tr -d '%'`
+)
+
+(defwidget temps []
+  (box
+    :orientation "v"
+    :halign "center"
+    :valign "center"
+    (box
+      :orientation "h"
+      :halign "center"
+      :valign "center"
+      (box
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :class "component"
+        (label
+          :class "componentIcon"
+          :text "󰍛"
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text "󰔏"
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${EWW_TEMPS['CORETEMP_PACKAGE_ID_0']}°C"
+          )
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text ""
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${round(EWW_CPU['avg'],0)} %"
+          )
+        )
+      )
+      (box
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :class "component"
+        (label
+          :class "componentIcon"
+          :text "󱒃"
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text "󰔏"
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${gpuTemp}°C"
+          )
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text ""
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${gpuUsage}%"
+          )
+        )
+      )
+    )
+    (box
+      :orientation "h"
+      :halign "center"
+      :valign "center"
+      (box
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :class "component"
+        (label
+          :class "componentIcon"
+          :text ""
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text "󰔏"
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${round(EWW_RAM.used_mem / 1024 / 1024 / 1024, 2)}Gb "
+          )
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text ""
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${round(EWW_RAM.free_mem / 1024 / 1024 / 1024, 2)}Gb"
+          )
+        )
+      )
+      (box
+        :orientation "v"
+        :halign "center"
+        :valign "center"
+        :class "component"
+        (label
+          :class "componentIcon"
+          :text ""
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text ""
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${round(EWW_DISK["/"].used / 1024 / 1024 / 1024, 2)}Gb"
+          )
+        )
+        (box
+          :class "componentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 15
+          (label
+            :class "componentChildIcon"
+            :xalign 0
+            :text ""
+          )
+          (label 
+            :class "componentChildLabel"
+            :xalign 1
+            :text "${round(EWW_DISK["/"].free / 1024 / 1024 / 1024, 2)}Gb"
+          )
+        )
+      )
+    )
+  )
+)
+
+(defwidget sysInfo []
+  (box
+    :class "sysInfo"
+    :orientation "v"
+    (temps)
+  )
+)
+(defwidget time []
+	(box :halign "end" :orientation "h" :style "font-size: 24px;"
+			:class "main-container" 
+	(button :class "time"	:onclick {showSysControl ? "eww update showSysControl=false" : "eww update showSysControl=true"} time)))
+
+(defpoll volume 
+  :interval "300ms" 
+  :initial 0
+  `pamixer --get-volume`
+)
+
+(defwidget audioVolume []
+  (box
+    :halign "center"
+    :valign "center"
+    :orientation "h"
+    :class "audioVolume"
+    :space-evenly false
+    :spacing 20
+    (label :text "" :class "volumeLabel")
+    (scale
+      :class "volumeSlider"
+      :min 0
+      :max 100
+      :value volume
+      :onchange "pamixer --set-volume {}"
+      :orientation "h"
+    )
+    (label :text "" :class "volumeLabel")
+  )
+)
+
+(defvar activeSource "Headphones")
+(defwidget audioSource []
+  (box
+    :halign "center"
+    :valign "center"
+    :orientation "v"
+    :class "audioSource"
+    (label :text "Sources")
+    (box
+      :halign "center"
+      :valign "center"
+      :orientation "h"
+      (button
+        :class "button"
+        :valign "center"
+        :onclick "Scripts/switchOutput.sh Headphones & eww update activeSource='Headphones'"
+        :style { activeSource=="Headphones" ? "background-color: #585b70": "color: #585b70"}
+        (label :text "󰋋")
+      )
+      (button
+        :class "button"
+        :valign "center"
+        :onclick "Scripts/switchOutput.sh Speakers & eww update activeSource='Speakers'"
+        :style { activeSource=="Speakers" ? "background-color: #585b70": "color: #585b70"}
+        (label :text "󰴸")
+      )
+    )
+  )
+)
+
+(defwidget cal []
+	(box :class "cal" :orientation "v"
+    (box :class "cal-in"
+
+      (calendar :class "cal"
+            :day calendar_day
+            :month calendar_month
+            :year calendar_year
+      )
+    )
+  )
+)
+
+(defwindow sysControl
+  :monitor 0
+  :visible showSysControl
+	:geometry (geometry 
+            :x "0px"
+						:y "75px" 
+            :anchor "top right"
+						:vexpand true 
+						:hexpand true)
+  (revealer
+    :transition "slidedown"
+    :reveal showSysControl
+    :duration "300ms"
+    (box
+      :class "sysControl"
+      :orientation "v"
+      :spacing 12
+      (sysInfo)
+      (cal)
+      (box
+        :class "audio"
+        :orientation "v"
+        (audioSource)
+        (audioVolume)
+      )
+    )
+  )
+)
+
+(defvar workspaces_1 "󰄯  󰄰  󰄰  󰄰  󰄰")
+(defvar workspaces_2 "󰄯  󰄰  󰄰  󰄰  󰄰")
+
+(defwindow bar
+	:monitor 1
+	:geometry (geometry 
+			:width "100%"
+			:anchor "top center"
+  )
+	:windowtype "dock"
+  :wm-ignore "true"
+	(box 
+    :class "main-container"
+    (box 
+      :class "workspaces" 
+      :valign "center" 
+      :halign "start" 
+      (label :text {workspaces_1} )
+    )
+	(time)
+	)
+)
+
+(defwindow bar2
+	:monitor 0
+	:geometry (geometry 
+    :width "100%"
+    :anchor "top center"
+  )
+	:windowtype "dock"
+  :wm-ignore "true"
+	(box :class "main-container"
+    (box 
+      :class "workspaces" 
+      :valign "center" 
+      :halign "start" 
+      (label :text {workspaces_2})
+    )
+	(time)
+  )
+)

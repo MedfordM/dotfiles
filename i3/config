@@ -18,7 +18,7 @@ floating_modifier $mod
 tiling_drag modifier
 default_border none
 default_floating_border none
-gaps inner 90
+gaps inner 45
 
 for_window [class="Pavucontrol"] floating enable, move position mouse, move down 35px
 for_window [class="zoom"] floating enable
@@ -27,9 +27,9 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Font-manager"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Pamac-manager"] floating enable
-
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+no_focus [class="eww-bar"]
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -41,28 +41,36 @@ bindsym $mod+q kill
 bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.sh
 
 # Take screenshot
-bindsym $mod+Shift+x exec --no-startup-id flameshot gui
+bindsym Print exec --no-startup-id flameshot gui
 
 # change focus
+# bindsym $mod+h focus left
+# bindsym $mod+j focus down
+# bindsym $mod+k focus up
+# bindsym $mod+l focus right
+
 bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+n focus down
+bindsym $mod+e focus up
+bindsym $mod+i focus right
+
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+# bindsym $mod+Shift+h move left
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+# bindsym $mod+Shift+l move right
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+n move down
+bindsym $mod+Shift+e move up
+bindsym $mod+Shift+i move right
 
 # split in horizontal orientation
-bindsym $mod+s split v
+# bindsym $mod+s split v
 
 # split in vertical orientation
-bindsym $mod+v split h
+# bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+Shift+f fullscreen toggle
@@ -94,31 +102,26 @@ workspace 18 output HDMI-0
 workspace 19 output HDMI-0
 
 # switch to workspace
-bindsym $mod+1 nop
-bindsym $mod+2 nop
-bindsym $mod+3 nop
-bindsym $mod+4 nop
-bindsym $mod+5 nop
-bindsym $mod+6 nop
-bindsym $mod+7 nop
-bindsym $mod+8 nop
-bindsym $mod+9 nop
-bindsym $mod+0 nop
+bindsym $mod+a nop
+bindsym $mod+r nop
+bindsym $mod+s nop
+bindsym $mod+t nop
+bindsym $mod+d nop
 
 # move window to workspace
-bindsym $mod+Shift+1 nop
-bindsym $mod+Shift+2 nop
-bindsym $mod+Shift+3 nop
-bindsym $mod+Shift+4 nop
-bindsym $mod+Shift+5 nop
-bindsym $mod+Shift+6 nop
-bindsym $mod+Shift+7 nop
-bindsym $mod+Shift+8 nop
-bindsym $mod+Shift+9 nop
-bindsym $mod+Shift+0 nop
+bindsym $mod+Shift+a nop
+bindsym $mod+Shift+r nop
+bindsym $mod+Shift+s nop
+bindsym $mod+Shift+t nop
+bindsym $mod+Shift+d nop
+# bindsym $mod+Shift+6 nop
+# bindsym $mod+Shift+n nop
+# bindsym $mod+Shift+e nop
+# bindsym $mod+Shift+i nop
+# bindsym $mod+Shift+o nop
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+w restart
 bindsym $mod+Shift+c reload
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exit i3
@@ -131,15 +134,15 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym i resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym n resize grow height 5 px or 5 ppt
+        bindsym e resize shrink height 5 px or 5 ppt
+        bindsym i resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $mod+w mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+w mode "resize"

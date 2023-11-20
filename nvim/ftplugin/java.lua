@@ -1,4 +1,3 @@
-local jdtls = require 'jdtls'
 local extendedClientCapabilities = require 'jdtls'.extendedClientCapabilities
 local project_name = vim.fn.getcwd()
 local workspace_dir = '/home/mike/.cache/jdtls/workspace/' .. project_name
@@ -52,6 +51,7 @@ require('jdtls').start_or_attach({
   capabilities = capabilities,
   cmd = {
     javaBin,
+    '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -60,7 +60,8 @@ require('jdtls').start_or_attach({
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-    '-jar', '/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar',
+    '-javaagent:/home/mike/Misc/lombok.jar',
+    '-jar', '/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar',
     '-configuration', '/usr/share/java/jdtls/config_linux',
     '-data', workspace_dir
   },
@@ -97,6 +98,11 @@ require('jdtls').start_or_attach({
       maven = {
         downloadSources = true
       },
+      inlayHints = {
+        parameterNames = {
+          enabled = true
+        }
+      },
       referenceCodeLens = { enabled = true },
       implementationsCodeLens = { enabled = true },
       references = {
@@ -127,9 +133,17 @@ require('jdtls').start_or_attach({
     extendedClientCapabilities = extendedClientCapabilities;
   },
   on_attach = function()
-    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+    vim.lsp.codelens.refresh()
+    require('jdtls').setup_dap()
     require('jdtls.dap').setup_dap_main_class_configs()
-    jdtls.setup.add_commands()
     require('config.lspkeys')
+    vim.lsp.inlay_hint.enable(0, true)
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.java" },
+      callback = function()
+        local _, _ = pcall(vim.lsp.codelens.refresh)
+      end,
+    })
+
   end,
 })

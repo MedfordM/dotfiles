@@ -8,15 +8,13 @@ return require('packer').startup(function(use)
   use { 'nvim-tree/nvim-web-devicons' }
   use { "RRethy/vim-illuminate", event = 'BufReadPost' }
   use { "catppuccin/nvim", as = "catppuccin" }
-  use { 'nvim-treesitter/nvim-treesitter' }
-  use { 'nvim-treesitter/playground' }
-  use { 'theprimeagen/harpoon' }
+  -- use { 'nvim-treesitter/nvim-treesitter' }
   use { 'mbbill/undotree' }
   use { 'echasnovski/mini.nvim' }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'akinsho/bufferline.nvim' }
-  use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+  -- use { 'nvim-treesitter/nvim-treesitter-textobjects' }
   use { 'lewis6991/gitsigns.nvim' }
   use { 'mfussenegger/nvim-jdtls' }
   use { 'hrsh7th/nvim-cmp' }
@@ -33,16 +31,9 @@ return require('packer').startup(function(use)
   use { 'folke/trouble.nvim' }
   use { 'folke/which-key.nvim' }
   use { 'MunifTanjim/nui.nvim' }
-  use { 'nvim-neo-tree/neo-tree.nvim' }
-  use { 'akinsho/toggleterm.nvim' }
+  use { 'nvim-neo-tree/neo-tree.nvim', branch = 'v3.x' }
   use { 'nvim-lualine/lualine.nvim' }
-  use { 'sindrets/diffview.nvim' }
   use { 'luukvbaal/statuscol.nvim' }
-  use { 'rcarriga/nvim-notify' }
-  use { 'folke/noice.nvim' }
-  use { 'folke/persistence.nvim' }
-  use { 'glepnir/dashboard-nvim' }
-  use { 'simrat39/symbols-outline.nvim' }
   use { 'kylechui/nvim-surround' }
   use { 'moll/vim-bbye' }
   use { 'nvim-lua/lsp-status.nvim' }
@@ -50,10 +41,8 @@ return require('packer').startup(function(use)
   use { 'folke/neodev.nvim' }
   use { 'mfussenegger/nvim-dap' }
   use { 'rcarriga/nvim-dap-ui' }
-  use { 'knubie/vim-kitty-navigator' }
-  use { 'fladson/vim-kitty' }
-  use { 'danymat/neogen' }
-  use { 'abecodes/tabout.nvim' }
-  use { 'windwp/nvim-spectre' }
-  use { 'editorconfig/editorconfig-vim' }
+  use { 'chaoren/vim-wordmotion' }
+  use { 'tpope/vim-fugitive' }
+  use { 'mrjones2014/smart-splits.nvim' }
+  use { 'mhartington/formatter.nvim' }
 end)

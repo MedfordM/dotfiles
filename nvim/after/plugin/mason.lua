@@ -11,7 +11,7 @@ require('mason-lspconfig').setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
-      require('config.lspkeys')
+      require('config.lspkeys'),
     }
   end,
   ['tsserver'] = function()

@@ -1,0 +1,213 @@
+$base: #1e1e2e;
+$base2: #26263a;
+$text: #cdd6f4;
+$mantle: #181825;
+$crust: #11111b;
+$overlay0: #6c7086;
+$surface1: #45475a;
+$surface2: #585b70;
+$surface0: #313244;
+$shadow: #45475a;
+$border_col: #b4befe;
+
+$black: #24283B;
+$gray: #565F89;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+
+.bar {
+	background-color: transparent;	
+}
+
+.bar2 {
+	background-color: transparent;	
+}
+
+.calendar {
+	background-color: transparent;	
+}
+
+.main-container {
+	color: $text;	
+	margin: 8px 12px 0px 12px;
+	border-radius: 10px;
+}
+
+.audio {
+  margin: 16px;
+	background-color: $base2;
+	color: $text;	
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px $shadow;
+  padding: 5px 5px 5px 5px;
+	border: 1px solid $border_col;
+}
+
+.button {
+  font-size: 24px;
+	padding: 8px 20px;
+  margin: 0px 8px 0px 8px;
+  background: none;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px $shadow;
+	color: $text;	
+	border: 1px solid $border_col;
+}
+
+.component {
+  all: unset;
+	padding: 8px 10px 8px 10px;
+  min-width: 120px;
+  margin: 8px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px $shadow;
+	background-color: $surface0;
+	color: $text;	
+  font-family: monospace;
+  font-weight: bold;
+	border: 1px solid $border_col;
+}
+
+.componentChild {
+  all: unset;
+  font-family: monospace;
+  padding: 0px 8px;
+}
+
+.componentIcon {
+  all: unset;
+  font-family: monospace;
+  font-size: 42px;
+}
+
+.componentChildIcon {
+  all: unset;
+  font-family: monospace;
+  font-size: 32px;
+  padding-right: 0px;
+}
+
+.componentChildLabel {
+  all: unset;
+  font-family: monospace;
+  min-width: 8rem;
+  font-size: 24px;
+}
+
+.label {
+  padding: 12px;
+}
+
+.audioVolume {
+  min-width: 280px;
+}
+
+.volumeLabel {
+  all: unset;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.volumeSlider {
+  all: unset;
+  min-width: 180px;
+}
+
+window {
+	background-color: transparent;	
+}
+
+.workspaces {
+	background-color: $base;
+	border-radius: 10px;
+	color: $text;	
+	border: 1px solid $border_col;
+	padding: .5rem .8rem .5rem .8rem;
+  font-size: 24px;
+	box-shadow: 2px 2px 2px $shadow;
+}
+
+.time {
+  font-size: 24px;
+  font-weight: normal;
+  text-decoration: none;
+  background: $base;
+  color: $text;
+  border-radius: 10px;
+	border: 1px solid $border_col;
+	box-shadow: 2px 2px 2px $shadow;
+	padding: .5rem .8rem .5rem .8rem;
+}
+
+.sysInfo {
+  all: unset;
+  min-width: 400px;
+	border: 1px solid $border_col;
+  margin: 24px;
+  color: $text;
+  background-color: $base2;
+  border-radius: 10px;
+}
+
+.sysControl {
+  color: $text;
+}
+
+.cal {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 18px;
+  padding: 8px;
+
+.cal-in {
+    color: $text;
+    border: none;
+
+.cal-in2 {
+    border: none;
+     &.highlight {
+          padding: 10px;
+      }
+
+    }
+  }
+}
+
+calendar {
+  all: unset;
+	border: 1px solid $border_col;
+  margin: 18px;
+  color: $text;
+  background-color: $base2;
+  border-radius: 10px;
+}
+
+calendar:selected {
+  color: #89b4fa;
+  font-weight: bold;
+}
+
+calendar.header {
+  color: $text;
+  font-weight: bold;
+  border: none;
+}
+
+calendar.button {
+  color: #9399b2;
+  box-shadow: none;
+}
+
+calendar.highlight {
+  color: #89b4fa;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: #9399b2;
+}
+

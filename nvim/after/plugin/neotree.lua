@@ -77,7 +77,9 @@ require('neo-tree').setup({
       ['P'] = { 'toggle_preview', config = { use_float = true }, },
       ['l'] = 'focus_preview',
       ['S'] = 'open_split',
-      ['s'] = 'open_vsplit',
+      ['v'] = 'open_vsplit',
+      ['E'] = 'toggle_auto_expand_width',
+      ['e'] = '',
       -- ['S'] = 'split_with_window_picker',
       -- ['s'] = 'vsplit_with_window_picker',
       ['t'] = 'open_tabnew',
@@ -119,7 +121,7 @@ require('neo-tree').setup({
   },
   nesting_rules = {},
   filesystem = {
-    bind_to_cwd = false,
+    bind_to_cwd = true,
     filtered_items = {
       visible = true, -- when true, they will just be displayed differently than normal items
       hide_dotfiles = true,
@@ -143,7 +145,9 @@ require('neo-tree').setup({
         --".null-ls_*",
       },
     },
-    follow_current_file = true, -- This will find and focus the file in the active buffer every
+    follow_current_file = {
+      enabled = true, -- This will find and focus the file in the active buffer every
+    },
     -- time the current file is changed while the tree is open.
     group_empty_dirs = true, -- when true, empty folders will be grouped together
     hijack_netrw_behavior = 'open_default', -- netrw disabled, opening a directory opens neo-tree
@@ -168,7 +172,9 @@ require('neo-tree').setup({
     }
   },
   buffers = {
-    follow_current_file = true, -- This will find and focus the file in the active buffer every
+    follow_current_file = {
+      enabled = true
+    }, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
     group_empty_dirs = true, -- when true, empty folders will be grouped together
     show_unloaded = true,

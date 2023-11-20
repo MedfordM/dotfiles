@@ -1,4 +1,5 @@
-require('catppuccin').setup({
+local catppuccin = require('catppuccin')
+catppuccin.setup({
   integrations = {
     illuminate = true,
     harpoon = true,
@@ -9,12 +10,18 @@ require('catppuccin').setup({
     telescope = true,
     lsp_trouble = true,
     which_key = true,
+    markdown = true,
     gitsigns = true,
     cmp = true,
     noice = true,
     notify = true,
     dashboard = true,
     symbols_outline = true,
+    lsp_saga = true,
+    dap = {
+      enabled = true,
+      enable_ui = true
+    },
     native_lsp = {
       enabled = true,
       signs = {
@@ -35,3 +42,5 @@ require('catppuccin').setup({
     },
   }
 })
+
+vim.cmd.colorscheme "catppuccin"

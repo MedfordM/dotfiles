@@ -1,4 +1,4 @@
-require('neogen').setup({
-  snippet_engine = 'luasnip'
-})
+-- require('neogen').setup({
+--   snippet_engine = 'luasnip'
+-- })
 

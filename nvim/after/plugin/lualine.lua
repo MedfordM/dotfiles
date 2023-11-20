@@ -1,37 +1,40 @@
-require('lualine').setup({
+require('lualine').setup {
   options = {
-    theme = 'catppuccin',
-    globalstatus = true,
     icons_enabled = true,
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
-    sections = {
-      lualine_a = { 'mode' },
-      lualine_b = {
-        'branch',
-        'diff',
-      },
-      -- lualine_c = { 'filename' },
-      lualine_c = {
-          'diagnostics',
-          sources = { 'nvim_lsp' },
-          sections = { 'error', 'warn', 'info', 'hint' },
-          diagnostics_color = {
-            error = 'DiagnosticError',
-            warn  = 'DiagnosticWarn',
-            info  = 'DiagnosticInfo',
-            hint  = 'DiagnosticHint',
-          },
-          symbols = {error = '', warn = '', info = '', hint = ''},
-          colored = true,
-          update_in_insert = false,
-          always_visible = false
-      },
-      lualine_x = { 'encoding', 'fileformat', 'filetype' },
-      lualine_y = { "require('lsp-status').status()" },
-      lualine_z = { 'location' }
+    theme = 'catppuccin',
+    component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
     },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = true,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
   },
-
-  extensions = { 'neo-tree', 'toggleterm' }
-})
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename', "require('lspsaga.symbolwinbar'):get_winbar()"},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = { 'neo-tree', 'toggleterm', 'trouble', 'nvim-dap-ui', 'fugitive',  }
+}

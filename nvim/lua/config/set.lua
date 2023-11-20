@@ -15,7 +15,7 @@ vim.opt.undofile       = true
 vim.opt.hlsearch       = false
 vim.opt.incsearch      = true
 vim.opt.termguicolors  = true
-vim.opt.completeopt    = { 'menu', 'menuone', 'noselect' }
+vim.opt.completeopt    = { 'menu', 'menuone', 'preview' }
 vim.opt.cmdheight      = 0
 vim.opt.showmode       = false
 vim.opt.foldmethod     = 'expr'
@@ -29,6 +29,7 @@ vim.opt.foldenable     = true
 vim.opt.foldlevel      = 99
 vim.opt.foldlevelstart = 99
 vim.opt.signcolumn     = 'auto'
+vim.opt.clipboard      = 'unnamedplus'
 
 vim.diagnostic.config({
   float = {
@@ -51,3 +52,19 @@ vim.fn.sign_define('DiagnosticSignHint',
 vim.fn.sign_define('DiagnosticSignInfo',
   { text = Icons.diagnostics.INFO })
 
+vim.cmd("let g:wordmotion_mappings = { 'w' : 'w', 'e' : '', 'b' : 'b' }")
+
+
+vim.lsp.handlers["textDocuments/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = 'single'
+  }
+)
+
+vim.lsp.handlers["textDocuments/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = 'single'
+  }
+)
+
+vim.diagnostic.config{float={border='single'}}
