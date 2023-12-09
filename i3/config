@@ -13,12 +13,14 @@ set $mod Mod4
 
 exec_always --no-startup-id /home/mike/Source/scripts/i3Start.sh
 
-font pango:monospace 8
+font pango:Times New Roman 8
 floating_modifier $mod
 tiling_drag modifier
 default_border none
 default_floating_border none
-gaps inner 45
+gaps outer 6
+gaps inner 18
+gaps top 0
 
 for_window [class="Pavucontrol"] floating enable, move position mouse, move down 35px
 for_window [class="zoom"] floating enable
@@ -27,6 +29,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Font-manager"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Pamac-manager"] floating enable
+for_window [class="Solaar"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 no_focus [class="eww-bar"]
@@ -44,30 +47,22 @@ bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.s
 bindsym Print exec --no-startup-id flameshot gui
 
 # change focus
-# bindsym $mod+h focus left
-# bindsym $mod+j focus down
-# bindsym $mod+k focus up
-# bindsym $mod+l focus right
-
 bindsym $mod+h focus left
 bindsym $mod+n focus down
 bindsym $mod+e focus up
 bindsym $mod+i focus right
 
-
 # move focused window
-# bindsym $mod+Shift+h move left
-# bindsym $mod+Shift+j move down
-# bindsym $mod+Shift+k move up
-# bindsym $mod+Shift+l move right
-
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+n move down
 bindsym $mod+Shift+e move up
 bindsym $mod+Shift+i move right
 
+# switch to tabbed layout
+bindsym $mod+l layout toggle all; exec dunstify "i3" "Layout $(i3-msg -t get_tree | jq -r '.nodes[].nodes[] | select(.type == "con") | .nodes[].nodes[] | select(.nodes[].focused == true) | .layout')"
+
 # split in horizontal orientation
-# bindsym $mod+s split v
+bindsym $mod+Shift+l split v
 
 # split in vertical orientation
 # bindsym $mod+v split h
@@ -114,15 +109,10 @@ bindsym $mod+Shift+r nop
 bindsym $mod+Shift+s nop
 bindsym $mod+Shift+t nop
 bindsym $mod+Shift+d nop
-# bindsym $mod+Shift+6 nop
-# bindsym $mod+Shift+n nop
-# bindsym $mod+Shift+e nop
-# bindsym $mod+Shift+i nop
-# bindsym $mod+Shift+o nop
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+w restart
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload; exec dunstify "i3" "Config Reloaded"
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exit i3
 

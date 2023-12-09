@@ -61,7 +61,7 @@ $cyan: #7DCFFF;
 .component {
   all: unset;
 	padding: 8px 10px 8px 10px;
-  min-width: 120px;
+  min-width: 200px;
   margin: 8px;
 	border-radius: 10px;
 	box-shadow: 2px 2px 2px $shadow;
@@ -88,14 +88,14 @@ $cyan: #7DCFFF;
   all: unset;
   font-family: monospace;
   font-size: 32px;
-  padding-right: 0px;
+  margin-right: 1rem;
 }
 
 .componentChildLabel {
   all: unset;
   font-family: monospace;
-  min-width: 8rem;
   font-size: 24px;
+  min-width: 4rem;
 }
 
 .label {
@@ -127,12 +127,13 @@ window {
 	color: $text;	
 	border: 1px solid $border_col;
 	padding: .5rem .8rem .5rem .8rem;
-  font-size: 24px;
+  font-size: 18px;
 	box-shadow: 2px 2px 2px $shadow;
+  margin-bottom: 0px;
 }
 
 .time {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: normal;
   text-decoration: none;
   background: $base;
@@ -141,11 +142,12 @@ window {
 	border: 1px solid $border_col;
 	box-shadow: 2px 2px 2px $shadow;
 	padding: .5rem .8rem .5rem .8rem;
+  margin-bottom: 0px;
 }
 
 .sysInfo {
   all: unset;
-  min-width: 400px;
+  min-width: 200px;
 	border: 1px solid $border_col;
   margin: 24px;
   color: $text;

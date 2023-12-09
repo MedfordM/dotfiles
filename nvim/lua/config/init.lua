@@ -1,4 +1,5 @@
 Icons = require("config.icons")
 require("config.set")
-require("config.packer")
+require("config.include")
+require("config.lazy")
 require("config.keys")

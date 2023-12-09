@@ -104,7 +104,7 @@ idle_threshold = 120
 #
 # If this option is set to mouse or keyboard, the monitor option
 # will be ignored.
-follow = mouse
+follow = keyboard
 
 mouse_left_click = do_action
 mouse_right_click = close_all
@@ -172,7 +172,7 @@ frame_width = 0
 # close = ctrl+shift+space
 #
 # # Close all notifications.
-# close_all = ctrl+shift+space
+ close_all = ctrl+shift+space
 #
 # # Redisplay last message(s).
 # # On the US keyboard layout "grave" is normally above TAB and left
@@ -188,19 +188,19 @@ frame_width = 0
 frame_color = "#80a8fd"
 foreground = "#80a8fd"
 background = "#282e49"
-timeout = 10
+timeout = 3
 
 [urgency_normal]
 frame_color = "#80a8fd"
 foreground = "#80a8fd"
 background = "#282e49"
-timeout = 10
+timeout = 3
 
 [urgency_critical]
 frame_color = "#f7768e"
 foreground = "#ffffff"
 background = "#c45e71"
-timeout = 10
+timeout = 3
 
 [notify_send]
 appname = notify-send
