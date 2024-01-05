@@ -44,5 +44,13 @@ return {
         require('nvim-treesitter.configs').setup(opts)
         vim.cmd('TSEnable highlight')
       end
+  },
+  {
+    'nvim-treesitter/playground',
+    cmd = 'TSPlaygroundToggle',
+    opts = {},
+    config = function(_, opts)
+      require('nvim-treesitter.configs').setup(opts)
+    end
   }
 }

@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.opt.nu             = true
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 vim.opt.timeout        = true
 vim.opt.timeoutlen     = 300
 vim.opt.tabstop        = 2
@@ -57,41 +57,10 @@ vim.fn.sign_define('DiagnosticSignInfo',
 
 vim.cmd("let g:wordmotion_mappings = { 'w' : 'w', 'e' : '', 'b' : 'b' }")
 
--- To instead override globally
--- vim.lsp.handlers["textDocuments/hover"] = vim.lsp.with(
---   vim.lsp.handlers.hover, {
---     border = 'rounded'
---   }
--- )
-
--- vim.lsp.handlers["textDocuments/hover"] = function(_, method, result)
---   vim.lsp.util.open_floating_preview(method, function()
---     if not (result and result.contents) then
---       return
---     end
---         local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
---     vim.split(table.concat(markdown_lines), '', {trimempty = true})
---     if vim.tbl_isempty(markdown_lines) then
---       return
---     end
---     local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines, {
---       pad_left = 1; pad_right = 1;
---     })
---     vim.lsp.util.close_preview_autocmd({"CursorMoved", "BufHidden"}, winnr)
---     return bufnr, winnr
---   end)
--- end
-
--- vim.lsp.handlers["textDocuments/signatureHelp"] = vim.lsp.with(
---  vim.lsp.handlers.signature_help, {
---    border = 'rounded'
---  }
--- )
-
 local floatWindowStyle = {
     anchor_bias = 'below',
     border = 'rounded',
-    winhighlight = 'Normal:Normal,FloatBorder:Normal,CursorLine:Visual,Search:None',
+    winhighlight = 'Normal:Normal,FloatBorder:SpecialChar,CursorLine:Visual,Search:None',
     zindex = 1001,
     scrolloff = 0,
     col_offset = 0,
@@ -135,11 +104,6 @@ vim.lsp.handlers['textDocument/hover'] = function(_, result, ctx, config)
   return vim.lsp.util.open_floating_preview(contents, format, config)
 end
 
--- vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
---   vim.lsp.handlers.hover,
---   floatWindowStyle
--- )
-
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
   floatWindowStyle
@@ -148,10 +112,3 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 vim.diagnostic.config({
   float = floatWindowStyle
 })
-
--- vim.api.nvim_create_autocmd('FileType', {
---     pattern = 'cmp_docs',
---     callback = function()
---         vim.treesitter.start(0, 'markdown')
---     end,
--- })

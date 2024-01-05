@@ -7,9 +7,9 @@ return {
       {'<leader>g', function() require('telescope.builtin').live_grep() end, desc = 'Search Files'},
       {'<leader>s', function() require('telescope.builtin').lsp_document_symbols() end, desc = 'File Symbols'},
       {'<leader>gc', function() require('telescope.builtin').git_bcommits() end, desc = 'File Commits'},
-      {'gr', function() require('telescope.builtin').lsp_references() end, desc = 'References'},
+      {'gr', function() require('telescope.builtin').lsp_references({include_declaration = false}) end, desc = 'Incoming Calls'},
       {'gd', function() require('telescope.builtin').lsp_definitions() end, desc = 'Definition'},
-      {'gi', function() require('telescope.builtin').lsp_implementation() end, desc = 'Implementations'},
+      {'gi', function() require('telescope.builtin').lsp_implementations() end, desc = 'Implementations'},
     },
     opts = function()
       return {

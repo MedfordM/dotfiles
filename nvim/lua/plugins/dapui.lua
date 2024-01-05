@@ -18,7 +18,7 @@ return {
     opts = function()
       return {
           controls = {
-            element = "repl",
+            element = "console",
             enabled = true,
             icons = {
               disconnect = "",
@@ -49,12 +49,8 @@ return {
           layouts = { {
               elements = {
                 {
-                  id = "repl",
-                  size = 0.01
-                },
-                {
                   id = "scopes",
-                  size = 0.79
+                  size = 0.8
                 },
                 -- {
                 --   id = "breakpoints",
@@ -62,7 +58,7 @@ return {
                 -- },
                 {
                   id = "watches",
-                  size = 0.19
+                  size = 0.2
                 }
               },
               position = "left",
@@ -75,7 +71,7 @@ return {
                 }
             },
               position = "bottom",
-              size = 10
+              size = 15
             } },
           mappings = {
             edit = "I",
@@ -92,32 +88,17 @@ return {
         }
     end,
     config = function(_, opts)
-      -- require('dap.ext.vscode').load_launchjs()
-      local dap = require("dap")
       local dapui = require("dapui")
-      require('jdtls').setup_dap()
-      require('jdtls.dap').setup_dap_main_class_configs()
-      require'dap'.set_exception_breakpoints({'raised', 'uncaught'}, {breakMode = 'always'})
-
       local mappings = {
-        ["<F5>"] = function() dap.continue() end,
-        ["<M-right>"] = function() dap.step_over() end,
-        ["<M-down>"] = function() dap.step_into() end,
-        ["<M-up>"] = function() dap.step_out() end,
-        ["<M-x>"] = function() dap.toggle_breakpoint() end,
-        ["<F2>"] = function() dap.set_breakpoint(vim.fn.input('Condition: '), nil, nil) end,
         ["<M-t>"] = function() dapui.toggle({ reset = true }) end,
         ["<M-w>"] = function() dapui.elements.watches.add() end,
-        ["<M-m>"] = function() dapui.float_element() end,
+        ["<M-b>"] = function() dapui.float_element("breakpoints") end,
         ["<M-v>"] = function() dapui.float_element("scopes") end,
         ["<M-r>"] = function() dapui.float_element("repl") end,
-        ["<M-q>"] = function() dap.terminate() end,
       }
-
       for keys, mapping in pairs(mappings) do
         vim.api.nvim_set_keymap("n", keys, "", { callback = mapping, noremap = true })
       end
-
       dapui.setup(opts)
     end
   }

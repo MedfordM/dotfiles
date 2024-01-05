@@ -4,8 +4,6 @@ return {
     keys = {
       { '<leader>cdd', function() vim.cmd.TroubleToggle('document_diagnostics') end, desc = 'Document Diagnostics' },
       { '<leader>cdw', function() vim.cmd.TroubleToggle('workspace_diagnostics') end, desc = 'Workspace Diagnostics' },
-      { ']d', function() require('trouble').next({skip_groups = true, jump = true}) end, desc = 'Next Diagnostic' },
-      { '[d', function() require('trouble').previous({skip_groups = true, jump = true}) end, desc = 'Prev Diagnostic' },
     },
     opts = {
       height = 10, -- height of the trouble list when position is top or bottom

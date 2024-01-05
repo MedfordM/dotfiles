@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod4+Mod1+Ctrl
 
 exec_always --no-startup-id /home/mike/Source/scripts/i3Start.sh
 
@@ -18,12 +18,14 @@ floating_modifier $mod
 tiling_drag modifier
 default_border none
 default_floating_border none
+show_marks no
 gaps outer 6
 gaps inner 18
 gaps top 0
 
 for_window [class="Pavucontrol"] floating enable, move position mouse, move down 35px
 for_window [class="zoom"] floating enable
+for_window [class="dolphin"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Font-manager"] floating enable
@@ -32,6 +34,17 @@ for_window [class="Pamac-manager"] floating enable
 for_window [class="Solaar"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="Organizer"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="page-info"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="toolbox"] floating enable
+for_window [window_role="webconsole"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 no_focus [class="eww-bar"]
 
 # start a terminal
@@ -46,6 +59,20 @@ bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.s
 # Take screenshot
 bindsym Print exec --no-startup-id flameshot gui
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec dunstify -a "i3" "$([[ $(pamixer --get-volume-human) == 'muted' ]] && echo 'Muted' || echo 'Unmuted')" -r 568
+
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "$(playerctl metadata --format '{{status}}')"
+# bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+bindsym $mod+Shift+w restart; exec dunstify -a "i3" "Restarted"
+bindsym $mod+Shift+c reload; exec dunstify -a "i3" "Config Reloaded"
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exit i3
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+n focus down
@@ -59,7 +86,7 @@ bindsym $mod+Shift+e move up
 bindsym $mod+Shift+i move right
 
 # switch to tabbed layout
-bindsym $mod+l layout toggle all; exec dunstify "i3" "Layout $(i3-msg -t get_tree | jq -r '.nodes[].nodes[] | select(.type == "con") | .nodes[].nodes[] | select(.nodes[].focused == true) | .layout')"
+bindsym $mod+l layout toggle all; exec dunstify -a "i3" "Layout $(i3-msg -t get_tree | jq -r '.nodes[].nodes[] | select(.type == "con") | .nodes[].nodes[] | select(.nodes[].focused == true) | .layout')" -r 569
 
 # split in horizontal orientation
 bindsym $mod+Shift+l split v
@@ -75,26 +102,23 @@ bindsym $mod+f floating toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-workspace 1 output primary
-workspace 2 output primary
-workspace 3 output primary
-workspace 4 output primary
-workspace 5 output primary
-workspace 6 output primary
-workspace 7 output primary
-workspace 8 output primary
-workspace 9 output primary
-workspace 10 output primary
+workspace 1 output DP-4
+workspace 2 output DP-4
+workspace 3 output DP-4
+workspace 4 output DP-4
+workspace 5 output DP-4
+
+workspace 6 output DP-2
+workspace 7 output DP-2
+workspace 8 output DP-2
+workspace 9 output DP-2
+workspace 10 output DP-2
 
 workspace 11 output HDMI-0
 workspace 12 output HDMI-0
 workspace 13 output HDMI-0
 workspace 14 output HDMI-0
 workspace 15 output HDMI-0
-workspace 16 output HDMI-0
-workspace 17 output HDMI-0
-workspace 18 output HDMI-0
-workspace 19 output HDMI-0
 
 # switch to workspace
 bindsym $mod+a nop
@@ -109,12 +133,6 @@ bindsym $mod+Shift+r nop
 bindsym $mod+Shift+s nop
 bindsym $mod+Shift+t nop
 bindsym $mod+Shift+d nop
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+w restart
-bindsym $mod+Shift+c reload; exec dunstify "i3" "Config Reloaded"
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exit i3
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

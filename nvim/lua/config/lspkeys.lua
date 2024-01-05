@@ -10,10 +10,7 @@ wk.register({
     name  = 'Code',
     r = { vim.lsp.buf.rename, 'Rename symbol' },
     a = { vim.lsp.buf.code_action, 'Quick action' },
-    x = { vim.lsp.codelens.run, 'Code Lens' },
     f = { '<cmd>silent FormatWrite<cr>', 'Format' },
-    -- D = { '<cmd>lua require("dapui").toggle()<cr>', 'DapUI'},
-
     d = {
       name  = 'Diagnostics',
       p = { function() vim.diagnostic.open_float({severity_sort = true}) end, 'Diagnostic info' },

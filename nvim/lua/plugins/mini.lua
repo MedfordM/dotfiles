@@ -158,6 +158,14 @@ return {
     config = function()
       require('mini.cursorword').setup()
       vim.api.nvim_set_hl(0, 'MiniCursorword', {bg = require('catppuccin.palettes.frappe').surface2})
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = {
+          'DressingSelect',
+        },
+        callback = function()
+          vim.b.minicursorword_disable = true
+        end,
+      })
     end
   },
 
