@@ -7,13 +7,11 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       require('mason-lspconfig').setup_handlers {
         function(server_name)
-          require('config.lspkeys')
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
           }
         end,
         ['tsserver'] = function()
-          require('config.lspkeys')
           require('lspconfig').tsserver.setup({
             settings = {
               completions = {
@@ -22,9 +20,8 @@ return {
             }
           })
         end,
-        ['jdtls'] = function() end,
+        -- ['jdtls'] = function() end,
         ['lua_ls'] = function()
-          require('config.lspkeys')
           require 'lspconfig'.lua_ls.setup {
             capabilities = capabilities,
             settings = {

@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.opt.nu             = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.timeout        = true
 vim.opt.timeoutlen     = 300
 vim.opt.tabstop        = 2
@@ -44,6 +44,7 @@ vim.diagnostic.config({
   virtual_text = true,
   underline = true,
   severity_sort = true,
+  update_in_insert = true
 })
 
 vim.fn.sign_define('DiagnosticSignError',

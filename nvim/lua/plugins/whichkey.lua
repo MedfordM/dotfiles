@@ -29,25 +29,24 @@ return {
       ignore_missing = true,
     },
     config = function(opts)
-      local wk = require('which-key')
-      wk.setup(opts)
-      wk.register({}, opts)
+      WHICH_KEY = require('which-key')
+      WHICH_KEY.setup(opts)
+      WHICH_KEY.register({
+        K      = { vim.lsp.buf.hover, 'Show doc' },
+        ['gd'] = { function() vim.lsp.buf.definition() vim.api.nvim_feedkeys("zz", "n", false) end, 'Goto Definition'},
+        [']d'] = { function() vim.diagnostic.goto_next({float = true}) end, 'Next diagnostic' },
+        ['[d'] = { function() vim.diagnostic.goto_prev({float = true}) end, 'Prev diagnostic' },
 
-      wk.register({
-        ['<leader>'] = {
-          b = {
-            name = 'Buffer',
-            a  = { '<cmd>BufferLineGoToBuffer 1<CR>', '1' },
-            r  = { '<cmd>BufferLineGoToBuffer 2<CR>', '2' },
-            s  = { '<cmd>BufferLineGoToBuffer 3<CR>', '3' },
-            t  = { '<cmd>BufferLineGoToBuffer 4<CR>', '4' },
-            h  = { '<cmd>BufferLineGoToBuffer 5<CR>', '5' },
-            n  = { '<cmd>BufferLineGoToBuffer 6<CR>', '6' },
-            e  = { '<cmd>BufferLineGoToBuffer 7<CR>', '7' },
-            i  = { '<cmd>BufferLineGoToBuffer 8<CR>', '8' },
+        ['<leader>c'] = {
+          name  = 'Code',
+          r = { vim.lsp.buf.rename, 'Rename symbol' },
+          a = { vim.lsp.buf.code_action, 'Quick action' },
+          f = { '<cmd>silent FormatWrite<cr>', 'Format' },
+          d = {
+            name  = 'Diagnostics',
+            p = { function() vim.diagnostic.open_float({severity_sort = true}) end, 'Diagnostic info' },
           },
-          u  = { '<cmd>UndotreeToggle<CR>', 'Undo Tree' },
-        }
+        },
       })
     end
   }

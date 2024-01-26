@@ -22,7 +22,7 @@ return {
             -- takes effect when `strict` is true
           })
         end
-      }
+      },
     },
     opts = function()
       return {
@@ -43,9 +43,14 @@ return {
             icon = '┃'
           },
           diagnostics = 'nvim_lsp',
-          diagnostics_indicator = function(count, level)
-            local icon = level:match('error') and ' ' or ' '
-            return ' ' .. icon .. count
+          diagnostics_indicator = function(count, level, diagnostics_dict, context)
+            local s = ""
+            for e, n in pairs(diagnostics_dict) do
+              local sym = e == "error" and " "
+                or (e == "warning" and " " ) or ''
+              s = s .. ' ' .. n .. ' ' .. sym
+            end
+            return s
           end,
           diagnostics_update_in_insert = true,
           buffer_close_icon = '󰅖',
@@ -71,5 +76,18 @@ return {
         },
       }
     end,
+    config = function(_, opts)
+      local bufferline = require('bufferline')
+      bufferline.setup(opts)
+      vim.keymap.set('n', '<leader>a', function() bufferline.go_to(1, true) end, {desc = 'which_key_ignore'})
+      vim.keymap.set('n', '<leader>r', function() bufferline.go_to(2, true) end, {desc = 'which_key_ignore'})
+      vim.keymap.set('n', '<leader>s', function() bufferline.go_to(3, true) end, {desc = 'which_key_ignore'})
+      vim.keymap.set('n', '<leader>t', function() bufferline.go_to(4, true) end, {desc = 'which_key_ignore'})
+      vim.keymap.set('n', '<leader>bn', '<cmd>BufferLineCycleNext<cr>', {desc = 'Nex Buffer'})
+      vim.keymap.set('n', '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', {desc = 'Prev Buffer'})
+      vim.keymap.set('n', '<leader>b>', '<cmd>BufferLineMoveNext<cr>', {desc = 'Move buffer right'})
+      vim.keymap.set('n', '<leader>b<', '<cmd>BufferLineMovePrev<cr>', {desc = 'Move buffer left'})
+      vim.keymap.set('n', '<leader>bm', function() bufferline.move_to(tonumber(vim.fn.input('Move buffer to position: '))) end, {desc = 'Move buffer to index'})
+    end
   }
 }

@@ -34,6 +34,30 @@ return
 
           settings = {
             java = {
+              format = {
+                enabled = false,
+                settings = {
+                  profile = "GoogleStyle",
+                  url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml"
+                },
+                onType = {
+                  enabled = false
+                }
+              },
+              cleanUp = {
+                actionsOnSave = {
+                  'qualifyMembers',
+                  'qualifyStaticMembers',
+                  'addOverride',
+                  'stringConcatToTextBlock',
+                  'invertEquals',
+                  'addFinalModifier',
+                  'tryWithResource'
+                }
+              },
+              rename = {
+                enabled = true
+              },
               signatureHelp = {
                 enabled = true,
                 description = { enabled = true }
@@ -46,8 +70,12 @@ return
               contentProvider = { preferred = 'fernflower' },
               completion = {
                 enabled = true,
-                guessMethodArguments = true,
-                favoriteStaticMember = {
+                guessMethodArguments = false,
+                maxResults = 0,
+                postfix = {
+                  enabled = true
+                },
+                favoriteStaticMembers = {
                   "java.util.*"
                 }
               },
@@ -63,7 +91,9 @@ return
                 }
               },
               errors = {
-                incompleteClasspath = 'ignore'
+                incompleteClasspath = {
+                  severity = 'ignore'
+                }
               },
               referencesCodeLens = { enabled = true },
               implementationsCodeLens = { enabled = true },
@@ -82,7 +112,7 @@ return
                 },
                 useBlocks = true,
                 toString = {
-                  template = '${object.className}{${member.name()}=${member.value}, ${otherMembers}}'
+                  template = '${object.className}\n{${member.name()}=${member.value},\n ${otherMembers}}'
                 }
               },
             },
@@ -96,7 +126,6 @@ return
       end,
       config = function(_, opts)
         opts['on_attach'] = function(client, bufnr)
-          require('config.lspkeys')
           local _, _ = pcall(vim.lsp.codelens.refresh)
           require("jdtls").setup_dap({ hotcodereplace = "auto" })
           vim.lsp.inlay_hint.enable(0, true)
@@ -111,6 +140,7 @@ return
           local capabilities = vim.lsp.protocol.make_client_capabilities()
           local cmpCapabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
           capabilities.textDocument.completion.completionItem = cmpCapabilities.textDocument.completion.completionItem
+          capabilities.textDocument.completion.completionItem.snippetSupport = true
           config.capabilities = capabilities
           config.init_options.extendedClientCapabilities = require 'jdtls'.extendedClientCapabilities
           config.init_options.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
@@ -122,6 +152,11 @@ return
         vim.api.nvim_create_autocmd("FileType", {
           pattern = 'java',
           callback = function() startJdtls(opts) end
+        })
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = {'*.java'},
+          callback = function() vim.cmd('%!google-java-format -') end
         })
       end,
     }

@@ -2,6 +2,7 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {'nvim-tree/nvim-web-devicons'},
     opts = {
       options = {
         icons_enabled = true,
@@ -23,10 +24,34 @@ return {
       },
       sections = {
         lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_b = {'branch', 'diff',
+        {
+          'diagnostics',
+          -- Table of diagnostic sources, available sources are:
+          --   'nvim_lsp', 'nvim_diagnostic', 'nvim_workspace_diagnostic', 'coc', 'ale', 'vim_lsp'.
+          -- or a function that returns a table as such:
+          --   { error=error_cnt, warn=warn_cnt, info=info_cnt, hint=hint_cnt }
+          sources = { 'nvim_workspace_diagnostic' },
+
+          -- Displays diagnostics for the defined severity types
+          sections = { 'error', 'warn'  },
+
+          diagnostics_color = {
+            -- Same values as the general color option can be used here.
+            -- error = 'DiagnosticError', -- Changes diagnostics' error color.
+            -- warn  = 'DiagnosticWarn',  -- Changes diagnostics' warn color.
+            -- info  = 'DiagnosticInfo',  -- Changes diagnostics' info color.
+            -- hint  = 'DiagnosticHint',  -- Changes diagnostics' hint color.
+          },
+          -- symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
+          colored = true,           -- Displays diagnostics status in color if set to true.
+          update_in_insert = true, -- Update diagnostics in insert mode.
+          always_visible = false,   -- Show diagnostics even if there are none.
+          }
+        },
         lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
+        lualine_x = {'filetype'},
+        lualine_y = {},
         lualine_z = {'location'}
       },
       inactive_sections = {
@@ -40,7 +65,10 @@ return {
       tabline = {},
       winbar = {},
       inactive_winbar = {},
-      extensions = { 'neo-tree', 'trouble', 'nvim-dap-ui', 'fugitive',  }
-    }
+      extensions = { 'neo-tree', 'trouble', 'nvim-dap-ui', 'fugitive', 'mason', 'lazy'  }
+    },
+    config = function(_, opts)
+      require('lualine').setup(opts)
+    end
   }
 }

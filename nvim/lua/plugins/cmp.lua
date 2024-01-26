@@ -32,13 +32,12 @@ local cmp_kinds = {
 
 return {
   {
-    'MedfordM/nvim-cmp',
-    -- 'hrsh7th/nvim-cmp',
+    -- 'MedfordM/nvim-cmp',
+    'hrsh7th/nvim-cmp',
     version = false,
     event = {'BufEnter', 'CmdlineEnter'},
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lua',
@@ -57,7 +56,7 @@ return {
             cmp.TriggerEvent.TextChanged,
             cmp.TriggerEvent.InsertEnter,
           },
-          keyword_length = 2
+          -- keyword_length = 2
         },
         snippet = {
           expand = function(args)
@@ -69,29 +68,12 @@ return {
           entries = 'custom'
         },
 
-        sources = {
-          {
-            name = 'nvim_lsp',
-            group_index = 1,
-            entry_filter = function(entry)
-              if entry:get_kind() == types.lsp.CompletionItemKind.Text or entry:get_kind() == types.lsp.CompletionItemKind.Snippet then
-                return false
-              end
-              return true
-            end
-          },
-          { name = 'nvim_lsp_signature_help', group_index = 1 },
-          {
-            name = 'luasnip',
-            group_index = 1,
-            max_item_count = 2,
-            option = {
-              use_show_condition = true
-            },
-          },
+        sources = cmp.config.sources({
+          { name = 'luasnip', group_index = 1 },
+          { name = 'nvim_lsp', group_index = 1 },
           { name = 'cmp-path', group_index = 2 },
           { name = 'buffer', group_index = 2 },
-        },
+        }),
 
         window = {
           -- documentation = cmp.config.window.bordered(),

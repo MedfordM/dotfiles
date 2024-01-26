@@ -15,6 +15,12 @@ return {
       fold_closed = "", -- icon used for closed folds
       group = true, -- group results by file
       padding = true, -- add an extra new line on top of the list
+      sort_keys = {
+        "severity",
+        "filename",
+        "lnum",
+        "col",
+      },
       cycle_results = false, -- cycle item list when reaching beginning or end of list
       action_keys = { -- key mappings for actions in the trouble list
         -- map to {} to remove a mapping, for example:

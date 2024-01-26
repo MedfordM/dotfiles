@@ -114,7 +114,7 @@ return {
   {
     'echasnovski/mini.bufremove',
     keys = {
-      {'<leader>q', function() MiniBufremove.delete() end, desc = 'Close Buffer'}
+      {'<leader>q', function() MiniBufremove.delete() end, desc = 'which_key_ignore'}
     },
     config = function()
       require('mini.bufremove').setup()
