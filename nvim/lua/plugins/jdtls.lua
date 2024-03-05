@@ -21,13 +21,20 @@ return
             '-Declipse.product=org.eclipse.jdt.ls.core.product',
             '-Dlog.protocol=true',
             '-Dlog.level=ALL',
+            '-XX:+UseParallelGC',
+            '-XX:GCTimeRatio=4',
+            '-XX:AdaptiveSizePolicyWeight=90',
+            '-Dsun.zip.disableMemoryMapping=true',
+            '-Djava.import.generatesMetadataFilesAtProjectRoot=false',
+            '-Xmx16G',
+            '-Xms100m',
             '--add-modules=ALL-SYSTEM',
             '--add-opens', 'java.base/java.util=ALL-UNNAMED',
             '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-            '-javaagent:/home/mike/.local/share/lombok.jar',
             '-jar', vim.fn.glob('/usr/share/java/jdtls/plugins/org.eclipse.equinox.launcher_*.jar', true),
             '-configuration', '/usr/share/java/jdtls/config_linux',
             '-data', workspace_dir
+            --'-javaagent:/home/mike/.local/share/lombok.jar',
           },
 
           root_dir = vim.fn.getcwd(),
@@ -75,9 +82,6 @@ return
                 postfix = {
                   enabled = true
                 },
-                favoriteStaticMembers = {
-                  "java.util.*"
-                }
               },
               configuration = {
                 updateBuildConfiguration = { automatic = 'automatic' }
@@ -126,7 +130,7 @@ return
       end,
       config = function(_, opts)
         opts['on_attach'] = function(client, bufnr)
-          local _, _ = pcall(vim.lsp.codelens.refresh)
+          vim.lsp.codelens.refresh()
           require("jdtls").setup_dap({ hotcodereplace = "auto" })
           vim.lsp.inlay_hint.enable(0, true)
           -- vim.lsp.codelens.display(vim.lsp.codelens.get(vim.api.nvim_get_current_buf()), vim.api.nvim_get_current_buf(), 1)

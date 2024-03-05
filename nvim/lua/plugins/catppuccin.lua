@@ -18,7 +18,7 @@ return {
         gitsigns = true,
         cmp = true,
         noice = true,
-        -- notify = true,
+        notify = true,
         -- dashboard = true,
         -- symbols_outline = true,
         -- lsp_saga = true,

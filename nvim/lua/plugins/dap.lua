@@ -14,7 +14,7 @@ return {
         configurations = {
           java = {
             {
-              projectName = "assortment",
+              projectName = "assortment-api",
               javaExec = "/home/mike/.sdkman/candidates/java/current/bin/java",
               mainClass = "com.darwin.web.Main",
               vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
@@ -27,7 +27,7 @@ return {
               projectName = "mfp-api",
               javaExec = "/home/mike/.sdkman/candidates/java/current/bin/java",
               mainClass = "com.s5stratos.mfp.api.Server",
-              vmArgs = '-Dconfig.file=/home/mike/Source/mfp/localFiles/local.conf',
+              -- vmArgs = '-Dconfig.file=/home/mike/Source/mfp-server/localFiles/local.conf',
               name = "mfp-api",
               request = "launch",
               type = "java",

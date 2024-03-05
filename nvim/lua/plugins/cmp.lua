@@ -193,39 +193,52 @@ return {
               ignore_cmds = { 'Man', '!' }
             }
           },
+          {
+            name = 'nvim_lua'
+          },
           { name = 'path' },
         }
       })
 
-      cmp.setup.cmdline({'/', '?'},{
-        mapping = {
-          ["<Tab>"]   = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end, {'i'}),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, {'i'}),
-          ['<CR>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.confirm({ select = true })
-              fallback()
-            else
-              fallback()
-            end
-          end, {'i'}),
-        },
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
         sources = {
           { name = 'buffer' }
         }
       })
+
+      -- cmp.setup.cmdline({'/', '?'},{
+      --   mapping = {
+      --     ["<Tab>"] = cmp.mapping(function(fallback)
+      --       if cmp.visible() then
+      --         cmp.select_next_item()
+      --       else
+      --         fallback()
+      --       end
+      --     end),
+      --     ['<S-Tab>'] = cmp.mapping(function(fallback)
+      --       if cmp.visible() then
+      --         cmp.select_prev_item()
+      --       else
+      --         fallback()
+      --       end
+      --     end),
+      --     ['<CR>'] = cmp.mapping(function(fallback)
+      --       if cmp.visible() then
+      --         cmp.confirm({ select = true })
+      --       else
+      --         fallback()
+      --       end
+      --     end),
+      --   },
+      -- })
+
+    cmp.setup.filetype('lua', {
+      sources = {
+        { name = 'nvim_lsp', group_index = 1 },
+        { name = 'nvim_lua', group_index = 1 },
+      }
+    })
     end
   }
 }

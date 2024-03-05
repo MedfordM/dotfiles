@@ -1,0 +1,192 @@
+$base: #1e1e2e;
+$base2: #26263a;
+$text: #cdd6f4;
+$mantle: #181825;
+$crust: #11111b;
+$overlay0: #6c7086;
+$surface1: #45475a;
+$surface2: #585b70;
+$surface0: #313244;
+$shadow: #45475a;
+$border_col: #b4befe;
+
+$black: #24283B;
+$gray: #565F89;
+$red: #F7768E;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+
+window {
+	background-color: transparent;	
+}
+
+.main-container {
+	color: $text;	
+	margin: 8px 12px 0px 12px;
+	border-radius: 10px;
+}
+
+.workspaces {
+	background-color: $base;
+	border-radius: 10px;
+	color: $text;	
+	border: 2px solid $border_col;
+	padding: .5rem .8rem .5rem .8rem;
+  font-size: 18px;
+	box-shadow: 2px 2px 2px $shadow;
+  margin-bottom: 0px;
+}
+
+.time {
+  font-size: 18px;
+  font-weight: normal;
+  text-decoration: none;
+  background: $base;
+  color: $text;
+  border-radius: 10px;
+	border: 2px solid $border_col;
+	box-shadow: 2px 2px 2px $shadow;
+	padding: .5rem .8rem .5rem .8rem;
+  margin-bottom: 0px;
+}
+
+.label {
+  padding: 12px;
+}
+
+.button {
+  font-size: 24px;
+	padding: 8px 20px;
+  margin: 0px 8px 0px 8px;
+  background: none;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px $shadow;
+	color: $text;	
+	border: 1px solid $border_col;
+}
+
+.sysControlComponent {
+  min-width: 400px;
+	color: $text;
+	background-color: $base2;
+	// margin: 8px 12px 0px 12px;
+	border-radius: 10px;
+	border: 2px solid $border_col;
+	box-shadow: 2px 2px 2px $shadow;
+}
+
+.tempComponent {
+	padding: 10px 10px 10px 10px;
+	// background-color: $surface0;
+  background-color: $base2;
+  min-width: 200px;
+	color: $text;	
+  font-family: Fira Code Nerd;
+}
+
+.tempComponentIcon {
+  font-family: monospace;
+  font-size: 42px;
+}
+
+.tempComponentChild {
+  min-width: 150px;
+  font-family: monospace;
+}
+
+.tempComponentChildIcon {
+  font-family: monospace;
+  font-size: 32px;
+  margin-right: 1rem;
+}
+
+.tempComponentChildLabel {
+  font-family: monospace;
+  font-size: 24px;
+  min-width: 4.5rem;
+}
+
+.audio {
+  padding-bottom: 16px;
+  // margin: 16px;
+	background-color: $base2;
+	color: $text;
+	border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.audioTrack {
+  padding-bottom: 1.5rem;
+}
+
+.audioVolume {
+  min-width: 200px;
+	// border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.volumeLabel {
+  font-family: Fira Code Nerd Font;
+  font-size: 22px;
+  padding: 0px 18px;
+	// border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.volumeSlider {
+  all: unset;
+  min-width: 180px;
+  padding: 1.5rem 0px;
+	// border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.notifications {
+	//  border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.bar3 .workspaces, .bar3 .time {
+  font-size: 22px;
+}
+
+.cal {
+  font-size: 18px;
+  font-weight: normal;
+  padding: 8px;
+}
+
+calendar {
+  color: $text;
+  background-color: $base2;
+  border-radius: 10px;
+  border: none;
+}
+
+calendar.header {
+  color: #a1bdce;
+  font-weight: bold;
+}
+
+calendar:selected {
+  color: #89b4fa;
+  font-weight: bold;
+}
+
+calendar.button {
+  color: #9399b2;
+  box-shadow: none;
+}
+
+calendar.highlight {
+  color: #89b4fa;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: #9399b2;
+}
+

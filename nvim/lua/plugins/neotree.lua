@@ -1,6 +1,12 @@
 return {
   {
     'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim"
+    },
     keys = {
       { '<leader>F', function() vim.cmd('Neotree toggle') end, desc = 'Toggle File Tree' }
     },
@@ -41,6 +47,20 @@ return {
           expander_collapsed = '',
           expander_expanded = '',
           expander_highlight = 'NeoTreeExpander',
+        },
+        diagnostics = {
+          symbols = {
+            hint = '',
+            info = '',
+            warn = Icons.diagnostics.WARNING,
+            error = Icons.diagnostics.ERROR,
+          },
+          highlights = {
+            hint = "DiagnosticSignHint",
+            info = "DiagnosticSignInfo",
+            warn = "DiagnosticSignWarn",
+            error = "DiagnosticSignError",
+          },
         },
         icon = {
           folder_closed = '',
@@ -225,12 +245,6 @@ return {
           end,
         },
       },
-    },
-    branch = 'v3.x',
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim"
     },
   }
 }

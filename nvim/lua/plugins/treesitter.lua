@@ -21,7 +21,8 @@ return {
             "rust",
             "vim",
             "regex",
-            "bash"
+            "bash",
+            "terraform"
           },
           highlight = {
             enable = true,

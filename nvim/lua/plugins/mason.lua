@@ -4,12 +4,28 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('mason').setup()
+      require("mason-lspconfig").setup()
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       require('mason-lspconfig').setup_handlers {
         function(server_name)
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
           }
+        end,
+        ['terraformls'] = function()
+          capabilities.textDocument.completion.completionItem.snippetSupport = true
+          require('lspconfig').terraformls.setup({
+            filetypes = {"terraform", "terraform-vars", "tf"},
+            root_dir = function(dirpath)
+              return vim.fn.getcwd()
+            end,
+            capabilities = capabilities
+          })
+
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            pattern = {'*.tf'},
+            callback = function() vim.cmd('%!terraform fmt -') end
+          })
         end,
         ['tsserver'] = function()
           require('lspconfig').tsserver.setup({

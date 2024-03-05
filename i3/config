@@ -59,8 +59,10 @@ bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.s
 # Take screenshot
 bindsym Print exec --no-startup-id flameshot gui
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
+bindsym XF86AudioRaiseVolume exec --no-startup-id playerctl volume 0.01+; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "Volume $(playerctl volume | awk '{print int($0 * 100)}')%" -r 568
+bindsym XF86AudioLowerVolume exec --no-startup-id playerctl volume 0.01-; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "Volume $(playerctl volume | awk '{print int($0 * 100)}')%" -r 568
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec dunstify -a "i3" "$([[ $(pamixer --get-volume-human) == 'muted' ]] && echo 'Muted' || echo 'Unmuted')" -r 568
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "$(playerctl metadata --format '{{status}}')"
