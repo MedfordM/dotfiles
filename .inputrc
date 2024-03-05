@@ -1,4 +1,5 @@
-"\e[127;5u": backward-kill-word # CTRL+backspace
+"\e[127;5u": backward-kill-word
+"\e[127u": delete-char
 "\e[H": beginning-of-line
 "\e[F": end-of-line
 "\e[1~": beginning-of-line
@@ -7,5 +8,9 @@
 "\e[9;2u": menu-complete-backward
 
 $if Psql
+  "\e[9u": possible-completions
+$endif
+
+$if Ssh
   "\e[9u": possible-completions
 $endif

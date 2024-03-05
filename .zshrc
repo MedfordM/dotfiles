@@ -44,6 +44,8 @@ key[Control-Right]="${terminfo[kRIT5]}"
 bindkey -es "\e[9u" "\t"
 # bindkey -e "\e[9u" menu-expand-or-complete
 # bindkey -e "\e[9u" expand-or-complete
+bindkey -e "\e[H" beginning-of-line
+bindkey -e "\e[127u" backward-delete-char
 bindkey -e "\e[127;5u" backward-kill-word
 bindkey -e "\e[105;5u" forward-word
 bindkey -e "\e[104;5u" backward-word
@@ -101,3 +103,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
