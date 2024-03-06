@@ -2,35 +2,17 @@
  | G | L | O | B | A | L |
  +---+---+---+---+---+---*/
 
-
 :root {
 
-  /*  Global Border Radius
-   *  applied to ALL UI elements
-   */ --uc-border-radius: 0px;
-
-
-  /*  The distance the Statuspanel floats
-   *  away from the window border
-   *  0 places directly in the corner
-   */ --uc-status-panel-spacing: 12px;
-
 }
-
 
 /* remove window control buttons */
 .titlebar-buttonbox-container { display: none !important; }
 
-
 #pageActionButton { display: none !important; }
-
 #PanelUI-menu-button { padding: 0px !important; }
 #PanelUI-menu-button .toolbarbutton-icon { width: 1px !important; }
 #PanelUI-menu-button .toolbarbutton-badge-stack { padding: 0px !important; }
-
-
-
-
 
 /*---+---+---+---+---+---+---+
  | T | O | O | L | B | A | R |
@@ -43,18 +25,18 @@
  *  4 – toolbar on bottom
  */
 :root {
-  --uc-toolbar-position: 4;
+  /* --uc-toolbar-position: 4; */
 }
 
 /*  Darken the Personal Toolbar by X amount
  *  where X = 1 means pure black
  *  and X = 0 means no darkening at all
  */
-@media (prefers-color-scheme: dark) { :root {
-  --uc-darken-toolbar: 0.2;
-}} @media (prefers-color-scheme: light) { :root {
-  --uc-darken-toolbar: 0;
-}}
+/* @media (prefers-color-scheme: dark) { :root { */
+/*   --uc-darken-toolbar: 0.2; */
+/* }} @media (prefers-color-scheme: light) { :root { */
+/*   --uc-darken-toolbar: 0; */
+/* }} */
 
 
 
@@ -69,7 +51,7 @@
   /*  Width of the URL Bar for the Oneline layout
    *  If enabled the max-width is applied on focus
    *  otherwise the URL Bar will always be it's min-width
-   */ --uc-urlbar-min-width: 0vw;
+   */ --uc-urlbar-min-width: 20vw;
       --uc-urlbar-max-width: 100vw;
 
   /*  Position of the URL Bar
@@ -116,14 +98,12 @@
  | T | A | B | — | B | A | R |
  +---+---+---+---+---+---+---*/
 
-
 :root {
 
   /*  Allow tabs to have dynamic widths based on
    *  the Tab Bars maximum width
-   */ --uc-active-tab-width:   clamp(100px, 30vw, 300px);
-      --uc-inactive-tab-width: clamp(100px, 20vw, 200px);
-
+   */ --uc-active-tab-width:   clamp(100px, 30vw, 120px);
+      --uc-inactive-tab-width: clamp(100px, 20vw, 80px);
 
   /*  Enable this to always show the Tab Close button
    *  possible values:
