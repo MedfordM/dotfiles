@@ -1,9 +1,12 @@
 " list of commands here: https://jb.gg/h38q75
+" list of actions here: https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
 
 set clipboard=unnamedplus,unnamed,ideaput
 set iskeyword-=_
 set incsearch
 set scrolloff=5
+set ideamarks
+set ideajoin
 
 let mapleader = " "
 
@@ -19,12 +22,51 @@ vmap n j
 vmap e k
 vmap i l
 
-map <leader>q :q<CR>
+nmap Q @
+
+noremap c "_c
+noremap C "_C
+
+imap <C-v> <Action>($Paste)
+map U <Action>($Redo)
+map <leader>q <Action>(CloseContent)
+map <C-o> <Action>(Back)
+
 map <leader>ce <Action>(ShowErrorDescription)
-map <leader>ff <Action>(GotoFile)
+map <leader>cg <Action>(Generate)
+map <leader>cr <Action>(RenameElement)
+
+map [m <Action>(MethodUp)
+map ]m <Action>(MethodDown)
 map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)
-map gr <Action>(GotoDeclaration)
-map <leader>d <Action>(Debug)
+map [u <Action>(GotoPrevElementUnderCaretUsage)
+map ]u <Action>(GotoNextElementUnderCaretUsage)
+
+map <leader>ba <Action>(GoToTab1)
+map <leader>br <Action>(GoToTab2)
+map <leader>bs <Action>(GoToTab3)
+map <leader>bt <Action>(GoToTab4)
+map <leader>bd <Action>(GoToTab5)
+
+map <leader>bh <Action>(MoveTabLeft)
+map <leader>bn <Action>(MoveTabDown)
+map <leader>be <Action>(MoveTabUp)
+map <leader>bi <Action>(MoveTabRight)
+
+map <leader>ff <Action>(GotoFile)
+map <leader>fa <Action>(GotoAction)
+map <leader>fc <Action>(GotoClass)
+map <leader>fg <Action>(TextSearchAction)
+
+map go <Action>(GotoSuperMethod)
+map gd <Action>(GotoDeclaration)
+map gD <Action>(GotoTypeDeclaration)
+map gi <Action>(GotoImplementation)
+
+map <leader>rd <Action>(Debug)
+map <leader>rr <Action>(Run)
+map <leader>rc <Action>(Resume)
+map <leader>rb <Action>(ToggleLineBreakpoint)
 
 Plug 'tpope/vim-commentary'
