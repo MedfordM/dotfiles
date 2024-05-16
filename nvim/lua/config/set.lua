@@ -33,6 +33,8 @@ vim.opt.signcolumn     = 'auto'
 vim.opt.clipboard      = 'unnamedplus'
 vim.opt.conceallevel   = 2
 vim.api.nvim_set_keymap('ca', 'h', 'vert h', {})
+vim.opt.spell = true
+vim.opt.spelllang = { 'en_us' }
 
 vim.diagnostic.config({
   float = {
