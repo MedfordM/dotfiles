@@ -1,11 +1,5 @@
 [user]
-	email = michael.medford@s5stratos.com
-	name = Mike Medford
-[filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  name = Mike Medford
 [core]
 	autocrlf = input
 [init]
@@ -16,6 +10,7 @@
 	autoSetupMerge = inherit
 [fetch]
   all = true
+  parallel = 0
 [remote]
   pushDefault = origin
 [diff]
@@ -25,3 +20,8 @@
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [merge]
   tool = nvimdiff2
+
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+    path = config-personal
+[includeIf "hasconfig:remote.*.url:git@github.com:s5-stratos/**"]
+    path = config-work

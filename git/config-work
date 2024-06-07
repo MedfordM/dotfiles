@@ -1,0 +1,9 @@
+[core]
+  sshCommand = "ssh -i ~/.ssh/MedfordMS5"
+[user]
+	email = michael.medford@s5stratos.com
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
