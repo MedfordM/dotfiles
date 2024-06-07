@@ -7,6 +7,7 @@ return {
     dependencies = {
       {
         'mfussenegger/nvim-dap',
+        'nvim-neotest/nvim-nio'
       }
     },
     init = function()
@@ -50,7 +51,7 @@ return {
               elements = {
                 {
                   id = "scopes",
-                  size = 0.8
+                  size = 0.9
                 },
                 -- {
                 --   id = "breakpoints",
@@ -58,7 +59,7 @@ return {
                 -- },
                 {
                   id = "watches",
-                  size = 0.2
+                  size = 0.1
                 }
               },
               position = "left",
@@ -71,7 +72,7 @@ return {
                 }
             },
               position = "bottom",
-              size = 15
+              size = 8
             } },
           mappings = {
             edit = "I",

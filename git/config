@@ -1,0 +1,27 @@
+[user]
+	email = michael.medford@s5stratos.com
+	name = Mike Medford
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[core]
+	autocrlf = input
+[init]
+	defaultBranch = main
+[push]
+  default = current
+[branch]
+	autoSetupMerge = inherit
+[fetch]
+  all = true
+[remote]
+  pushDefault = origin
+[diff]
+  tool = nvimdiff
+  algorithm = minimal
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[merge]
+  tool = nvimdiff2

@@ -76,7 +76,7 @@ html {
 	--background-modifier-accent: rgba(205, 214, 244, 0.26);
 	--background-modifier-active: rgba(205, 214, 244, 0.17);
 	--info-positive-background: rgba(166, 227, 161, 0.15);
-	--info-positive-foreground: #a6e3a1;
+	--info-positive-foreground: #89dceb;
 	--info-positive-text: #cdd6f4;
 	--info-warning-background: rgba(249, 226, 175, 0.15);
 	--info-warning-foreground: #f9e2af;
@@ -93,21 +93,21 @@ html {
 	--status-warning-text: #1e1e2e;
 	--status-danger-background: #ff3333;
 	--status-danger-text: #1e1e2e;
-	--status-danger: #ff3333;
+	--status-danger: #FF6666;
 	--status-positive: #a6e3a1;
 	--status-warning: #f9e2af;
 	--status-yellow-400: #f9e2af;
-	--status-green-600: #a6e3a1;
+	--status-green-600: #2AAA8A;
 	--primary-dark-600: #1e1e2e;
 	--status-yellow-560: #f9e2af;
 	--status-red-500: #ff3333;
 	--status-red-530: #ff3333;
 	--status-yellow-500: #f9e2af;
 	--black-500: #11111b;
-	--green-360: #a6e3a1;
+	--green-360: #2AAA8A;
 	--yellow-360: #f9e2af;
 	--yellow-300: #f9e2af;
-	--red-400: #ff3333;
+	--red-400: #ff6666;
 	--brand-500: #89b4fa;
 	--brand-560: #5895f8;
 	--primary-100: #bac2de;
@@ -115,7 +115,7 @@ html {
 	--primary-400: #bac2de;
 	--primary-dark-700: #11111b;
 	--primary-800: #11111b;
-	--status-green-560: #a6e3a1;
+	--status-green-560: #2AAA8A;
 	--white-400: #cdd6f4;
 	--white-500: #cdd6f4;
 	--guild-boosting-pink: #f5c2e7;
@@ -407,16 +407,20 @@ html {
 }
 
 button[class*=lookFilled_][class*=colorRed_]:active {
-	background-color: #ff3333
+	background-color: #ff3333;
 }
 
 [class*=lookOutlined_][class*=colorPrimary_] {
 	border-color: #45475a
 }
 
+button[class^=lookOutline] {
+	color: #FFFFFF !important;
+}
+
 [class*=lookOutlined_][class*=colorPrimary_]:hover {
 	background-color: #313244;
-	color: #cdd6f4;
+	color: #FFFFFF !important;
 	border-color: #45475a
 }
 
@@ -1274,7 +1278,8 @@ nav[class*=guilds_] div[data-list-item-id=guildsnav___app-download-button][class
 }
 
 div[class^=upperBadge]>div[class^=iconBadge] path {
-	color: #11111b
+	color: #11111b;
+	background: white;
 }
 
 div[class^=upperBadge] div[class*=participating_] {
@@ -1640,6 +1645,7 @@ div[class^=chat]>div[class^=content]>div[class^=container] div[class^=stepStatus
 div[class^=chat]>div[class^=content]>div[class^=container] div[class*=countText] {
 	color: #11111b
 }
+
 
 div[class^=chat]>div[class^=content]>div[class^=container] svg[class^=discordIcon] {
 	background-color: #89b4fa;
@@ -2246,7 +2252,7 @@ section[class*=positionContainer_] button[class*=navButtonActive] {
 .theme-light[class*=profileColors_] [class*=section_],
 .theme-light[class*=profileColors_] [class*=additionalActionsIcon_],
 .theme-light[class*=profileColors_] [class*=overlayBackground_] * {
-	--interactive-normal: #11111b;
+	--interactive-normal: #cdd6f4;
 	--interactive-active: #11111b;
 	--interactive-hover: #11111b
 }
@@ -3114,6 +3120,7 @@ div[class*=fixClipping] div[class^=tip] div[class*=keybind] span[class^=key] {
 div[class^=profileColors],
 div[class^=userPopout],
 div[class^=userProfile],
+div[class^=profileBadge],
 div[class^=userProfileInner] {
 	background: var(--background-primary) !important;
 	--profile-gradient-overlay-color: unset !important;

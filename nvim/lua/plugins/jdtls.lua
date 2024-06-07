@@ -123,21 +123,18 @@ return
           },
           init_options = {
             bundles = {
-              vim.fn.glob('/home/mike/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true)
+              vim.fn.glob('/home/mike/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
+              vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar", 1)
             };
           },
         }
       end,
       config = function(_, opts)
-        opts['on_attach'] = function(client, bufnr)
+        opts['on_attach'] = function(_, _)
           vim.lsp.codelens.refresh()
           require("jdtls").setup_dap({ hotcodereplace = "auto" })
-          vim.lsp.inlay_hint.enable(0, true)
-          -- vim.lsp.codelens.display(vim.lsp.codelens.get(vim.api.nvim_get_current_buf()), vim.api.nvim_get_current_buf(), 1)
-          local _, _ = pcall(require, "jdtls.dap")
-          -- if status_ok then
-          --   jdtls_dap.setup_dap_main_class_configs()
-          -- end
+          -- vim.lsp.inlay_hint.enable(true, {bufnr = 0})
+          vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
         end
 
         local startJdtls = function(config)
@@ -157,11 +154,14 @@ return
           pattern = 'java',
           callback = function() startJdtls(opts) end
         })
-
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          pattern = {'*.java'},
-          callback = function() vim.cmd('%!google-java-format -') end
-        })
+        require('jdtls.ui').pick_many = function(items, prompt, label_f, _)
+          local co = coroutine.running()
+          vim.ui.select(items, {prompt=prompt, format_item=label_f, kind='jdtls.multi'}, function(_)
+            local res = vim.json.decode(vim.fn.getreg('x'))
+            coroutine.resume(co, res)
+          end)
+          return coroutine.yield()
+        end
       end,
     }
   }

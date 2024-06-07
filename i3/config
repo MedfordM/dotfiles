@@ -19,8 +19,8 @@ tiling_drag modifier
 default_border none
 default_floating_border none
 show_marks no
-gaps outer 6
-gaps inner 18
+gaps outer 0
+gaps inner 0
 gaps top 0
 
 for_window [class="Pavucontrol"] floating enable, move position mouse, move down 35px
@@ -32,6 +32,7 @@ for_window [class="Font-manager"] floating enable
 for_window [class="Nvidia-settings"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Solaar"] floating enable
+for_window [class="gnome-calculator"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="About"] floating enable
@@ -39,71 +40,66 @@ for_window [window_role="Organizer"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="page-info"] floating enable
-for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [window_role="toolbox"] floating enable
-for_window [window_role="webconsole"] floating enable
+#for_window [window_role="toolbox"] floating enable
+#for_window [window_role="webconsole"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 no_focus [class="eww-bar"]
 
-# start a terminal
-bindsym $mod+Return exec kitty
+# Launch terminal
+bindsym $mod+Return exec ~/Source/scripts/kitty_theme.sh
 
-# kill focused window
-bindsym $mod+q kill
-
-# start dmenu (a program launcher)
+# Search applications
 bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.sh
+
+# Kill application
+bindsym $mod+x exec xkill
 
 # Take screenshot
 bindsym Print exec --no-startup-id flameshot gui
 
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2%; exec dunstify -a "i3" "Volume $(pamixer --get-volume)%" -r 568
+# Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id playerctl volume 0.01+; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "Volume $(playerctl volume | awk '{print int($0 * 100)}')%" -r 568
 bindsym XF86AudioLowerVolume exec --no-startup-id playerctl volume 0.01-; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "Volume $(playerctl volume | awk '{print int($0 * 100)}')%" -r 568
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle; exec dunstify -a "i3" "$([[ $(pamixer --get-volume-human) == 'muted' ]] && echo 'Muted' || echo 'Unmuted')" -r 568
+bindsym $mod+m exec --no-startup-id pamixer --source 'alsa_input.usb-Elgato_Systems_Elgato_Wave_XLR_DS42K3A02210-00.mono-fallback' -t && eww update microphoneEnabled=$([[ $(eww get microphoneEnabled) == 'true' ]] && echo 'false' || echo 'true') && dunstify -a "i3" "Microphone $([[ $(eww get microphoneEnabled) == 'true' ]] && echo 'unmuted' || echo 'muted')" -r 569
 
+# Media
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause; exec dunstify -a "$(playerctl metadata --format '{{playerName}}')" "$(playerctl metadata --format '{{status}}')"
-# bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
+# i3
 bindsym $mod+Shift+w restart; exec dunstify -a "i3" "Restarted"
 bindsym $mod+Shift+c reload; exec dunstify -a "i3" "Config Reloaded"
-
-# exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exit i3
-# change focus
+
+# Change focused window
 bindsym $mod+h focus left
 bindsym $mod+n focus down
 bindsym $mod+e focus up
 bindsym $mod+i focus right
 
-# move focused window
+# Move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+n move down
 bindsym $mod+Shift+e move up
 bindsym $mod+Shift+i move right
 
-# switch to tabbed layout
-bindsym $mod+l layout toggle all; exec dunstify -a "i3" "Layout $(i3-msg -t get_tree | jq -r '.nodes[].nodes[] | select(.type == "con") | .nodes[].nodes[] | select(.nodes[].focused == true) | .layout')" -r 569
+# Kill focused window
+bindsym $mod+q kill
 
-# split in horizontal orientation
-bindsym $mod+Shift+l split v
-
-# split in vertical orientation
-# bindsym $mod+v split h
-
-# enter fullscreen mode for the focused container
+# Toggle fullscreen for focused window
 bindsym $mod+Shift+f fullscreen toggle
 
-# toggle tiling / floating
+# Toggle tiling / floating for focused window
 bindsym $mod+f floating toggle
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Change window layout
+bindsym $mod+l layout toggle all; exec dunstify -a "i3" "Layout $(i3-msg -t get_tree | jq -r '.nodes[].nodes[] | select(.type == "con") | .nodes[].nodes[] | select(.nodes[].focused == true) | .layout')" -r 569
+
+# Bind workspaces to outputs
 workspace 1 output DP-4
 workspace 2 output DP-4
 workspace 3 output DP-4
@@ -122,34 +118,40 @@ workspace 13 output HDMI-0
 workspace 14 output HDMI-0
 workspace 15 output HDMI-0
 
-# switch to workspace
+# Change focused workspace
+# bindsym $mod+a workspace 1
+# bindsym $mod+r workspace 2
+# bindsym $mod+s workspace 3
+# bindsym $mod+t workspace 4
+# bindsym $mod+d workspace 5
+
+# Move focused window to workspace 
+# bindsym $mod+Shift+a move to workspace 1
+# bindsym $mod+Shift+r move to workspace 2
+# bindsym $mod+Shift+s move to workspace 3
+# bindsym $mod+Shift+t move to workspace 4
+# bindsym $mod+Shift+d move to workspace 5
+
+# Change focused workspace
 bindsym $mod+a nop
 bindsym $mod+r nop
 bindsym $mod+s nop
 bindsym $mod+t nop
 bindsym $mod+d nop
 
-# move window to workspace
+# Move focused window to workspace 
 bindsym $mod+Shift+a nop
 bindsym $mod+Shift+r nop
 bindsym $mod+Shift+s nop
 bindsym $mod+Shift+t nop
 bindsym $mod+Shift+d nop
 
-# resize window (you can also use the mouse for that)
+# Resize window
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym n resize grow height 5 px or 5 ppt
         bindsym e resize shrink height 5 px or 5 ppt
         bindsym i resize grow width 5 px or 5 ppt
-
-        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+w mode "default"

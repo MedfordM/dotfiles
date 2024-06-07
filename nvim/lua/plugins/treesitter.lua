@@ -28,9 +28,9 @@ return {
             enable = true,
             additional_vim_regex_highlighting = false,
             disable = function(lang, buf)
-              if (lang == 'markdown') then
-                return true
-              end
+              -- if (lang == 'markdown') then
+              --   return true
+              -- end
               local max_filesize = 100 * 1024 -- 100 KB
               local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
               if ok and stats and stats.size > max_filesize then
@@ -44,6 +44,9 @@ return {
       config = function(_, opts)
         require('nvim-treesitter.configs').setup(opts)
         vim.cmd('TSEnable highlight')
+        vim.api.nvim_set_hl(0, 'Folded', {})
+        vim.opt.foldmethod = "expr"
+        vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
       end
   },
   {

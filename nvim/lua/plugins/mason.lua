@@ -5,27 +5,9 @@ return {
     config = function()
       require('mason').setup()
       require("mason-lspconfig").setup()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
       require('mason-lspconfig').setup_handlers {
         function(server_name)
-          require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-          }
-        end,
-        ['terraformls'] = function()
-          capabilities.textDocument.completion.completionItem.snippetSupport = true
-          require('lspconfig').terraformls.setup({
-            filetypes = {"terraform", "terraform-vars", "tf"},
-            root_dir = function(dirpath)
-              return vim.fn.getcwd()
-            end,
-            capabilities = capabilities
-          })
-
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            pattern = {'*.tf'},
-            callback = function() vim.cmd('%!terraform fmt -') end
-          })
+          require('lspconfig')[server_name].setup({})
         end,
         ['tsserver'] = function()
           require('lspconfig').tsserver.setup({
@@ -36,10 +18,8 @@ return {
             }
           })
         end,
-        -- ['jdtls'] = function() end,
         ['lua_ls'] = function()
           require 'lspconfig'.lua_ls.setup {
-            capabilities = capabilities,
             settings = {
               Lua = {
                 runtime = {
@@ -75,7 +55,47 @@ return {
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require('lspconfig')
-    end
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local lsp_config = require('lspconfig')
+      lsp_config.util.default_config = vim.tbl_extend("force",lsp_config.util.default_config, {
+        autostart = true,
+        handlers = {
+          ["window/logMessage"] = function(err, method, params, client_id)
+            if params and params.type and params.type <= vim.lsp.protocol.MessageType.Log then
+              vim.lsp.handlers["window/logMessage"](err, method, params, client_id)
+            end
+          end,
+          ["window/showMessage"] = function(err, method, params, client_id)
+            if params and params.type and params.type <= vim.lsp.protocol.MessageType.Warning.Error then
+              vim.lsp.handlers["window/showMessage"](err, method, params, client_id)
+            end
+          end,
+        }
+      })
+      lsp_config.terraformls.setup({
+        init_options = {
+          cmd = { "terraform-ls", "serve" },
+          filetypes = { "terraform", "terraform-vars" },
+          -- root_dir = lsp_config.util.root_pattern(".terraform", ".git"),
+          -- capabilities = capabilities
+        },
+        -- settings = {
+        --   cmd = { "terraform-ls", "serve" },
+        --   filetypes = { "terraform", "terraform-vars" },
+        --   root_dir = lsp_config.util.root_pattern(".terraform", ".git"),
+        --   -- root_dir = function(dirpath)
+        --   --   vim.print(dirpath)
+        --   --   return vim.fn.getcwd()
+        --   -- end,
+        --   capabilities = capabilities
+        -- },
+      })
+      vim.api.nvim_create_autocmd({"BufWritePre"}, {
+        pattern = {"*.tf", "*.tfvars"},
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
+    end,
   },
 }

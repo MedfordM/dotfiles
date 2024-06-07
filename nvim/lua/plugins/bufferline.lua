@@ -26,7 +26,7 @@ return {
     },
     opts = function()
       return {
-        highlights = require('catppuccin.groups.integrations.bufferline').get(),
+        highlights = require('catppuccin.groups.integrations.bufferline').get({styles = { "italic", "bold" }}),
         options = {
           offsets = {
             { filetype = 'NvimTree', text = '', padding = 1 },
@@ -42,19 +42,19 @@ return {
             style = 'icon',
             icon = '┃'
           },
-          diagnostics = 'nvim_lsp',
-          diagnostics_indicator = function(count, level, diagnostics_dict, context)
-            local s = ""
-            for e, n in pairs(diagnostics_dict) do
-              local sym = e == "error" and Icons.diagnostics.ERROR
-                or (e == "warning" and Icons.diagnostics.WARNING ) or ''
-                if sym ~= '' then
-                  s = s .. ' ' .. n .. ' ' .. sym
-                end
-            end
-            return s
-          end,
-          diagnostics_update_in_insert = true,
+          -- diagnostics = 'nvim_lsp',
+          -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          --   local s = ""
+          --   for e, n in pairs(diagnostics_dict) do
+          --     local sym = e == "error" and Icons.diagnostics.ERROR
+          --       or (e == "warning" and Icons.diagnostics.WARNING ) or ''
+          --       if sym ~= '' then
+          --         s = s .. ' ' .. n .. ' ' .. sym
+          --       end
+          --   end
+          --   return s
+          -- end,
+          -- diagnostics_update_in_insert = true,
           buffer_close_icon = '󰅖',
           show_buffer_close_icons = true,
           modified_icon = '',
@@ -81,10 +81,9 @@ return {
     config = function(_, opts)
       local bufferline = require('bufferline')
       bufferline.setup(opts)
-      vim.keymap.set('n', '<leader>a', function() bufferline.go_to(1, true) end, {desc = 'which_key_ignore'})
-      vim.keymap.set('n', '<leader>r', function() bufferline.go_to(2, true) end, {desc = 'which_key_ignore'})
-      vim.keymap.set('n', '<leader>s', function() bufferline.go_to(3, true) end, {desc = 'which_key_ignore'})
-      vim.keymap.set('n', '<leader>t', function() bufferline.go_to(4, true) end, {desc = 'which_key_ignore'})
+      for i=1,#Layout.buffers do
+        vim.keymap.set('n', Layout.buffers[i], function() bufferline.go_to(i, true) end, {desc = 'which_key_ignore'})
+      end
       vim.keymap.set('n', '<leader>bn', '<cmd>BufferLineCycleNext<cr>', {desc = 'Nex Buffer'})
       vim.keymap.set('n', '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', {desc = 'Prev Buffer'})
       vim.keymap.set('n', '<leader>b>', '<cmd>BufferLineMoveNext<cr>', {desc = 'Move buffer right'})
