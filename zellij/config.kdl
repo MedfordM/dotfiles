@@ -46,11 +46,11 @@ keybinds clear-defaults=true {
         bind "d" { GoToTab 5; SwitchToMode "Normal"; }
     }
     scroll {
-        bind "e" { EditScrollback; SwitchToMode "Normal"; }
-        bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+        bind "E" { EditScrollback; SwitchToMode "Normal"; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
-        bind "j" "Down" { ScrollDown; }
-        bind "k" "Up" { ScrollUp; }
+        bind "n" "Down" { ScrollDown; }
+        bind "e" "Up" { ScrollUp; }
         bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
         bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
