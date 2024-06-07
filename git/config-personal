@@ -1,0 +1,4 @@
+[core]
+  sshCommand = "ssh -i ~/.ssh/githubMedfordM"
+[user]
+	email = mike@medford.dev
