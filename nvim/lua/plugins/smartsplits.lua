@@ -55,7 +55,7 @@ return {
         quit_key = '<ESC>',
         -- keys to use for moving in resize mode
         -- in order of left, down, up' right
-        resize_keys = { 'h', 'n', 'e', 'i' },
+        resize_keys = { Layout.movement.LEFT, Layout.movement.DOWN, Layout.movement.UP, Layout.movement.RIGHT },
         -- set to true to silence the notifications
         -- when entering/exiting persistent resize mode
         silent = false,
@@ -93,20 +93,20 @@ return {
     },
   config = function(_, opts)
     require('smart-splits').setup(opts)
-    vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
-    vim.keymap.set('n', '<A-n>', require('smart-splits').resize_down)
-    vim.keymap.set('n', '<A-e>', require('smart-splits').resize_up)
-    vim.keymap.set('n', '<A-i>', require('smart-splits').resize_right)
+    vim.keymap.set('n', '<A-' .. Layout.movement.LEFT .. '>', require('smart-splits').resize_left)
+    vim.keymap.set('n', '<A-' .. Layout.movement.DOWN .. '>', require('smart-splits').resize_down)
+    vim.keymap.set('n', '<A-'.. Layout.movement.UP .. '>', require('smart-splits').resize_up)
+    vim.keymap.set('n', '<A-'.. Layout.movement.RIGHT .. '>', require('smart-splits').resize_right)
     -- moving between splits
-    vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
-    vim.keymap.set('n', '<C-n>', require('smart-splits').move_cursor_down)
-    vim.keymap.set('n', '<C-e>', require('smart-splits').move_cursor_up)
-    vim.keymap.set('n', '<C-i>', require('smart-splits').move_cursor_right)
+    vim.keymap.set('n', '<C-'.. Layout.movement.LEFT .. '>', require('smart-splits').move_cursor_left)
+    vim.keymap.set('n', '<C-'.. Layout.movement.DOWN .. '>', require('smart-splits').move_cursor_down)
+    vim.keymap.set('n', '<C-'.. Layout.movement.UP .. '>', require('smart-splits').move_cursor_up)
+    vim.keymap.set('n', '<C-'.. Layout.movement.RIGHT .. '>', require('smart-splits').move_cursor_right)
     -- swapping buffers between windows
-    vim.keymap.set('n', '<C-S-h>', require('smart-splits').swap_buf_left)
-    vim.keymap.set('n', '<C-S-n>', require('smart-splits').swap_buf_down)
-    vim.keymap.set('n', '<C-S-e>', require('smart-splits').swap_buf_up)
-    vim.keymap.set('n', '<C-S-i>', require('smart-splits').swap_buf_right)
+    vim.keymap.set('n', '<C-S-'.. Layout.movement.LEFT .. '>', require('smart-splits').swap_buf_left)
+    vim.keymap.set('n', '<C-S-'.. Layout.movement.DOWN .. '>', require('smart-splits').swap_buf_down)
+    vim.keymap.set('n', '<C-S-'.. Layout.movement.UP .. '>', require('smart-splits').swap_buf_up)
+    vim.keymap.set('n', '<C-S-'.. Layout.movement.RIGHT .. '>', require('smart-splits').swap_buf_right)
   end
   },
 }

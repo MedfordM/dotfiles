@@ -1,0 +1,82 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """$hostname$directory ${custom.git_branch}${custom.git_status}\n$os$character"""
+right_format = """\n${env_var.DEPLOYMENT_ID}"""
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[ ➜ ](blue)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# Disable the package module, hiding it from the prompt completely
+[gcloud]
+disabled = true
+
+[directory.substitutions]
+'~/Downloads' = '󰉍 Downloads'
+'~/Source' = '  Source'
+'~/.config/nvim' = '  Neovim'
+'~/.config' = '  Config'
+
+[directory]
+truncation_length = 6
+style = 'bold blue'
+truncate_to_repo = true
+format = '[ $path]($style)[$read_only]($read_only_style) '
+repo_root_format = '[$path]($style)'
+repo_root_style = '$style'
+
+[lua]
+disabled = true
+
+[os]
+disabled = false
+
+[os.symbols]
+Arch = '  '
+
+[hostname]
+ssh_only = true
+ssh_symbol = '  '
+format = '[$ssh_symbol$hostname]($style)'
+
+[java]
+symbol = '  '
+format = '[$symbol$version]($style) '
+
+[package]
+disabled = true
+
+[git_status]
+staged = '[  \($count\)](green)'
+ahead = ' ↑ ${count}'
+behind = ' ↓ ${count}'
+diverged = ' ↑ ${ahead_count} ↓ ${behind_count}'
+deleted = '[󱀷 \($count\)](blue)'
+untracked = '[󰩌 \($count\)](blue)'
+modified = '[󱇨 \($count\)](blue)'
+format = '$all_status$ahead_behind'
+
+[git_branch]
+format = '[$symbol$branch](bold purple)'
+ignore_branches = ['master', 'main']
+
+[env_var.DEPLOYMENT_ID]
+format = ' [$env_value]($style) '
+style = 'bold white'
+
+[time]
+disabled = false
+format = '[$time]($style)'
+
+[custom.git_status]
+command = "starship module git_status"
+when = "[ $(git rev-parse --is-inside-work-tree) = 'true' ] && echo '0'"
+
+[custom.git_branch]
+command = "base=$(basename $(dirname $(git rev-parse --path-format=absolute --git-common-dir))); echo  $base $(starship module git_branch)"
+style = "bold white"
+when = "git rev-parse"

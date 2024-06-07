@@ -37,9 +37,8 @@
   `nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | tr -d '%'`
 )
 
-(defwidget temps []
+(defwidget tempComponents []
   (box
-    :class "main-container"
     :orientation "v"
     :halign "center"
     :valign "center"
@@ -51,43 +50,44 @@
         :orientation "v"
         :halign "center"
         :valign "center"
-        :class "component"
+        :class "tempComponent"
+        :style "border-bottom: 1px solid #6c7086; border-right: 1px solid #6c7086; border-top-left-radius: 10px"
         (label
-          :class "componentIcon"
+          :class "tempComponentIcon"
           :text "󰍛"
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text "󰔏"
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
             :text "${EWW_TEMPS['CORETEMP_PACKAGE_ID_0']}°C"
           )
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text ""
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
             :text "${round(EWW_CPU['avg'],0)} %"
           )
@@ -97,43 +97,44 @@
         :orientation "v"
         :halign "center"
         :valign "center"
-        :class "component"
+        :class "tempComponent"
+        :style "border-bottom: 1px solid #6c7086; border-top-right-radius: 10px;"
         (label
-          :class "componentIcon"
-          :text "󱒃"
+          :class "tempComponentIcon"
+          :text "󰾲"
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text "󰔏"
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
             :text "${gpuTemp}°C"
           )
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text ""
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
             :text "${gpuUsage}%"
           )
@@ -148,45 +149,46 @@
         :orientation "v"
         :halign "center"
         :valign "center"
-        :class "component"
+        :class "tempComponent"
+        :style "border-right: 1px solid #6c7086; border-bottom-left-radius: 10px;"
         (label
-          :class "componentIcon"
-          :text ""
+          :class "tempComponentIcon"
+          :text ""
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
-            :xalign 0
-            :text "󰔏"
-          )
-          (label 
-            :class "componentChildLabel"
-            :xalign 1
-            :text "${round(EWW_RAM.used_mem / 1024 / 1024 / 1024, 2)}Gb "
-          )
-        )
-        (box
-          :class "componentChild"
-          :orientation "h"
-          :halign "center"
-          :valign "center"
-          :space-evenly false
-          :spacing 10
-          (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text ""
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
-            :text "${round(EWW_RAM.free_mem / 1024 / 1024 / 1024, 2)}Gb"
+            :text "${round(EWW_RAM.used_mem / 1024 / 1024 / 1024, 1)}Gb"
+          )
+        )
+        (box
+          :class "tempComponentChild"
+          :orientation "h"
+          :halign "center"
+          :valign "center"
+          :space-evenly false
+          :spacing 10
+          (label
+            :class "tempComponentChildIcon"
+            :xalign 0
+            :text ""
+          )
+          (label 
+            :class "tempComponentChildLabel"
+            :xalign 1
+            :text "${round(EWW_RAM.total_mem / 1024 / 1024 / 1024, 1)}Gb"
           )
         )
       )
@@ -194,45 +196,45 @@
         :orientation "v"
         :halign "center"
         :valign "center"
-        :class "component"
+        :class "tempComponent"
         (label
-          :class "componentIcon"
-          :text ""
+          :class "tempComponentIcon"
+          :text "󰋊"
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text ""
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
-            :text "${round(EWW_DISK["/"].used / 1024 / 1024 / 1024, 2)}Gb"
+            :text "${round(EWW_DISK["/"].used / 1024 / 1024 / 1024, 1)}Gb"
           )
         )
         (box
-          :class "componentChild"
+          :class "tempComponentChild"
           :orientation "h"
           :halign "center"
           :valign "center"
           :space-evenly false
           :spacing 10
           (label
-            :class "componentChildIcon"
+            :class "tempComponentChildIcon"
             :xalign 0
             :text ""
           )
           (label 
-            :class "componentChildLabel"
+            :class "tempComponentChildLabel"
             :xalign 1
-            :text "${round(EWW_DISK["/"].free / 1024 / 1024 / 1024, 2)}Gb"
+            :text "${round(EWW_DISK["/"].free / 1024 / 1024 / 1024, 1)}Gb"
           )
         )
       )
@@ -240,17 +242,18 @@
   )
 )
 
-(defwidget sysInfo []
+(defwidget temps []
   (box
-    :class "sysInfo"
+    :class "sysControlComponent"
     :orientation "v"
-    (temps)
+    (tempComponents)
   )
 )
+
 (defwidget time []
-	(box :halign "end" :orientation "h" :style "font-size: 18px;"
+	(box :halign "end" :orientation "h"
 			:class "main-container" 
-	(button :class "time"	:onclick {showSysControl ? "eww close sysControl; eww update showSysControl=false" : "eww open sysControl; eww update showSysControl=true"} time)))
+	(button :class "time"	:onclick {"eww open --toggle sysControl --screen $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true) | .output') && eww update activeSource=$(${home_dir}/switchOutput.sh)"} time)))
 
 (defpoll volume 
   :interval "300ms" 
@@ -258,39 +261,80 @@
   `pamixer --get-volume`
 )
 
-(defwidget audioVolume []
-  (box
-    :halign "center"
-    :valign "center"
-    :orientation "h"
-    :class "audioVolume"
-    :space-evenly false
-    :spacing 12
-    (label :text "" :class "volumeLabel")
-    (scale
-      :class "volumeSlider"
-      :min 0
-      :max 100
-      :value volume
-      :onchange "pamixer --set-volume {}"
-      :orientation "h"
-    )
-    (label :text "" :class "volumeLabel")
-  )
-)
-
-(defvar activeSource "Headphones")
-(defwidget audioSource []
+(defvar displayNotifications true)
+(defwidget notifications [display]
   (box
     :halign "center"
     :valign "center"
     :orientation "v"
-    :class "audioSource"
-    (label :text "Sources")
+    :class "notifications"
+    (label :text "Notifications")
     (box
       :halign "center"
       :valign "center"
       :orientation "h"
+      (button
+        :class "button"
+        :valign "center"
+        :onclick "dunstctl set-paused toggle && eww update displayNotifications=${!display}"
+        :style { displayNotifications ? "background-color: #585b70": "color: #585b70"}
+        (label :text { displayNotifications ? "󰂚" : "󰂛"})
+      )
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :onclick "dunstctl history-pop"
+        (label :text "󰑙")
+      )
+    )
+  )
+)
+
+(defwidget audioVolume []
+  (box
+    :halign "center"
+    :valign "center"
+    :orientation "v"
+    (box
+      :halign "center"
+      :valign "center"
+      :orientation "h"
+      :class "audioVolume"
+      :space-evenly false
+      (label :text "" :class "volumeLabel")
+      (scale
+        :class "volumeSlider"
+        :min 0
+        :max 100
+        :value volume
+        :onchange "pamixer --set-volume {}"
+        :orientation "h"
+      )
+      (label :text "" :class "volumeLabel")
+    )
+  )
+)
+
+(defvar activeSource "Headphones")
+(defvar microphoneEnabled true)
+(defwidget audioSource [microphone]
+  (box
+    :halign "center"
+    :valign "center"
+    :orientation "v"
+    (box
+      :halign "center"
+      :valign "center"
+      :orientation "h"
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :style { microphone ? "background-color: #585b70": "color: #585b70"}
+        :onclick "pamixer --source 'alsa_input.usb-Elgato_Systems_Elgato_Wave_XLR_DS42K3A02210-00.mono-fallback' -t && eww update microphoneEnabled=${!microphone}"
+        (label :text { microphone ? "󰍬" : "󰍭"})
+      )
       (button
         :class "button"
         :valign "center"
@@ -309,80 +353,153 @@
   )
 )
 
-(defwidget cal []
-	(box :class "cal" :orientation "v"
-    (box :class "cal-in"
+(deflisten playback :initial "Paused" `playerctl status -F`)
+(deflisten loop :initial "Playlist" `playerctl loop -F`)
+(deflisten track :initial "" `bash -c 'x=$(playerctl metadata --format "{{playerName}}: {{title}} - {{artist}}"); echo \${x^}'`)
+(deflisten shuffle :initial "Off" `playerctl shuffle -F`)
 
+(defwidget playbackControls [playbackStatus loopStatus shuffleStatus]
+  (box
+    :halign "center"
+    :orientation "v"
+    :space-evenly false
+    (label :text track :class "audioTrack")
+    (box
+      :halign "center"
+      :valign "center"
+      :orientation "h"
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :onclick "playerctl shuffle toggle"
+        :style { shuffleStatus=="On" ? "background-color: #585b70": "color: #585b70"}
+        (label :text "󰒟")
+      )
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :onclick "playerctl previous"
+        (label :text "󰒮")
+      )
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :onclick "playerctl play-pause"
+        (label :text {playbackStatus=="Playing" ? "󰏤" : "󰐊"})
+      )
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :onclick "playerctl next"
+        (label :text "󰒭")
+      )
+      (button
+        :class "button"
+        :valign "center"
+        :halign "center"
+        :onclick { loopStatus=="None" ? "playerctl loop Playlist" : loopStatus=="Playlist" ? "playerctl loop Track" : "playerctl loop None"}
+        :style { loopStatus=="None" ? "color: #585b70": "background-color: #585b70"}
+        (label :text {loopStatus=="Track" ? "󰑘" : "󰑖"})
+      )
+    )
+  )
+)
+
+(defwidget audio []
+  (box :orientation "v" :class "audio" :space-evenly false
+    (label :text "Audio" :class "label")
+    (audioSource :microphone microphoneEnabled)
+    (audioVolume)
+    (playbackControls :playbackStatus playback :loopStatus loop :shuffleStatus shuffle)
+  )
+)
+
+(defwidget cal []
+	(box :class "sysControlComponent" :orientation "v" 
       (calendar :class "cal"
             :day calendar_day
             :month calendar_month
             :year calendar_year
       )
-    )
   )
 )
 
 (defwindow sysControl
-  :monitor 0
 	:geometry (geometry 
-            :x "0px"
+            :x "-20px"
 						:y "75px" 
             :anchor "top right"
-						:vexpand true 
-						:hexpand true)
-    (box
-      :class "sysControl"
-      :orientation "v"
-      :spacing 12
-      (sysInfo)
-      (cal)
-      (box
-        :class "audio"
-        :orientation "v"
-        (audioSource)
-        (audioVolume)
+						)
+    (box :orientation "v" :spacing 35 :space-evenly false
+      (box :class "sysControlComponent" :orientation "v" :space-evenly false
+        (notifications :display displayNotifications)
+        (audio)
       )
+      (temps)
+      (cal)
     )
 )
 
 (defvar workspaces_1 "󰄯  󰄰  󰄰  󰄰  󰄰")
 (defvar workspaces_2 "󰄯  󰄰  󰄰  󰄰  󰄰")
+(defvar workspaces_3 "󰄯  󰄰  󰄰  󰄰  󰄰")
 
 (defwindow bar
-	:monitor 1
+	:monitor "DP-4"
 	:geometry (geometry 
 			:width "100%"
-			:anchor "top center"
+			:anchor "bottom center"
   )
 	:windowtype "dock"
-  :wm-ignore "false"
+  :wm-ignore "true"
 	(box 
     :class "main-container"
     (box 
       :class "workspaces" 
       :valign "center" 
-      :halign "start" 
+      :halign "center" 
       (label :text {workspaces_1} )
     )
-	(time)
 	)
 )
 
 (defwindow bar2
-	:monitor 0
+	:monitor "DP-2"
 	:geometry (geometry 
     :width "100%"
-    :anchor "top center"
+    :anchor "bottom center"
   )
 	:windowtype "dock"
-  :wm-ignore "false"
+  :wm-ignore "true"
 	(box :class "main-container"
     (box 
       :class "workspaces" 
       :valign "center" 
-      :halign "start" 
+      :halign "center" 
       (label :text {workspaces_2})
     )
-	(time)
+  )
+)
+
+(defwindow bar3
+	:monitor "HDMI-0"
+	:geometry (geometry 
+    :width "100%"
+    :anchor "bottom center"
+  )
+  :class "bar3"
+	:windowtype "dock"
+  :wm-ignore "true"
+	(box :class "main-container"
+    (box 
+      :class "workspaces" 
+      :valign "center" 
+      :halign "center" 
+      (label :text {workspaces_3})
+    )
   )
 )

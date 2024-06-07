@@ -14,7 +14,12 @@ vim.opt.rtp:prepend(lazypath)
 local config = {
     defaults = {
       lazy = true
-    }
+    },
+    change_detection = {
+      -- automatically check for config file changes and reload the ui
+      enabled = true,
+      notify = false, -- get a notification when changes are found
+    },
 }
 
 require("lazy").setup("plugins", config)

@@ -23,10 +23,11 @@
 --   return ...
 -- end
 
-function SetColors(color)
-	color = color or 'catppuccin-mocha'
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-	vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+function SetColors(theme)
+  local notify_original = vim.notify
+  vim.notify = function() end
+  require('lazy').reload({plugins = {'catppuccin'}})
+  vim.cmd.colorscheme('catppuccin-'..theme)
+  require('lazy').reload({plugins = {'mini.cursorword'}})
+  vim.notify = notify_original
 end

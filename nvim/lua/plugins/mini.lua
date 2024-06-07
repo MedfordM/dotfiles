@@ -156,10 +156,11 @@ return {
     event = 'BufReadPre',
     opts = {},
     config = function()
-      require('mini.cursorword').setup()
-      vim.api.nvim_set_hl(0, 'MiniCursorword', {bg = require('catppuccin.palettes.frappe').surface2})
+      require('mini.cursorword').setup({delay=200})
+      vim.api.nvim_set_hl(0, 'MiniCursorword', {bg = require('catppuccin.palettes.'..require('catppuccin').flavour).overlay0})
       vim.api.nvim_create_autocmd('FileType', {
         pattern = {
+          'DiffviewFiles',
           'DressingSelect',
         },
         callback = function()

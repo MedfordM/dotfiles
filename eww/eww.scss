@@ -19,15 +19,7 @@ $blue: #7AA2F7;
 $magenta: #BB9AF7;
 $cyan: #7DCFFF;
 
-.bar {
-	background-color: transparent;	
-}
-
-.bar2 {
-	background-color: transparent;	
-}
-
-.calendar {
+window {
 	background-color: transparent;	
 }
 
@@ -37,95 +29,11 @@ $cyan: #7DCFFF;
 	border-radius: 10px;
 }
 
-.audio {
-  margin: 16px;
-	background-color: $base2;
-	color: $text;	
-	border-radius: 10px;
-	box-shadow: 2px 2px 2px $shadow;
-  padding: 5px 5px 5px 5px;
-	border: 1px solid $border_col;
-}
-
-.button {
-  font-size: 24px;
-	padding: 8px 20px;
-  margin: 0px 8px 0px 8px;
-  background: none;
-	border-radius: 10px;
-	box-shadow: 2px 2px 2px $shadow;
-	color: $text;	
-	border: 1px solid $border_col;
-}
-
-.component {
-  all: unset;
-	padding: 8px 10px 8px 10px;
-  min-width: 200px;
-  margin: 8px;
-	border-radius: 10px;
-	box-shadow: 2px 2px 2px $shadow;
-	background-color: $surface0;
-	color: $text;	
-  font-family: monospace;
-  font-weight: bold;
-	border: 1px solid $border_col;
-}
-
-.componentChild {
-  all: unset;
-  font-family: monospace;
-  padding: 0px 8px;
-}
-
-.componentIcon {
-  all: unset;
-  font-family: monospace;
-  font-size: 42px;
-}
-
-.componentChildIcon {
-  all: unset;
-  font-family: monospace;
-  font-size: 32px;
-  margin-right: 1rem;
-}
-
-.componentChildLabel {
-  all: unset;
-  font-family: monospace;
-  font-size: 24px;
-  min-width: 4rem;
-}
-
-.label {
-  padding: 12px;
-}
-
-.audioVolume {
-  min-width: 280px;
-}
-
-.volumeLabel {
-  all: unset;
-  padding: 10px;
-  font-size: 18px;
-}
-
-.volumeSlider {
-  all: unset;
-  min-width: 180px;
-}
-
-window {
-	background-color: transparent;	
-}
-
 .workspaces {
 	background-color: $base;
 	border-radius: 10px;
 	color: $text;	
-	border: 1px solid $border_col;
+	border: 2px solid $border_col;
 	padding: .5rem .8rem .5rem .8rem;
   font-size: 18px;
 	box-shadow: 2px 2px 2px $shadow;
@@ -139,64 +47,133 @@ window {
   background: $base;
   color: $text;
   border-radius: 10px;
-	border: 1px solid $border_col;
+	border: 2px solid $border_col;
 	box-shadow: 2px 2px 2px $shadow;
 	padding: .5rem .8rem .5rem .8rem;
   margin-bottom: 0px;
 }
 
-.sysInfo {
-  all: unset;
-  min-width: 200px;
-	border: 1px solid $border_col;
-  margin: 24px;
-  color: $text;
-  background-color: $base2;
-  border-radius: 10px;
+.label {
+  padding: 12px;
 }
 
-.sysControl {
-  color: $text;
+.button {
+  font-size: 24px;
+	padding: 8px 20px;
+  margin: 0px 8px 0px 8px;
+  background: none;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px $shadow;
+	color: $text;	
+	border: 1px solid $border_col;
+}
+
+.sysControlComponent {
+  min-width: 400px;
+	color: $text;
+	background-color: $base2;
+	// margin: 8px 12px 0px 12px;
+	border-radius: 10px;
+	border: 2px solid $border_col;
+	box-shadow: 2px 2px 2px $shadow;
+}
+
+.tempComponent {
+	padding: 10px 10px 10px 10px;
+	// background-color: $surface0;
+  background-color: $base2;
+  min-width: 200px;
+	color: $text;	
+  font-family: Fira Code Nerd;
+}
+
+.tempComponentIcon {
+  font-family: monospace;
+  font-size: 42px;
+}
+
+.tempComponentChild {
+  min-width: 150px;
+  font-family: monospace;
+}
+
+.tempComponentChildIcon {
+  font-family: monospace;
+  font-size: 32px;
+  margin-right: 1rem;
+}
+
+.tempComponentChildLabel {
+  font-family: monospace;
+  font-size: 24px;
+  min-width: 4.5rem;
+}
+
+.audio {
+  padding-bottom: 16px;
+  // margin: 16px;
+	background-color: $base2;
+	color: $text;
+	border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.audioTrack {
+  padding-bottom: 1.5rem;
+}
+
+.audioVolume {
+  min-width: 200px;
+	// border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.volumeLabel {
+  font-family: Fira Code Nerd Font;
+  font-size: 22px;
+  padding: 0px 18px;
+	// border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.volumeSlider {
+  all: unset;
+  min-width: 180px;
+  padding: 1.5rem 0px;
+	// border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.notifications {
+	//  border-radius: 10px;
+	// border: 1px solid $border_col;
+}
+
+.bar3 .workspaces, .bar3 .time {
+  font-size: 22px;
 }
 
 .cal {
   font-size: 18px;
   font-weight: normal;
-  margin: 18px;
   padding: 8px;
-
-.cal-in {
-    color: $text;
-    border: none;
-
-.cal-in2 {
-    border: none;
-     &.highlight {
-          padding: 10px;
-      }
-
-    }
-  }
 }
 
 calendar {
-  all: unset;
-	border: 1px solid $border_col;
-  margin: 18px;
   color: $text;
   background-color: $base2;
   border-radius: 10px;
+  border: none;
+}
+
+calendar.header {
+  color: #a1bdce;
+  font-weight: bold;
 }
 
 calendar:selected {
   color: #89b4fa;
   font-weight: bold;
-}
-
-calendar.header {
-  color: $text;
-  font-weight: bold;
-  border: none;
 }
 
 calendar.button {
