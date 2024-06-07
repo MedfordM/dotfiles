@@ -1,4 +1,4 @@
 [core]
-  sshCommand = "ssh -i ~/.ssh/githubMedfordM"
+  sshCommand = "ssh -i ~/.ssh/githubPersonal"
 [user]
 	email = mike@medford.dev
