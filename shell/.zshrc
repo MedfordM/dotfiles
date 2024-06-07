@@ -26,6 +26,7 @@ setopt hist_ignore_dups
 
 source $HOME/.profile
 
+eval "$(zoxide init --cmd cd zsh)"
 if [ -f "$HOME/.local/share/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/.local/share/google-cloud-sdk/path.zsh.inc"; fi
 if [ -f "$HOME/.local/share/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/.local/share/google-cloud-sdk/completion.zsh.inc"; fi
 
