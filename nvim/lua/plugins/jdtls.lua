@@ -124,16 +124,14 @@ return
           init_options = {
             bundles = {
               vim.fn.glob('/home/mike/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
-              vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar", 1)
+              vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar", true)
             };
           },
         }
       end,
       config = function(_, opts)
         opts['on_attach'] = function(_, _)
-          vim.lsp.codelens.refresh()
           require("jdtls").setup_dap({ hotcodereplace = "auto" })
-          -- vim.lsp.inlay_hint.enable(true, {bufnr = 0})
           vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
         end
 

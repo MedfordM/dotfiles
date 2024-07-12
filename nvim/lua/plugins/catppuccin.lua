@@ -34,6 +34,7 @@ return {
       },
       integrations = {
         -- harpoon = true,
+        barbar = true,
         mason = true,
         neotree = true,
         mini = {

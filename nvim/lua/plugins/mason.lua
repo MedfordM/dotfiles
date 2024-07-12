@@ -1,16 +1,22 @@
 return {
   {
     'williamboman/mason.nvim',
+    cmd = 'Mason',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('mason').setup()
-      require("mason-lspconfig").setup()
-      require('mason-lspconfig').setup_handlers {
+      require('mason-lspconfig').setup()
+      require('mason-lspconfig').setup_handlers({
         function(server_name)
-          require('lspconfig')[server_name].setup({})
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          require('lspconfig')[server_name].setup({
+            capabilities = capabilities
+          })
         end,
         ['tsserver'] = function()
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
           require('lspconfig').tsserver.setup({
+            capabilities = capabilities,
             settings = {
               completions = {
                 completeFunctionCalls = true
@@ -19,7 +25,9 @@ return {
           })
         end,
         ['lua_ls'] = function()
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
           require 'lspconfig'.lua_ls.setup {
+            capabilities = capabilities,
             settings = {
               Lua = {
                 runtime = {
@@ -42,7 +50,7 @@ return {
             },
           }
         end,
-      }
+    })
     end
   },
   {
@@ -54,10 +62,12 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    init = function()
+      require('config.lsp')
+    end,
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local lsp_config = require('lspconfig')
-      lsp_config.util.default_config = vim.tbl_extend("force",lsp_config.util.default_config, {
+      local lspconfig = require('lspconfig')
+      lspconfig.util.default_config = vim.tbl_extend( "force", lspconfig.util.default_config, {
         autostart = true,
         handlers = {
           ["window/logMessage"] = function(err, method, params, client_id)
@@ -72,30 +82,6 @@ return {
           end,
         }
       })
-      lsp_config.terraformls.setup({
-        init_options = {
-          cmd = { "terraform-ls", "serve" },
-          filetypes = { "terraform", "terraform-vars" },
-          -- root_dir = lsp_config.util.root_pattern(".terraform", ".git"),
-          -- capabilities = capabilities
-        },
-        -- settings = {
-        --   cmd = { "terraform-ls", "serve" },
-        --   filetypes = { "terraform", "terraform-vars" },
-        --   root_dir = lsp_config.util.root_pattern(".terraform", ".git"),
-        --   -- root_dir = function(dirpath)
-        --   --   vim.print(dirpath)
-        --   --   return vim.fn.getcwd()
-        --   -- end,
-        --   capabilities = capabilities
-        -- },
-      })
-      vim.api.nvim_create_autocmd({"BufWritePre"}, {
-        pattern = {"*.tf", "*.tfvars"},
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
-    end,
+    end
   },
 }

@@ -11,13 +11,16 @@ return {
       }
     },
     init = function()
-      local sign = vim.fn.sign_define
-      sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
-      sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
-      sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+      vim.fn.sign_define("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
+      vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+      vim.keymap.set('n', '<A-t>', function() require('dapui').toggle({ reset = true }) end)
+      vim.keymap.set('n', '<A-w>', function() require('dapui').elements.watches.add() end)
+      vim.keymap.set('n', '<A-b>', function() require('dapui').float_element('breakpoints') end)
+      vim.keymap.set('n', '<A-v>', function() require('dapui').float_element('scopes') end)
+      vim.keymap.set('n', '<A-r>', function() require('dapui').float_element('repl') end)
     end,
-    opts = function()
-      return {
+    opts = {
           controls = {
             element = "console",
             enabled = true,
@@ -47,24 +50,34 @@ return {
             current_frame = "",
             expanded = ""
           },
-          layouts = { {
+          layouts = {
+            {
               elements = {
                 {
                   id = "scopes",
-                  size = 0.9
+                  size = 0.6
                 },
-                -- {
-                --   id = "breakpoints",
-                --   size = 0.25
-                -- },
+                {
+                  id = "breakpoints",
+                  size = 0.1
+                },
+                {
+                  id = 'stacks',
+                  size = 0.1
+                },
                 {
                   id = "watches",
                   size = 0.1
-                }
+                },
+                {
+                  id = 'repl',
+                  size = 0.1
+                },
               },
               position = "left",
               size = 40
-            }, {
+            },
+            {
               elements = {
                 {
                   id = "console",
@@ -86,21 +99,7 @@ return {
             indent = 1,
             max_value_lines = 100
           }
-        }
-    end,
-    config = function(_, opts)
-      local dapui = require("dapui")
-      local mappings = {
-        ["<M-t>"] = function() dapui.toggle({ reset = true }) end,
-        ["<M-w>"] = function() dapui.elements.watches.add() end,
-        ["<M-b>"] = function() dapui.float_element("breakpoints") end,
-        ["<M-v>"] = function() dapui.float_element("scopes") end,
-        ["<M-r>"] = function() dapui.float_element("repl") end,
-      }
-      for keys, mapping in pairs(mappings) do
-        vim.api.nvim_set_keymap("n", keys, "", { callback = mapping, noremap = true })
-      end
-      dapui.setup(opts)
-    end
+        },
+    config = true
   }
 }
