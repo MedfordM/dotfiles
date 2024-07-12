@@ -37,7 +37,7 @@ layout {
             start_suspended true
           }
         }
-        pane name="Shell" focused=true
+        pane name="Shell" focus=true
       }
       pane split_direction="horizontal" {
         Proxies

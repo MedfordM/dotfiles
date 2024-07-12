@@ -17,19 +17,19 @@ layout {
       args "proxy" "clickhouse" "dev"
     }
     GCloud_Function name="UI Proxy" {
-      args "proxy" "ui" "dev-eve"
+      args "proxy" "ui" "dev-bd"
     }
   }
   pane_template name="Maven_Command" {
     command "mvn"
   }
-  tab name="Services (Dev-Eve)" {
+  tab name="Services (Dev-Boden)" {
     pane split_direction="vertical" {
       pane split_direction="horizontal" size="80%"{
         pane split_direction="vertical" size="34%"{
           Maven_Command {
             name "Maven Install"
-            args "clean" "install" "-DskipTests" "-o"
+            args "clean" "install" "-DskipTests"
           }
           Maven_Command {
             name "Maven Test"
@@ -56,6 +56,6 @@ layout {
   }
 }
 env {
-  CLIENT_API_FILE "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-api.sh"
-  CLIENT_MFP_FILE "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-mfp.sh"
+  CLIENT_API_FILE "/home/mike/Source/darwin/localFiles/shell/s5-dev-bd-api.sh"
+  CLIENT_MFP_FILE "/home/mike/Source/darwin/localFiles/shell/s5-dev-bd-mfp.sh"
 }
