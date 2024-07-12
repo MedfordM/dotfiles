@@ -32,20 +32,10 @@ return {
       WHICH_KEY = require('which-key')
       WHICH_KEY.setup(opts)
       WHICH_KEY.register({
-        K      = { vim.lsp.buf.hover, 'Show doc' },
-        ['gd'] = { function() vim.lsp.buf.definition() vim.api.nvim_feedkeys("zz", "n", false) end, 'Goto Definition'},
-        -- ['gr'] = { function() vim.lsp.buf.references({context = {includeDeclaration = false}}) end, 'References'},
-        -- ['gi'] = { function() vim.lsp.buf.references() end, 'Implementations'},
-        [']d'] = { function() vim.diagnostic.jump({count = 1, float=true}) end, 'Next diagnostic' },
-        ['[d'] = { function() vim.diagnostic.jump({count = -1, float=true}) end, 'Prev diagnostic' },
-
         ['<leader>c'] = {
           name  = 'Code',
-          r = { vim.lsp.buf.rename, 'Rename symbol' },
-          a = { vim.lsp.buf.code_action, 'Quick action' },
           d = {
             name  = 'Diagnostics',
-            p = { function() vim.diagnostic.open_float({severity_sort = true}) end, 'Diagnostic info' },
           },
         },
       })

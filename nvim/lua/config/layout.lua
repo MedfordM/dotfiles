@@ -16,13 +16,15 @@ local movement = {
     LEFT  = 'h',
     DOWN  = 'j',
     UP    = 'k',
-    RIGHT = 'l'
+    RIGHT = 'l',
+    END_WORD = 'e',
   },
   COLEMAK = {
     LEFT  = 'h',
     DOWN  = 'n',
     UP    = 'e',
-    RIGHT = 'i'
+    RIGHT = 'i',
+    END_WORD = 'j',
   }
 }
 

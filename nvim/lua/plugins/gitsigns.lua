@@ -40,9 +40,10 @@ return {
         row = 0,
         col = 0
       },
-      yadm = {
-        enable = false
-      },
     },
+    config = function(_, opts)
+      require('gitsigns').setup(opts)
+      vim.keymap.set('n', '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<CR>', {desc = 'Toggle git blame'})
+    end,
   }
 }
