@@ -1,5 +1,5 @@
 [core]
-  sshCommand = "ssh -i ~/.ssh/githubWork"
+  sshCommand = "ssh -i ~/.ssh/githubWork.key"
 [user]
 	email = michael.medford@s5stratos.com
 [filter "lfs"]
