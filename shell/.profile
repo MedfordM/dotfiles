@@ -3,7 +3,7 @@ if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ] && [ "$
   source ~/.xinitrc
 fi
 
-source $HOME/Source/scripts/alias.sh
+source ~/Source/scripts/gcloud-functions.sh
 source $HOME/Source/scripts/fzf.sh
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -27,6 +27,9 @@ export LC_TYPE=en_US.UTF-8
 export MANPAGER='nvim +Man!'
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export THEME=mocha
+
+alias grep='grep -i --color=auto'
+alias ls="exa -1 --git --icons --group-directories-first"
 
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
