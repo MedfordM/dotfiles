@@ -10,7 +10,7 @@ return {
       height = 10, -- height of the trouble list when position is top or bottom
       auto_close = false, -- auto close when there are no items
       auto_open = false, -- auto open when there are items
-      auto_preview = true, -- automatically open preview when on an item
+      auto_preview = false, -- automatically open preview when on an item
       auto_refresh = true, -- auto refresh when open
       auto_jump = false, -- auto jump to the item when there's only one
       focus = false, -- Focus the window when opened
@@ -32,7 +32,7 @@ return {
         -- when a buffer is not yet loaded, the preview window will be created
         -- in a scratch buffer with only syntax highlighting enabled.
         -- Set to false, if you want the preview to always be a real loaded buffer.
-        scratch = true,
+        scratch = false,
       },
       -- Throttle/Debounce settings. Should usually not be changed.
       ---@type table<string, number|{ms:number, debounce?:boolean}>

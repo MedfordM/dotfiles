@@ -1,16 +1,30 @@
 #!/bin/bash
 
-if [ "$1" = "Speakers" ]; then
-  pactl set-default-sink alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio__sink
-elif [ "$1" = "Headphones" ]; then
-  pactl set-default-sink alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0
-else
-  current=$(pactl get-default-sink)
-  if [ "$current" = "alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0" ]; then
+HEADPHONES='alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0'
+SPEAKERS='alsa_output.usb-Generic_USB_Audio-00.HiFi__Speaker__sink'
+
+# Get current default
+if [[ -z $1 ]]; then
+  CURRENT=$(pactl get-default-sink)
+  if [ "$CURRENT" = "alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0" ]; then
     echo "Headphones"
-  elif [ "$current" = "alsa_output.usb-Generic_USB_Audio-00.HiFi__hw_Audio__sink" ]; then
+  elif [ "$CURRENT" = "alsa_output.usb-Generic_USB_Audio-00.HiFi__Speaker__sink" ]; then
     echo "Speakers"
   fi
+  return
 fi
 
+# Update default
+if [ "$1" = "Speakers" ]; then
+  pactl set-default-sink $SPEAKERS
+elif [ "$1" = "Headphones" ]; then
+  pactl set-default-sink $HEADPHONES
+fi
+
+# Move any stragglers over
+CURRENT=$(pactl get-default-sink)
+SINK_INPUTS=$(pactl list sink-inputs | awk -F '#' '/Sink Input #/ {print $2}')
+for SINK_INPUT in $SINK_INPUTS; do
+  pactl move-sink-input $SINK_INPUT $CURRENT
+done
 

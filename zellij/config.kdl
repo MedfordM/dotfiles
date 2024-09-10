@@ -1,6 +1,7 @@
 theme "catppuccin-mocha"
-copy_clipboard "primary"
+copy_clipboard "system"
 copy_on_select true
+scroll_buffer_size 100000
 
 keybinds clear-defaults=true {
     normal {
@@ -16,10 +17,10 @@ keybinds clear-defaults=true {
         bind "Ctrl e" { MoveFocus "Up"; }
         bind "Ctrl i" { MoveFocus "Right"; }
         // Move Pane
-        bind "Ctrl H" { MovePane "Left"; }
-        bind "Ctrl N" { MovePane "Down"; }
-        bind "Ctrl E" { MovePane "Up"; }
-        bind "Ctrl I" { MovePane "Right"; }
+        // bind "Ctrl H" { MovePane "Left"; }
+        // bind "Ctrl N" { MovePane "Down"; }
+        // bind "Ctrl E" { MovePane "Up"; }
+        // bind "Ctrl I" { MovePane "Right"; }
     }
     locked {
         bind "Ctrl Space" { SwitchToMode "Normal"; }
@@ -51,8 +52,6 @@ keybinds clear-defaults=true {
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "n" "Down" { ScrollDown; }
         bind "e" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
     }
@@ -61,8 +60,6 @@ keybinds clear-defaults=true {
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "n" "Down" { ScrollDown; }
         bind "e" "Up" { ScrollUp; }
-        bind "Ctrl f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Ctrl b" "PageUp" "Left" "h" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         bind "l" { Search "down"; }
@@ -98,7 +95,7 @@ plugins {
         welcome_screen true
     }
     filepicker location="zellij:strider" {
-        cwd "/"
+        cwd "/home/mike/"
     }
 }
 

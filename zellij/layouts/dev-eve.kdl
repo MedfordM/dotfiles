@@ -21,7 +21,7 @@ layout {
     }
   }
   pane_template name="Maven_Command" {
-    command "mvn"
+    command "mvnd"
   }
   tab name="Services (Dev-Eve)" {
     pane split_direction="vertical" {
@@ -44,18 +44,19 @@ layout {
         pane {
           name "Postgres"
             command "bash"
-            args "-c" "source $CLIENT_API_FILE; sleep 3; psql -h localhost"
+            args "-c" "source $API_ENV; sleep 3; psql -h localhost"
         }
         pane {
           name "Clickhouse"
           command "bash"
-          args "-c" "sleep 10; clickhouse-client --no-warnings"
+          args "-c" "sleep 10; clickhouse-client"
         }
       }
     }
   }
 }
 env {
-  CLIENT_API_FILE "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-api.sh"
-  CLIENT_MFP_FILE "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-mfp.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-api.sh"
+  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-mfp.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-planner.sh"
 }

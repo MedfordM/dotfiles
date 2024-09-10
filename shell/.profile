@@ -31,5 +31,10 @@ export THEME=mocha
 alias grep='grep -i --color=auto'
 alias ls="exa -1 --git --icons --group-directories-first"
 
+# Select a layout and create a new session
+alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
+# Select a layout and open a new tab in the current session
+alias zt='zellij action new-tab -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
+
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"

@@ -29,15 +29,11 @@ return {
       ignore_missing = true,
     },
     config = function(opts)
-      WHICH_KEY = require('which-key')
-      WHICH_KEY.setup(opts)
-      WHICH_KEY.register({
-        ['<leader>c'] = {
-          name  = 'Code',
-          d = {
-            name  = 'Diagnostics',
-          },
-        },
+      local which_key = require('which-key')
+      which_key.setup(opts)
+      which_key.add({
+        { "<leader>c", group = "Code" },
+        { "<leader>cd", group = "Diagnostics" },
       })
     end
   }

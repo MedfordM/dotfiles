@@ -30,9 +30,9 @@ window {
 }
 
 .workspaces {
+	color: $text;	
 	background-color: $base;
 	border-radius: 10px;
-	color: $text;	
 	border: 2px solid $border_col;
 	padding: .5rem .8rem .5rem .8rem;
   font-size: 18px;
@@ -46,10 +46,13 @@ window {
   text-decoration: none;
   background: $base;
   color: $text;
-  border-radius: 10px;
-	border: 2px solid $border_col;
-	box-shadow: 2px 2px 2px $shadow;
-	padding: .5rem .8rem .5rem .8rem;
+	border: none;
+	box-shadow: none;
+  outline: none;
+  // border-radius: 10px;
+	// border: 2px solid $border_col;
+	// box-shadow: 2px 2px 2px $shadow;
+	// padding: .5rem .8rem .5rem .8rem;
   margin-bottom: 0px;
 }
 
@@ -149,44 +152,37 @@ window {
 	// border: 1px solid $border_col;
 }
 
-.bar3 .workspaces, .bar3 .time {
-  font-size: 22px;
-}
+// .bar3 .workspaces, .bar3 .time {
+//   font-size: 22px;
+// }
 
 .cal {
-  font-size: 18px;
-  font-weight: normal;
-  padding: 8px;
+    padding: .5rem .4rem;
 }
 
 calendar {
+  padding: 0.4rem;
   color: $text;
   background-color: $base2;
   border-radius: 10px;
   border: none;
-}
 
-calendar.header {
-  color: #a1bdce;
-  font-weight: bold;
-}
+  &:selected {
+    color: #89b4fa;
+    background-color: $surface2;
+  }
 
-calendar:selected {
-  color: #89b4fa;
-  font-weight: bold;
-}
+  &.highlight,
+  &.header {
+    color: #a1bdce;
+  }
 
-calendar.button {
-  color: #9399b2;
-  box-shadow: none;
-}
+  &.button {
+    color: #9399b2;
+    box-shadow: none;
+  }
 
-calendar.highlight {
-  color: #89b4fa;
-  font-weight: bold;
+  &:indeterminate {
+    color: #9399b2;
+  }
 }
-
-calendar:indeterminate {
-  color: #9399b2;
-}
-

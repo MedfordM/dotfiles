@@ -22,7 +22,7 @@ layout {
     }
   }
   pane_template name="Maven_Command" {
-    command "mvn"
+    command "mvnd"
   }
   tab name="Services (QA-BelkAP)" {
     pane split_direction="vertical" {
@@ -45,7 +45,7 @@ layout {
         pane {
           name "Postgres"
             command "bash"
-            args "-c" "source $CLIENT_API_FILE; sleep 3; psql -h localhost"
+            args "-c" "source $API_ENV; sleep 3; psql -h localhost"
         }
         pane {
           name "Clickhouse"
@@ -57,6 +57,7 @@ layout {
   }
 }
 env {
-  CLIENT_API_FILE "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-api.sh"
-  CLIENT_PLANNER_FILE "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-planner.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-api.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-planner.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-dev-planner.sh"
 }

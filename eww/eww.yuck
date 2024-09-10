@@ -2,7 +2,12 @@
 
 (defpoll time 
   :interval "15s"
-	`date +" %a, %b %d %H:%M %p"`
+	`date +"%R  %a, %b %d"`
+)
+
+(defpoll date 
+  :interval "15s"
+	`date +""`
 )
 
 (defpoll calendar_day 
@@ -251,9 +256,15 @@
 )
 
 (defwidget time []
-	(box :halign "end" :orientation "h"
-			:class "main-container" 
-	(button :class "time"	:onclick {"eww open --toggle sysControl --screen $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true) | .output') && eww update activeSource=$(${home_dir}/switchOutput.sh)"} time)))
+	(box
+    :orientation "h"
+      (button
+        :class "time"
+        :onclick {"eww open --toggle sysControl --screen $(i3-msg -t get_workspaces | jq -r '.[] | select(.focused==true) | .output') && eww update activeSource=$(${home_dir}/switchOutput.sh)"}
+        time
+      )
+  )
+)
 
 (defpoll volume 
   :interval "300ms" 
@@ -430,18 +441,27 @@
 
 (defwindow sysControl
 	:geometry (geometry 
-            :x "-20px"
-						:y "75px" 
-            :anchor "top right"
-						)
-    (box :orientation "v" :spacing 35 :space-evenly false
-      (box :class "sysControlComponent" :orientation "v" :space-evenly false
-        (notifications :display displayNotifications)
-        (audio)
+    :y "75px" 
+    :anchor "top right"
+	)
+  (box
+    :orientation "v"
+    :spacing 35
+    :space-evenly false
+    :class "main-container"
+    (box
+      :class "sysControlComponent"
+      :orientation "v"
+      :space-evenly false
+      (notifications
+        :display
+        displayNotifications
       )
-      (temps)
-      (cal)
+      (audio)
     )
+    (temps)
+    (cal)
+  )
 )
 
 (defvar workspaces_1 "󰄯  󰄰  󰄰  󰄰  󰄰")
@@ -449,10 +469,9 @@
 (defvar workspaces_3 "󰄯  󰄰  󰄰  󰄰  󰄰")
 
 (defwindow bar
-	:monitor "DP-4"
+	:monitor "DP-0"
 	:geometry (geometry 
-			:width "100%"
-			:anchor "bottom center"
+			:anchor "top right"
   )
 	:windowtype "dock"
   :wm-ignore "true"
@@ -461,8 +480,10 @@
     (box 
       :class "workspaces" 
       :valign "center" 
-      :halign "center" 
+      :halign "end" 
+      :spacing 15
       (label :text {workspaces_1} )
+      (time)
     )
 	)
 )
@@ -470,26 +491,26 @@
 (defwindow bar2
 	:monitor "DP-2"
 	:geometry (geometry 
-    :width "100%"
-    :anchor "bottom center"
+    :anchor "top right"
   )
 	:windowtype "dock"
   :wm-ignore "true"
-	(box :class "main-container"
+	(box
+    :class "main-container"
     (box 
       :class "workspaces" 
       :valign "center" 
-      :halign "center" 
+      :halign "end" 
+      :spacing 15
       (label :text {workspaces_2})
     )
   )
 )
 
 (defwindow bar3
-	:monitor "HDMI-0"
+	:monitor "DP-4"
 	:geometry (geometry 
-    :width "100%"
-    :anchor "bottom center"
+    :anchor "top right"
   )
   :class "bar3"
 	:windowtype "dock"
@@ -498,7 +519,8 @@
     (box 
       :class "workspaces" 
       :valign "center" 
-      :halign "center" 
+      :halign "end" 
+      :spacing 15
       (label :text {workspaces_3})
     )
   )

@@ -105,11 +105,11 @@ return {
     opts = {}
   },
 
-  {
-    'echasnovski/mini.comment',
-    event = 'BufReadPre',
-    opts = {}
-  },
+  -- {
+  --   'echasnovski/mini.comment',
+  --   event = 'BufReadPre',
+  --   opts = {}
+  -- },
 
   {
     'echasnovski/mini.bufremove',
@@ -126,11 +126,11 @@ return {
     event = 'BufReadPre',
     opts = {
       add = "sa", -- Add surrounding in Normal and Visual modes
-      delete = "sd", -- Delete surrounding
-      find = "sf", -- Find surrounding (to the right)
-      find_left = "sF", -- Find surrounding (to the left)
-      highlight = "sh", -- Highlight surrounding
       replace = "sr", -- Replace surrounding
+      delete = "sd", -- Delete surrounding
+      -- find = "sf", -- Find surrounding (to the right)
+      -- find_left = "sF", -- Find surrounding (to the left)
+      -- highlight = "sh", -- Highlight surrounding
     },
     config = function(_, opts)
       -- Populate the keys based on the user's options

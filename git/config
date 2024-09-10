@@ -25,3 +25,5 @@
     path = config-personal
 [includeIf "hasconfig:remote.*.url:git@github.com:s5-stratos/**"]
     path = config-work
+[includeIf "hasconfig:remote.*.url:git@github.com:rzeigler/**"]
+    path = config-work

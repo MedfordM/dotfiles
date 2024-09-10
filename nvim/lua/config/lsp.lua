@@ -75,8 +75,16 @@ vim.keymap.set('n', 'gd', function()
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
+vim.keymap.del('n', 'grr')
+vim.keymap.del('n', 'gra')
+vim.keymap.del('n', 'grn')
+
+-- vim.keymap.set('n', 'gr', function()
+--   vim.lsp.buf.references({context = {includeDeclaration = false}})
+-- end)
+
 vim.keymap.set('n', 'gr', function()
-  vim.lsp.buf.references({context = {includeDeclaration = false}})
+  vim.api.nvim_command('Lspsaga incoming_calls')
 end)
 
 vim.keymap.set('n', 'gi', function()

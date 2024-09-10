@@ -11,19 +11,19 @@ layout {
   }
   pane_template stacked=true name="Proxies" {
     GCloud_Function name="Postgres Proxy" {
-      args "proxy" "postgres" "dev"
+      args "proxy" "postgres" "knit-up-staging" "s5-knitwell" 
     }
     GCloud_Function name="Clickhouse Proxy" {
-      args "proxy" "clickhouse" "dev"
+      args "proxy" "clickhouse" "knit-up-staging" "s5-knitwell"
     }
     GCloud_Function name="UI Proxy" {
-      args "proxy" "ui" "dev-trd"
+      args "proxy" "ui" "up-staging-loft" "s5-knitwell"
     }
   }
   pane_template name="Maven_Command" {
     command "mvnd"
   }
-  tab name="Services (Dev-Trd)" {
+  tab name="Services (Up-Staging-Loft)" {
     pane split_direction="vertical" {
       pane split_direction="horizontal" size="80%"{
         pane split_direction="vertical" size="34%"{
@@ -56,7 +56,7 @@ layout {
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-trd-api.sh"
-  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-trd-mfp.sh"
-  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-trd-planner.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/knitwell-up-staging-loft-api.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/knitwell-up-staging-loft-planner.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/knitwell-up-staging-loft-mfp.sh"
 }
