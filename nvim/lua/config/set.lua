@@ -31,4 +31,5 @@ vim.opt.conceallevel   = 2
 vim.opt.fillchars:append { diff = "╱" }
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us' }
-
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
