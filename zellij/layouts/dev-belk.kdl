@@ -1,4 +1,3 @@
-
 layout {
   default_tab_template {
     pane size=1 borderless=true {
@@ -12,19 +11,19 @@ layout {
   }
   pane_template stacked=true name="Proxies" {
     GCloud_Function name="Postgres Proxy" {
-      args "proxy" "postgres" "qa"
+      args "proxy" "postgres" "dev"
     }
     GCloud_Function name="Clickhouse Proxy" {
-      args "proxy" "clickhouse" "qa"
+      args "proxy" "clickhouse" "dev"
     }
     GCloud_Function name="UI Proxy" {
-      args "proxy" "ui" "qa-belkap"
+      args "proxy" "ui" "dev-belk"
     }
   }
   pane_template name="Maven_Command" {
     command "mvnd"
   }
-  tab name="Services (QA-BelkAP)" {
+  tab name="Services (Dev-Belk)" {
     pane split_direction="vertical" {
       pane split_direction="horizontal" size="80%"{
         pane split_direction="vertical" size="34%"{
@@ -50,14 +49,14 @@ layout {
         pane {
           name "Clickhouse"
           command "bash"
-          args "-c" "sleep 10; clickhouse-client --multiline --multiquery"
+          args "-c" "sleep 10; clickhouse-client"
         }
       }
     }
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-api.sh"
-  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-planner.sh"
-  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-dev-planner.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-belk-api.sh"
+  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-belk-mfp.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-belk-planner.sh"
 }
