@@ -31,6 +31,7 @@ export THEME=mocha
 alias grep='grep -i --color=auto'
 alias ls="exa -1 --git --icons --group-directories-first"
 alias lst="exa -1 -D --tree -D --level=2 --icons"
+alias k="kubectl"
 
 # Select a layout and create a new session
 alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
