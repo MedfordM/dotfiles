@@ -3,6 +3,7 @@ return {
   cmd = { 'DiffviewOpen' },
   keys = {
     { '<leader>gda', function() vim.cmd('DiffviewOpen') end, desc = 'Diff working tree' },
+    { '<leader>gdh', function() vim.cmd('DiffviewOpen upstream/main...HEAD') end, desc = 'Diff HEAD & upstream' },
     { '<leader>gdd', function() vim.cmd('DiffviewOpen -- ' .. vim.fn.bufname()) end, desc = 'Diff current file' },
     { '<leader>gdc',
       function()
