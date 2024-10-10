@@ -14,14 +14,14 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
-  let
-    configuration = { pkgs, ... }: { };
-  in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#michaelmedford
+    # $ darwin-rebuild build --flake .
+    # OR
+    # $ darwin-rebuild build --flake .#Michaels-MacBook-Pro
     darwinConfigurations."Michaels-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [ ./configuration.nix ];
+      specialArgs = { inherit inputs; };
     };
 
     # Expose the package set, including overlays, for convenience.
