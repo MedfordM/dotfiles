@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = [ 
+    pkgs.git
     pkgs.vim
     pkgs.fzf
     pkgs.jdt-language-server
