@@ -7,17 +7,35 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager }: {
+  outputs = { self, nixpkgs, home-manager, utils, ... }:
+    let
+    pkgsForSystem = system: import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
 
-    defaultPackage.x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
-    homeConfigurations = {
-      "michaelmedford" = home-manager.lib.homeManagerConfiguration {
-        # Note: I am sure this could be done better with flake-utils or something
-        pkgs = import nixpkgs { system = "x86_64-darwin"; };
 
-        modules = [ ./home-manager/home.nix ]; # Defined later
+  mkHomeConfiguration = args: home-manager.lib.homeManagerConfiguration (rec {
+      modules = [ (import ./home-manager/home.nix) ] ++ (args.modules or []);
+      pkgs = pkgsForSystem (args.system or "x86_64-darwin");
+      } // { inherit (args) extraSpecialArgs; });
+
+  in utils.lib.eachSystem [ "x86_64-darwin" ] (system: rec {
+      legacyPackages = pkgsForSystem system;
+      devShells.default = with legacyPackages; mkShell {
+      packages = [ home-manager.packages.${system}.default ];
+      };
+  }) // {
+  homeConfigurations = {
+    michaelmedford = mkHomeConfiguration {
+        extraSpecialArgs = {
+          };
       };
   };
+    inherit home-manager;
+    inherit (home-manager) packages;
 };
+}
