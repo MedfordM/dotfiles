@@ -75,9 +75,9 @@ vim.keymap.set('n', 'gd', function()
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
-vim.keymap.del('n', 'grr')
-vim.keymap.del('n', 'gra')
-vim.keymap.del('n', 'grn')
+-- vim.keymap.del('n', 'grr')
+-- vim.keymap.del('n', 'gra')
+-- vim.keymap.del('n', 'grn')
 
 -- vim.keymap.set('n', 'gr', function()
 --   vim.lsp.buf.references({context = {includeDeclaration = false}})

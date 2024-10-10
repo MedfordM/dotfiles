@@ -80,10 +80,10 @@ return {
     } end ,
     config = function(_, opts)
       require('catppuccin').setup(opts)
-      local tmux_theme = vim.system({'tmux', 'showenv', '-g', 'THEME'}, { text = true }):wait().stdout
+      --local tmux_theme = vim.system({'tmux', 'showenv', '-g', 'THEME'}, { text = true }):wait().stdout
       local theme = 'catppuccin-'
       local flavor = 'mocha'
-      if tmux_theme ~= nil and string.len(tmux_theme) > 0 then
+      if nil ~= tmux_theme and string.len(tmux_theme) > 0 then
         flavor = string.sub(tmux_theme, 7, -2)
       end
       local colorscheme = theme .. flavor

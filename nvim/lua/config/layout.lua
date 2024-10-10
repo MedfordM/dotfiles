@@ -1,4 +1,7 @@
 local getLayout = function()
+  if vim.env.LAYOUT ~= nil then
+    return vim.env.LAYOUT
+  end
   if vim.env.SSH_CLIENT ~= nil then
     return 'QWERTY'
   else
