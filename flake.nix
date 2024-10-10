@@ -20,4 +20,4 @@
         modules = [ ./home-manager/home.nix ]; # Defined later
       };
   };
-}
+};
