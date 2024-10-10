@@ -37,6 +37,21 @@
     # '')
   ];
 
+  xdg.configFile.gitGenericConfig = {
+    source = ../git/config;
+    target = "git/config";
+  };
+
+  xdg.configFile.gitWorkConfig = {
+    source = ../git/config-work;
+    target = "git/config-work";
+  };
+
+  xdg.configFile.gitPersonalConfig = {
+    source = ../git/config-personal;
+    target = "git/config-personal";
+  };
+
   xdg.configFile.kittyThemeFile = {
     source = ../kitty/theme.conf;
     target = "kitty/theme.conf";
@@ -47,7 +62,6 @@
     target = "./kitty/themes/mocha.conf";
   };
 
-  programs.eza.enable = true;
   programs.kitty = {
     enable = true;
     keybindings = {
@@ -83,6 +97,8 @@
         mouse_map ctrl+shift+alt+left press ungrabbed,grabbed mouse_selection rectangle
     '';
   };
+
+  programs.eza.enable = true;
   programs.neovim.enable = true;
   programs.zellij.enable = true;
 
