@@ -3,6 +3,7 @@
 {
   imports = [
     modules/common/zellij
+    modules/common/git
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -20,21 +21,6 @@
     pkgs.bat
     pkgs.jq
   ];
-
-  xdg.configFile.gitGenericConfig = {
-    source = ./git/config;
-    target = "./git/config";
-  };
-
-  xdg.configFile.gitWorkConfig = {
-    source = ./git/config-work;
-    target = "./git/config-work";
-  };
-
-  xdg.configFile.gitPersonalConfig = {
-    source = ./git/config-personal;
-    target = "./git/config-personal";
-  };
 
   xdg.configFile.kittyThemeFile = {
     source = ./kitty/theme.conf;
