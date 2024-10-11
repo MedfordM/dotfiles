@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin = {
+    darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -13,18 +13,14 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
-  {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .
-    # OR
-    # $ darwin-rebuild build --flake .#Michaels-MacBook-Pro
-    darwinConfigurations."Michaels-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-      modules = [ ./configuration.nix ];
-      specialArgs = { inherit inputs; };
-    };
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
+  rec {
+    targets.genericLinux.enable = true;
+    darwinConfigurations."Michaels-MacBook-Pro" = import ./hosts/macbook.nix { inherit inputs; };
 
-    # Expose the package set, including overlays, for convenience.
-    darwinPackages = self.darwinConfigurations."Michaels-MacBook-Pro".pkgs;
+    homeConfigurations = {
+      # "michaelmedford" = import ./home.nix {inherit inputs; };
+      "michaelmedford" = darwinConfigurations."Michaels-MacBook-Pro".config.home-manager.users.michaelmedford.home;
+    };
   };
 }
