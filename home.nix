@@ -5,6 +5,7 @@
     modules/common/zellij
     modules/common/git
     modules/common/kitty
+    modules/common/nvim
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -23,9 +24,7 @@
     pkgs.jq
   ];
 
-
   programs.eza.enable = true;
-  programs.neovim.enable = true;
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
