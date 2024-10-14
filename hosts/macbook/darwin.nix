@@ -5,10 +5,10 @@ with inputs;
 darwin.lib.darwinSystem {
   system = "x86_64-darwin";
   modules = [
-    { user = "michaelmedford"; }
-    ../configuration.nix
-    ../modules/darwin
+    ../../configuration.nix
     home-manager.darwinModules.home-manager
-    ../modules/common
+    ../common/config.nix
+    ../../modules/darwin
   ];
 }
+

@@ -1,12 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, home-manager, config, ... }:
 
 {
-  imports = [
-    modules/common/zellij
-    modules/common/git
-    modules/common/kitty
-    modules/common/nvim
-    modules/common/bat
+  imports = [ 
+    modules/common
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -17,6 +13,9 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
+
+  home.username = config.user;
+  home.homeDirectory = config.homeDirectory;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -43,9 +42,6 @@
   #
   #  /etc/profiles/per-user/michaelmedford/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    # EDITOR = "emacs";
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -16,11 +16,11 @@
   outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
   rec {
     targets.genericLinux.enable = true;
-    darwinConfigurations."Michaels-MacBook-Pro" = import ./hosts/macbook.nix { inherit inputs; };
+    darwinConfigurations."Michaels-MacBook-Pro" = import ./hosts/macbook/darwin.nix { inherit inputs; };
 
     homeConfigurations = {
       # "michaelmedford" = import ./home.nix {inherit inputs; };
-      "michaelmedford" = darwinConfigurations."Michaels-MacBook-Pro".config.home-manager.users.michaelmedford.home;
+      michaelmedford = darwinConfigurations."Michaels-MacBook-Pro".config.home-manager.users.michaelmedford.home;
     };
   };
 }

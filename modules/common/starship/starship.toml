@@ -37,6 +37,7 @@ disabled = false
 
 [os.symbols]
 Arch = '  '
+Macos = '  '
 
 [hostname]
 ssh_only = true
