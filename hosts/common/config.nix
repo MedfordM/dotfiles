@@ -21,6 +21,12 @@
   };
   
   config = {
+    users.users.${config.user} = {
+      home = config.homeDirectory;
+      shell = pkgs.zsh;
+    };
+
+    home-manager.backupFileExtension = "backup";
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
     home-manager.users.${config.user} = import ../../home.nix { inherit config pkgs home-manager; };

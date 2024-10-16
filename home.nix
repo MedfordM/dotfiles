@@ -3,6 +3,7 @@
 {
   imports = [ 
     modules/common
+    modules/linux
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -20,7 +21,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.bat
     pkgs.jq
   ];
 
