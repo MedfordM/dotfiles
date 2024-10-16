@@ -26,6 +26,7 @@
       gcc
       git
       neovim
+      ripgrep
       fzf
     ];
 
