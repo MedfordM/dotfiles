@@ -4,4 +4,11 @@
   imports = [
     ./hyprland
   ];
+
+  options = {
+
+  };
+
+  config = {
+  };
 }

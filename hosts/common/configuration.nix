@@ -21,6 +21,21 @@
   };
   
   config = {
+    environment.systemPackages = with pkgs; [ 
+      gnumake
+      gcc
+      git
+      neovim
+      fzf
+    ];
+
+    environment.variables.EDITOR = "nvim";
+    environment.pathsToLink = [ "/share/zsh" ];
+    programs.zsh.enable = true;
+
+    nixpkgs.config.allowUnfree = true;
+    nix.settings.experimental-features = "nix-command flakes";
+
     users.users.${config.user} = {
       home = config.homeDirectory;
       shell = pkgs.zsh;
