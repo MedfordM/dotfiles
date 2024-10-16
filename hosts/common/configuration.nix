@@ -10,6 +10,7 @@
         else
           "mike");
     };
+
     homeDirectory = lib.mkOption {
       type = lib.types.path;
       description = "Path of user's home directory.";

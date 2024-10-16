@@ -1,16 +1,16 @@
 { home, config, lib, pkgs, ... }:
 
 {
+  imports = [ ];
+
   options = {
     layout = lib.mkOption {
       type = lib.types.str;
       description = "Keyboard layout";
-      default = (
-          if pkgs.stdenv.isDarwin then
+      default = (if pkgs.stdenv.isDarwin then
           "QWERTY"
-          else
-          "COLEMAK"
-          );
+        else
+          "COLEMAK");
     };
   };
 

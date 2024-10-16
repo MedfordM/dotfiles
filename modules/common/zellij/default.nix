@@ -6,7 +6,11 @@
   ];
 
   xdg.configFile.zellijConfig = {
-    source = ./config.kdl;
+    source = (if pkgs.stdenv.isDarwin then
+        ./config_qwerty.kdl
+      else
+        ./config.kdl
+    );
     target = "./zellij/config.kdl";
   };
 
