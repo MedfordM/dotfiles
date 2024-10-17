@@ -19,6 +19,7 @@
     ../../modules/shell/postgresql
     ../../modules/shell/zookeeper
     ../../modules/shell/gcloud
+    ../../modules/shell/pre-commit
     ../../modules/shell/zsh
 
     ../../modules/applications/kitty
