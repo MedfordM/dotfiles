@@ -6,5 +6,8 @@
       enable = true;
       package = pkgs.jdk22;
     };
+    home.packages = with pkgs; [
+      jdt-language-server
+    ];
   };
 }
