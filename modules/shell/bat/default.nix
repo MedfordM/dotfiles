@@ -3,7 +3,7 @@
 {
   home-manager.users.${config.user} = {
     xdg.configFile.bat = {
-      source = ./.;
+      source = ../../../config/bat;
     };
 
     home.packages = [
