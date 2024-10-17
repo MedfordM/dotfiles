@@ -5,7 +5,6 @@
     ../../modules/shell/alias
     ../../modules/shell/var
     ../../modules/shell/starship
-    ../../modules/shell/zsh
     ../../modules/shell/bat
     ../../modules/shell/git
     ../../modules/shell/nvim
@@ -14,6 +13,7 @@
     ../../modules/shell/fzf
     ../../modules/shell/jq
     ../../modules/shell/eza
+    ../../modules/shell/zsh
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
@@ -57,12 +57,10 @@
       git
       neovim
       ripgrep
-      fzf
       fd
     ];
     environment.variables.EDITOR = "nvim";
     environment.pathsToLink = [ "/share/zsh" ];
-    programs.zsh.enable = true;
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = "nix-command flakes";
 
@@ -70,6 +68,7 @@
       home = config.homeDirectory;
       shell = pkgs.zsh;
     };
+    programs.zsh.enable = true;
 
     home-manager.backupFileExtension = "backup";
     home-manager.useGlobalPkgs = true;
