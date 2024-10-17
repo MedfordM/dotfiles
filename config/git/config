@@ -23,6 +23,8 @@
 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
     path = config-personal
+[includeIf "hasconfig:remote.*.url:git@github.com:MedfordMS5/**"]
+    path = config-work
 [includeIf "hasconfig:remote.*.url:git@github.com:s5-stratos/**"]
     path = config-work
 [includeIf "hasconfig:remote.*.url:git@github.com:rzeigler/**"]
