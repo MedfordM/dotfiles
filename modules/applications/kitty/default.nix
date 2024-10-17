@@ -8,12 +8,12 @@
   config = lib.mkIf ( config.kitty.enable ) {
     home-manager.users.${config.user} = {
       xdg.configFile.kittyThemeFile = {
-        source = ./theme.conf;
+        source = ../../../config/kitty/theme.conf;
         target = "./kitty/theme.conf";
       };
 
       xdg.configFile.kittyCatppuccinMocha = {
-        source = ./themes/mocha.conf;
+        source = ../../../config/kitty/themes/mocha.conf;
         target = "./kitty/themes/mocha.conf";
       };
 
