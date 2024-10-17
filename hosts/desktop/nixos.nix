@@ -3,7 +3,7 @@
 inputs.nixpkgs.lib.nixosSystem {
 	system = "x86_64-linux";
 	modules = [
-    ./etc/nixos/hardware-configuration.nix
+    ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
 		./configuration.nix
     ../common/configuration.nix
