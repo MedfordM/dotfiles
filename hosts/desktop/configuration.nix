@@ -52,4 +52,5 @@
   pamixer.enable = true;
   flameshot.enable = true;
   wl-clipboard.enable = true;
+  slack.enable = true;
 }

@@ -28,6 +28,7 @@
     ../../modules/applications/firefox
     ../../modules/applications/pavucontrol
     ../../modules/applications/flameshot
+    ../../modules/applications/slack
 
     ../../modules/services/windowManagers/hyprland
     ../../modules/shell/var
