@@ -31,7 +31,7 @@
   users.users.mike = {
     isNormalUser = true;
     description = "Mike Medford";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     ];
   };
@@ -43,6 +43,7 @@
   services.xserver.enable = true;
   environment.systemPackages = with pkgs; [ ];
   xdg.portal.wlr.enable = true;
+  virtualisation.docker.enable = true;
   kitty.enable = true;
   firefox.enable = true;
   hyprland.enable = true;

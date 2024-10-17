@@ -13,6 +13,8 @@
     ../../modules/shell/fzf
     ../../modules/shell/jq
     ../../modules/shell/eza
+    ../../modules/shell/maven
+    ../../modules/shell/java
     ../../modules/shell/zsh
 
     ../../modules/applications/kitty
