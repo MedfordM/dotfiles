@@ -6,16 +6,15 @@
   };
 
   config = lib.mkIf (config.hyprland.enable) {
+    programs.sway.enable = true;
+    programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
     home-manager.users.${config.user} = {
       xdg.configFile.hyprland = {
         source = ../../../../config/hyprland/hyprland.conf;
         target = "./hypr/hyprland.conf";
-      };
-      xdg.portal.wlr.enable = true;
-      programs.sway.enable = true;
-      programs.hyprland = {
-        enable = true;
-        xwayland.enable = true;
       };
       home.packages = with pkgs; [
         waybar

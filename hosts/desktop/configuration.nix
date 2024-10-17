@@ -5,19 +5,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [];
-
-  # Bootloader.
+  system.stateVersion = "24.05";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
-
   security.polkit.enable = true;
-
   time.timeZone = "America/Chicago";
-
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -30,12 +24,10 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-
   users.users.mike = {
     isNormalUser = true;
     description = "Mike Medford";
@@ -43,17 +35,15 @@
     packages = with pkgs; [
     ];
   };
-
   services.getty.autologinUser = "mike";
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
   services.xserver.enable = true;
-
-  environment.systemPackages = with pkgs; [
-   firefox
-  ];
-
-  system.stateVersion = "24.05";
+  environment.systemPackages = with pkgs; [ ];
+  xdg.portal.wlr.enable = true;
+  kitty.enable = true;
+  firefox.enable = true;
+  hyprland.enable = true;
 }
