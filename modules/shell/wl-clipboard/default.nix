@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   options = {
@@ -7,9 +7,9 @@
 
   config = lib.mkIf (config.wl-clipboard.enable) {
     home-manager.users.${config.user} = {
-      home.packages.wl-clipboard = {
-        enable = true;
-      };
+      home.packages = with pkgs; [
+        wl-clipboard
+      ];
     };
   };
 }
