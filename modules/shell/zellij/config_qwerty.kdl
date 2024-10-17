@@ -39,11 +39,11 @@ keybinds clear-defaults=true {
         bind "," { SwitchToMode "RenamePane"; PaneNameInput 0; }
         bind "$" { SwitchToMode "RenameTab"; TabNameInput 0; }
         // Tab
-        bind "a" { GoToTab 1; SwitchToMode "Normal"; }
-        bind "s" { GoToTab 2; SwitchToMode "Normal"; }
-        bind "d" { GoToTab 3; SwitchToMode "Normal"; }
-        bind "f" { GoToTab 4; SwitchToMode "Normal"; }
-        bind "g" { GoToTab 5; SwitchToMode "Normal"; }
+        bind "1" { GoToTab 1; SwitchToMode "Normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "Normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "Normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "Normal"; }
     }
     scroll {
         bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }

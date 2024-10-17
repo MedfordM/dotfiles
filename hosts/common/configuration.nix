@@ -1,6 +1,22 @@
-{ config, lib, pkgs, home-manager, ... }:
+{ config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ../../modules/shell/alias
+    ../../modules/shell/var
+    ../../modules/shell/starship
+    ../../modules/shell/zsh
+    ../../modules/shell/bat
+    ../../modules/shell/git
+    ../../modules/shell/nvim
+    ../../modules/shell/zellij
+    ../../modules/shell/zoxide
+
+    ../../modules/applications/kitty
+
+    ../../modules/services/windowManagers/hyprland
+  ];
+
   options = {
     user = lib.mkOption {
       type = lib.types.str;
@@ -19,6 +35,15 @@
           else
           "/home/${config.user}");
     };
+
+    layout = lib.mkOption {
+      type = lib.types.str;
+      description = "Keyboard layout";
+      default = (if pkgs.stdenv.isDarwin then
+          "QWERTY"
+          else
+          "COLEMAK");
+    };
   };
   
   config = {
@@ -29,6 +54,7 @@
       neovim
       ripgrep
       fzf
+      fd
     ];
 
     environment.variables.EDITOR = "nvim";
@@ -46,6 +72,16 @@
     home-manager.backupFileExtension = "backup";
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
-    home-manager.users.${config.user} = import ../../home.nix { inherit config pkgs home-manager; };
+
+    home-manager.users.${config.user} = {
+      home.stateVersion = "24.05";
+      home.username = config.user;
+      home.homeDirectory = config.homeDirectory;
+      home.packages = [
+        pkgs.jq
+      ];
+      programs.eza.enable = true;
+      programs.home-manager.enable = true;
+    };
   };
 }

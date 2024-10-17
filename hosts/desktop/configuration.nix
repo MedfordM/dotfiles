@@ -45,30 +45,17 @@
   };
 
   services.getty.autologinUser = "mike";
-
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
   };
-
-  services.xserver = {
-    enable = true;
-  };
+  services.xserver.enable = true;
 
   environment.systemPackages = with pkgs; [
-   kitty
    waybar
    wofi
    firefox
   ];
 
-  programs.sway.enable = true;
-  xdg.portal.wlr.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }
