@@ -21,6 +21,7 @@
     ../../modules/shell/zookeeper
     ../../modules/shell/gcloud
     ../../modules/shell/pre-commit
+    ../../modules/shell/pamixer
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox

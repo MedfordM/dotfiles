@@ -44,8 +44,10 @@
   environment.systemPackages = with pkgs; [ ];
   xdg.portal.wlr.enable = true;
   virtualisation.docker.enable = true;
+
   kitty.enable = true;
   firefox.enable = true;
   hyprland.enable = true;
   pavucontrol.enable = true;
+  pamixer.enable = true;
 }
