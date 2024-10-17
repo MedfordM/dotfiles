@@ -2,7 +2,7 @@
 
 {
   home-manager.users.${config.user} = {
-    xdg.configFile.gitConfig = {
+    xdg.configFile.git = {
       source = ../../../config/git;
     };
   };
