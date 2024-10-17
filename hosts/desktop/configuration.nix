@@ -50,4 +50,5 @@
   hyprland.enable = true;
   pavucontrol.enable = true;
   pamixer.enable = true;
+  flameshot.enable = true;
 }

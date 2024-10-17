@@ -26,6 +26,7 @@
     ../../modules/applications/kitty
     ../../modules/applications/firefox
     ../../modules/applications/pavucontrol
+    ../../modules/applications/flameshot
 
     ../../modules/services/windowManagers/hyprland
     ../../modules/shell/var
