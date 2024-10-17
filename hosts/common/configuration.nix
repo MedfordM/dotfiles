@@ -18,6 +18,7 @@
     ../../modules/shell/clickhouse
     ../../modules/shell/postgresql
     ../../modules/shell/zookeeper
+    ../../modules/shell/gcloud
     ../../modules/shell/zsh
 
     ../../modules/applications/kitty
