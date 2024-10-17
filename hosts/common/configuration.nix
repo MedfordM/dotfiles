@@ -16,6 +16,7 @@
     ../../modules/shell/maven
     ../../modules/shell/java
     ../../modules/shell/clickhouse
+    ../../modules/shell/postgresql
     ../../modules/shell/zsh
 
     ../../modules/applications/kitty
