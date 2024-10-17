@@ -66,6 +66,7 @@
       neovim
       ripgrep
       fd
+      unzip
     ];
     environment.variables.EDITOR = "nvim";
     environment.pathsToLink = [ "/share/zsh" ];
