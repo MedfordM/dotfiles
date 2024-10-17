@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -59,10 +59,19 @@
   };
   
   config = {
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+      };
+      overlays = [
+        inputs.neovim-nightly.overlays.default
+      ];
+    };
     environment.systemPackages = with pkgs; [ 
       gnumake
       gcc
       git
+      # inputs.neovim-nightly.packages.${pkgs.system}.default
       neovim
       ripgrep
       fd
@@ -70,8 +79,11 @@
     ];
     environment.variables.EDITOR = "nvim";
     environment.pathsToLink = [ "/share/zsh" ];
-    nixpkgs.config.allowUnfree = true;
-    nix.settings.experimental-features = "nix-command flakes";
+
+    nix.settings = {
+      warn-dirty = false;
+      experimental-features = "nix-command flakes";
+    };
 
     users.users.${config.user} = {
       home = config.homeDirectory;

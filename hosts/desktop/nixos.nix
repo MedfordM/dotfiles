@@ -8,4 +8,5 @@ inputs.nixpkgs.lib.nixosSystem {
 		./configuration.nix
     ../common/configuration.nix
 	];
+  specialArgs = { inherit inputs; };
 }
