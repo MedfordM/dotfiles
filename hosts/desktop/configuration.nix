@@ -52,8 +52,6 @@
   services.xserver.enable = true;
 
   environment.systemPackages = with pkgs; [
-   waybar
-   wofi
    firefox
   ];
 

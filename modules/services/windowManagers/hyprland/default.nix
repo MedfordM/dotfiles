@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   options = {
@@ -17,6 +17,10 @@
         enable = true;
         xwayland.enable = true;
       };
+      home.packages = with pkgs; [
+        waybar
+        wofi
+      ];
     };
   };
 }

@@ -13,6 +13,7 @@
     ../../modules/shell/zoxide
 
     ../../modules/applications/kitty
+    ../../modules/applications/firefox
 
     ../../modules/services/windowManagers/hyprland
   ];
