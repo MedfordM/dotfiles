@@ -11,6 +11,7 @@
     ../../modules/shell/nvim
     ../../modules/shell/zellij
     ../../modules/shell/zoxide
+    ../../modules/shell/fzf
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
@@ -57,11 +58,9 @@
       fzf
       fd
     ];
-
     environment.variables.EDITOR = "nvim";
     environment.pathsToLink = [ "/share/zsh" ];
     programs.zsh.enable = true;
-
     nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = "nix-command flakes";
 
