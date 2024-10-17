@@ -47,4 +47,5 @@
   kitty.enable = true;
   firefox.enable = true;
   hyprland.enable = true;
+  pavucontrol.enable = true;
 }

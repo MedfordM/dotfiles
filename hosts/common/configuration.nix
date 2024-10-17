@@ -24,6 +24,7 @@
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
+    ../../modules/applications/pavucontrol
 
     ../../modules/services/windowManagers/hyprland
   ];
