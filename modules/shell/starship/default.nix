@@ -7,8 +7,9 @@
       target = "./starship.toml";
     };
 
-    home.packages = [
-      pkgs.starship
-    ];
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
