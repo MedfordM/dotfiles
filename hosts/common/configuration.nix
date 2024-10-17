@@ -2,8 +2,8 @@
 
 {
   imports = [
+    ../../modules/shell/zsh
     ../../modules/shell/alias
-    ../../modules/shell/var
     ../../modules/shell/starship
     ../../modules/shell/bat
     ../../modules/shell/git
@@ -15,18 +15,19 @@
     ../../modules/shell/eza
     ../../modules/shell/maven
     ../../modules/shell/java
+    ../../modules/shell/python
     ../../modules/shell/clickhouse
     ../../modules/shell/postgresql
     ../../modules/shell/zookeeper
     ../../modules/shell/gcloud
     ../../modules/shell/pre-commit
-    ../../modules/shell/zsh
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
     ../../modules/applications/pavucontrol
 
     ../../modules/services/windowManagers/hyprland
+    ../../modules/shell/var
   ];
 
   options = {
@@ -78,19 +79,14 @@
       unzip
     ];
     environment.variables.EDITOR = "nvim";
-    environment.pathsToLink = [ "/share/zsh" ];
+    # environment.pathsToLink = [ "/share/zsh" ];
 
     nix.settings = {
       warn-dirty = false;
       experimental-features = "nix-command flakes";
     };
 
-    users.users.${config.user} = {
-      home = config.homeDirectory;
-      shell = pkgs.zsh;
-    };
     programs.zsh.enable = true;
-
     home-manager.backupFileExtension = "backup";
     home-manager.useGlobalPkgs = true;
     home-manager.useUserPackages = true;
@@ -102,5 +98,11 @@
       home.packages = [ ];
       programs.home-manager.enable = true;
     };
+
+    users.users.${config.user} = {
+      home = config.homeDirectory;
+      shell = pkgs.zsh;
+    };
+
   };
 }

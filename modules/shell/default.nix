@@ -1,17 +1,8 @@
-{ lib, home-manager, pkgs, home, config, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./zsh
-    ./alias
-    ./var
-  ];
+  imports = [];
 
-  config = {
-    home.file.profile = {
-      source = ./profile;
-      target = "./.profile";
-    };
-  };
+  config = { };
 
 }
