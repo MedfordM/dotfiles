@@ -12,6 +12,8 @@
     ../../modules/shell/zellij
     ../../modules/shell/zoxide
     ../../modules/shell/fzf
+    ../../modules/shell/jq
+    ../../modules/shell/eza
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
@@ -77,10 +79,7 @@
       home.stateVersion = "24.05";
       home.username = config.user;
       home.homeDirectory = config.homeDirectory;
-      home.packages = [
-        pkgs.jq
-      ];
-      programs.eza.enable = true;
+      home.packages = [ ];
       programs.home-manager.enable = true;
     };
   };
