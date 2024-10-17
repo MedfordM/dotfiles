@@ -3,7 +3,7 @@
 {
   home-manager.users.${config.user} = {
     xdg.configFile.starship = {
-      source = ./starship.toml;
+      source = ../../../config/starship.toml;
       target = "./starship.toml";
     };
 
