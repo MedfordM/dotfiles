@@ -4,15 +4,15 @@
   home-manager.users.${config.user} = {
     xdg.configFile.zellijConfig = {
       source = (if config.layout == "QWERTY" then
-          ./config_qwerty.kdl
+          ../../../config/zellij/config_qwerty.kdl
           else
-          ./config.kdl
+          ../../../config/zellij/config.kdl
           );
       target = "./zellij/config.kdl";
     };
 
     xdg.configFile.zellijLayouts = {
-      source = ./layouts;
+      source = ../../../config/zellij/layouts;
       target = "./zellij/layouts";
     };
 
