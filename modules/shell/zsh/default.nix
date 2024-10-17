@@ -15,9 +15,9 @@
           expireDuplicatesFirst = true;
           ignoreDups = true;
         };
-        historySubstringSearch = {
-          enable = true;
-        };
+        # historySubstringSearch = {
+        #   enable = true;
+        # };
         initExtra = ''
           autoload -U up-line-or-beginning-search
           autoload -U down-line-or-beginning-search
