@@ -53,4 +53,5 @@
   flameshot.enable = true;
   wl-clipboard.enable = true;
   slack.enable = true;
+  blueman.enable = true;
 }

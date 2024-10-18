@@ -23,6 +23,7 @@
     ../../modules/shell/pre-commit
     ../../modules/shell/pamixer
     ../../modules/shell/wl-clipboard
+    ../../modules/shell/var
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
@@ -31,7 +32,7 @@
     ../../modules/applications/slack
 
     ../../modules/services/windowManagers/hyprland
-    ../../modules/shell/var
+    ../../modules/services/blueman
   ];
 
   options = {
