@@ -77,7 +77,6 @@
       gnumake
       gcc
       git
-      # inputs.neovim-nightly.packages.${pkgs.system}.default
       neovim
       ripgrep
       fd
