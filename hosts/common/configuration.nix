@@ -23,6 +23,7 @@
     ../../modules/shell/pre-commit
     ../../modules/shell/pamixer
     ../../modules/shell/wl-clipboard
+    ../../modules/shell/node
     ../../modules/shell/var
 
     ../../modules/applications/kitty
