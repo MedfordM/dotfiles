@@ -21,7 +21,7 @@ layout {
     }
   }
   pane_template name="Maven_Command" {
-    command "mvnd"
+    command "mvn"
   }
   tab name="Services (Dev-Eve)" {
     pane split_direction="vertical" {
