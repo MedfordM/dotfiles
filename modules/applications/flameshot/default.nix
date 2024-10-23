@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   options = {
@@ -7,8 +7,12 @@
 
   config = lib.mkIf (config.flameshot.enable) {
     home-manager.users.${config.user} = {
+      home.packages = with pkgs; [
+        grim
+      ];
       services.flameshot = {
         enable = true;
+        package = pkgs.flameshot.overrideAttrs {enableWlrSupport = true;};
       };
     };
   };
