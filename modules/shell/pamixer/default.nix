@@ -5,7 +5,7 @@
     pamixer.enable = lib.mkEnableOption "pamixer";
   };
   
-  config = lib.mkIf config.firefox.enable {
+  config = lib.mkIf config.pamixer.enable {
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
         pamixer
