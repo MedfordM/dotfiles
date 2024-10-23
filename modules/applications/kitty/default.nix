@@ -54,8 +54,6 @@
           font_features FiraCodeRoman-Regular +ss02 +ss03 +ss04 +cv02 +cv06 +cv16 +cv25 +cv26 +cv28 +cv29 +cv30 +cv32
           include theme.conf
           mouse_map kitty_mod+left press grabbed mouse_selection rectangle
-          mouse_map shift+left press ungrabbed,grabbed mouse_selection normal
-          mouse_map ctrl+shift+alt+left press ungrabbed,grabbed mouse_selection rectangle
           '';
       };
     };
