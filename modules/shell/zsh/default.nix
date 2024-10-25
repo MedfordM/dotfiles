@@ -31,7 +31,10 @@
           bindkey -M viins "\\e[B" down-line-or-beginning-search
           bindkey -M viins "\\eOA" up-line-or-beginning-search
           bindkey -M viins "\\eOB" down-line-or-beginning-search
-          bindkey -M vicmd "\\e[110;;110u" down
+          bindkey -M vicmd h vi-backward-char
+          bindkey -M vicmd n down-line
+          bindkey -M vicmd e up-line
+          bindkey -M vicmd i vi-forward-char
         '';
       };
     };
