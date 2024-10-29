@@ -9,6 +9,7 @@
     home-manager.users.${config.user} = {
       home.packages = with pkgs; [
         grim
+        slurp
       ];
       services.flameshot = {
         enable = true;
