@@ -17,9 +17,6 @@ return
         return {
           cmd = {
             javaBin,
-            -- '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-            -- '-Dosgi.bundles.defaultStartLevel=4',
-            -- '-Declipse.product=org.eclipse.jdt.ls.core.product',
             '-Dlog.protocol=true',
             '-Dlog.level=ALL',
             '-XX:+UseParallelGC',
@@ -28,14 +25,7 @@ return
             '-Dsun.zip.disableMemoryMapping=true',
             '-Djava.import.generatesMetadataFilesAtProjectRoot=false',
             '-Xmx16G',
-            -- '-Xms100m',
-            -- '--add-modules=ALL-SYSTEM',
-            -- '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-            -- '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-            -- '-jar', vim.fn.glob(jdtlsLocation .. 'plugins/org.eclipse.equinox.launcher_*.jar', true),
-            -- '-configuration', jdtlsLocation .. 'config_linux',
             '-data', workspace_dir
-            --'-javaagent:/home/mike/.local/share/lombok.jar',
           },
 
           root_dir = vim.fn.getcwd(),
@@ -124,8 +114,8 @@ return
           },
           init_options = {
             bundles = {
-              -- vim.fn.glob('/home/mike/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
-              -- vim.fn.glob("/path/to/microsoft/vscode-java-test/server/*.jar", true)
+              vim.fn.glob('/home/mike/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
+              vim.fn.glob("/home/mike/.local/share/vscode-java-test/server/*.jar", true)
             };
           },
         }
@@ -133,7 +123,7 @@ return
       config = function(_, opts)
         opts['on_attach'] = function(_, _)
           require("jdtls").setup_dap({ hotcodereplace = "auto" })
-          -- vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
+          vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
         end
 
         local startJdtls = function(config)

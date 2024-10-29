@@ -15,7 +15,7 @@ return {
           java = {
             {
               projectName = "assortment-api",
-              javaExec = "/home/mike/.sdkman/candidates/java/current/bin/java",
+              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
               mainClass = "com.darwin.web.Main",
               vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
               name = "assortment-api",
@@ -25,7 +25,7 @@ return {
             },
             {
               projectName = "assortment-planner",
-              javaExec = "/home/mike/.sdkman/candidates/java/current/bin/java",
+              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
               mainClass = "com.darwin.service.planningService.Main",
               vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
               name = "assortment-planner",
@@ -35,7 +35,7 @@ return {
             },
             {
               projectName = "mfp-api",
-              javaExec = "/home/mike/.sdkman/candidates/java/current/bin/java",
+              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
               mainClass = "com.s5stratos.mfp.api.Main",
               -- vmArgs = '-Dconfig.file=/home/mike/Source/mfp-server/localFiles/local.conf',
               name = "mfp-api",
@@ -45,7 +45,7 @@ return {
             },
             {
               projectName = "mfp-maintenance",
-              javaExec = "/home/mike/.sdkman/candidates/java/current/bin/java",
+              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
               mainClass = "com.s5stratos.mfp.maintenance.Main",
               vmArgs = '-Dexec.args="db migrate"',
               name = "mfp-maintenance",
