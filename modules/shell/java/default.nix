@@ -5,7 +5,7 @@
     home-manager.users.${config.user} = {
       programs.java = {
         enable = true;
-        package = pkgs.jdk22;
+        package = pkgs.jdk21;
       };
       home.packages = with pkgs; [
         jdt-language-server
