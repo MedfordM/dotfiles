@@ -1,0 +1,65 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="tab-bar"
+    }
+    children
+  }
+  pane_template name="GCloud_Function" {
+    cwd "/home/mike/Source/scripts"
+    command "./gcloud-functions.sh"
+  }
+  pane_template stacked=true name="Proxies" {
+    GCloud_Function name="Postgres Proxy" {
+      args "proxy" "postgres" "qa"
+    }
+    GCloud_Function name="Clickhouse Proxy" {
+      args "proxy" "clickhouse" "qa"
+    }
+    GCloud_Function name="Zookeeper Proxy" {
+      args "proxy" "zookeeper" "qa"
+    }
+    GCloud_Function name="UI Proxy" {
+      args "proxy" "ui" "qa-eve"
+    }
+  }
+  pane_template name="Maven_Command" {
+    command "mvn"
+  }
+  tab name="Services (QA-Eve)" {
+    pane split_direction="vertical" {
+      pane split_direction="horizontal" size="80%"{
+        pane split_direction="vertical" size="34%"{
+          Maven_Command {
+            name "Maven Install"
+            args "clean" "install" "-DskipTests" "-o"
+          }
+          Maven_Command {
+            name "Maven Test"
+            args "surefire:test"
+            start_suspended true
+          }
+        }
+        pane name="Shell" focus=true
+      }
+      pane split_direction="horizontal" {
+        Proxies
+        pane {
+          name "Postgres"
+            command "bash"
+            args "-c" "source $API_ENV; sleep 3; psql -h localhost"
+        }
+        pane {
+          name "Clickhouse"
+          command "bash"
+          args "-c" "sleep 10; clickhouse-client"
+        }
+      }
+    }
+  }
+}
+env {
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-eve-api.sh"
+  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-eve-mfp.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-eve-planner.sh"
+}
