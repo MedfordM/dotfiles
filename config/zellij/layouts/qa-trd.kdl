@@ -16,12 +16,15 @@ layout {
     GCloud_Function name="Clickhouse Proxy" {
       args "proxy" "clickhouse" "qa"
     }
+    GCloud_Function name="Zookeeper Proxy" {
+      args "proxy" "zookeeper" "qa"
+    }
     GCloud_Function name="UI Proxy" {
       args "proxy" "ui" "qa-trd"
     }
   }
   pane_template name="Maven_Command" {
-    command "mvnd"
+    command "mvn"
   }
   tab name="Services (QA-Trd)" {
     pane split_direction="vertical" {
