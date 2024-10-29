@@ -16,6 +16,9 @@ layout {
     GCloud_Function name="Clickhouse Proxy" {
       args "proxy" "clickhouse" "dev"
     }
+    GCloud_Function name="Zookeeper Proxy" {
+      args "proxy" "zookeeper" "dev"
+    }
     GCloud_Function name="UI Proxy" {
       args "proxy" "ui" "dev-eve"
     }
