@@ -7,5 +7,6 @@ inputs.darwin.lib.darwinSystem {
     ../common/configuration.nix
     ./configuration.nix
   ];
+  specialArgs = { inherit inputs; };
 }
 
