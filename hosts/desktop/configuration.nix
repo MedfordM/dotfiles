@@ -7,6 +7,8 @@
 {
   imports = [
     ../../modules/applications/pavucontrol
+    ../../modules/applications/thunar
+    ../../modules/applications/spotify
     ../../modules/services/windowManagers/hyprland
     ../../modules/services/blueman
   ];
