@@ -6,9 +6,7 @@
   };
 
   config = lib.mkIf (config.thunar.enable) {
-    environment.systemPackages = with pkgs; [
-      gvfs
-    ];
+    services.gvfs.enable = true;
     programs.thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
