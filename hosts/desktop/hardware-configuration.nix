@@ -7,7 +7,6 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot.loader.grub.default = "saved";
-  boot.loader.systemd-boot.configurationLimit = 2;
   boot.initrd.availableKernelModules = [
     "vmd"
     "xhci_pci"
