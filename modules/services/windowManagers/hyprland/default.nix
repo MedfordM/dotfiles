@@ -6,11 +6,11 @@
   };
 
   config = lib.mkIf (config.hyprland.enable) {
-    programs.sway.enable = true;
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
     };
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     home-manager.users.${config.user} = {
       xdg.configFile.hyprland = {
         source = ../../../../config/hyprland/hyprland.conf;
