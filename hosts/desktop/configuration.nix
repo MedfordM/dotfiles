@@ -12,6 +12,7 @@
     ../../modules/applications/mission-center
     ../../modules/services/windowManagers/hyprland
     ../../modules/services/blueman
+    ../../modules/shell/nvtop
   ];
 
   config = {
