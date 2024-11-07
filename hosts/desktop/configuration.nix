@@ -9,6 +9,7 @@
     ../../modules/applications/pavucontrol
     ../../modules/applications/thunar
     ../../modules/applications/spotify
+    ../../modules/applications/mission-center
     ../../modules/services/windowManagers/hyprland
     ../../modules/services/blueman
   ];
@@ -65,5 +66,6 @@
     blueman.enable = true;
     thunar.enable = true;
     spotify.enable = true;
+    mission-center.enable = true;
   };
 }
