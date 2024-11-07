@@ -6,10 +6,11 @@
   };
 
   config = lib.mkIf (config.thunar.enable) {
-    home-manager.users.${config.user} = {
-      home.packages = with pkgs; [
-        xfce.thunar
-        xfce.thunar-volman
+    programs.thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
       ];
     };
   };
