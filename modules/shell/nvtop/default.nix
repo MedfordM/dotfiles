@@ -2,10 +2,10 @@
 
 {
   options = {
-    thunar.enable = lib.mkEnableOption "thunar";
+    nvtop.enable = lib.mkEnableOption "nvtop";
   };
 
-  config = lib.mkIf (config.thunar.enable) {
+  config = lib.mkIf (config.nvtop.enable) {
     environment.systemPackages = [
       pkgs.nvtopPackages.nvidia
     ];

@@ -68,5 +68,6 @@
     thunar.enable = true;
     spotify.enable = true;
     mission-center.enable = true;
+    nvtop.enable = true;
   };
 }
