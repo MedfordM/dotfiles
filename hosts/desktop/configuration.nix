@@ -62,5 +62,6 @@
     slack.enable = true;
     blueman.enable = true;
     thunar.enable = true;
+    spotify.enable = true;
   };
 }
