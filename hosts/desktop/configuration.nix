@@ -61,5 +61,6 @@
     wl-clipboard.enable = true;
     slack.enable = true;
     blueman.enable = true;
+    thunar.enable = true;
   };
 }
