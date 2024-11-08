@@ -25,6 +25,7 @@
     ../../modules/shell/wl-clipboard
     ../../modules/shell/node
     ../../modules/shell/var
+    ../../modules/shell/kube
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
