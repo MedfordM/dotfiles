@@ -6,20 +6,11 @@
 	defaultBranch = main
 [push]
   default = current
-[branch]
-	autoSetupMerge = inherit
 [fetch]
   all = true
   parallel = 0
 [remote]
   pushDefault = origin
-[diff]
-  tool = nvimdiff
-  algorithm = minimal
-[difftool "nvimdiff"]
-  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
-[merge]
-  tool = nvimdiff2
 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
     path = config-personal
@@ -30,4 +21,6 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:rzeigler/**"]
     path = config-work
 [includeIf "hasconfig:remote.*.url:git@github.com:munkith-abid/**"]
+    path = config-work
+[includeIf "hasconfig:remote.*.url:git@github.com:denverpierce/**"]
     path = config-work
