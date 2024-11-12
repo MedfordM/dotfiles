@@ -99,6 +99,10 @@
       home.homeDirectory = config.homeDirectory;
       home.packages = [ ];
       programs.home-manager.enable = true;
+      programs.nix-index = {
+        enable = true;
+        enableZshIntegration = true;
+      };
     };
 
     users.users.${config.user} = {
