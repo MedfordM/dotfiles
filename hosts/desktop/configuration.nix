@@ -52,9 +52,12 @@
       wayland.enable = true;
     };
     services.xserver.enable = true;
-    environment.systemPackages = with pkgs; [ ];
     xdg.portal.wlr.enable = true;
     virtualisation.docker.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      github-runner
+    ];
 
     kitty.enable = true;
     firefox.enable = true;
@@ -69,5 +72,6 @@
     spotify.enable = true;
     mission-center.enable = true;
     nvtop.enable = true;
+
   };
 }
