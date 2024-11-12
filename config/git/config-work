@@ -8,4 +8,4 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 [safe]
-  directory = /home/mike/.github-runner/_work/*
+  directory = /home/mike/.github-runner/_work/deployment-configs/deployment-configs
