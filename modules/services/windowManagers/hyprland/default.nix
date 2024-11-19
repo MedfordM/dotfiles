@@ -12,7 +12,10 @@
     };
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
     home-manager.users.${config.user} = {
-      services.mako.enable = true;
+      services.mako = {
+        enable = true;
+        defaultTimeout = 3500;
+      };
       xdg.configFile.hyprland = {
         source = ../../../../config/hyprland/hyprland.conf;
         target = "./hypr/hyprland.conf";
