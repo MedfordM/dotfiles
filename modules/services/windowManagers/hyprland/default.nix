@@ -20,6 +20,10 @@
         source = ../../../../config/hyprland/hyprland.conf;
         target = "./hypr/hyprland.conf";
       };
+      xdg.configFile.hyprlandThemes = {
+        source = ../../../../config/hyprland/themes;
+        target = "./hypr/themes";
+      };
       home.packages = with pkgs; [
         waybar
         wofi
