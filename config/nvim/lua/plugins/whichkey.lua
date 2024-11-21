@@ -15,18 +15,16 @@ return {
         },
       },
       operators = { gc = 'Comments' },
-      key_labels = {
-        ['<space>'] = 'SPACE',
-        ['<cr>'] = 'ENTER',
-        ['<tab>'] = 'TAB',
+      replace = {
+        key = {
+          { "<Space>", "SPACE" },
+          { "<CR>", "ENTER" },
+          { "<Tab>", "TAB" },
+        }
       },
-      motions = {
-        count = true
-      },
-      window = {
+      win = {
         border = 'single'
       },
-      ignore_missing = true,
     },
     config = function(opts)
       local which_key = require('which-key')
@@ -34,6 +32,11 @@ return {
       which_key.add({
         { "<leader>c", group = "Code" },
         { "<leader>cd", group = "Diagnostics" },
+        { "<leader>b", group = "Buffer" },
+        { "<leader>f", group = "Find" },
+        { "<leader>g", group = "Git" },
+        { "<leader>gd", group = "Git Diff" },
+        { "<leader>cs", group = "Swap" },
       })
     end
   }

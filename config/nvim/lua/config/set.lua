@@ -1,7 +1,7 @@
 vim.opt.nu             = true
 vim.opt.relativenumber = false
 vim.opt.timeout        = true
-vim.opt.timeoutlen     = 300
+vim.opt.timeoutlen     = 750
 vim.opt.tabstop        = 2
 vim.opt.softtabstop    = 2
 vim.opt.shiftwidth     = 2

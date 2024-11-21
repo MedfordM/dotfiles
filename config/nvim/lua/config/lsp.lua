@@ -95,13 +95,13 @@ vim.keymap.set('n', 'gs', function()
   vim.lsp.buf.document_symbol()
 end)
 
-vim.keymap.set('n', ']d', function()
-  vim.diagnostic.jump({count = 1, float=true})
-end)
-
-vim.keymap.set('n', '[d', function()
-  vim.diagnostic.jump({count = -1, float=true})
-end)
+-- vim.keymap.set('n', ']d', function()
+--   vim.diagnostic.jump({count = 1, float=true})
+-- end)
+--
+-- vim.keymap.set('n', '[d', function()
+--   vim.diagnostic.jump({count = -1, float=true})
+-- end)
 
 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename symbol' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Quick action' })

@@ -1,11 +1,11 @@
 ; extends
 
-; Inject SQL into strings where special keyword pattern is found.
 (
     [
-     (string_fragment)
-     (multiline_string_fragment)
+        (string_fragment)
+        (multiline_string_fragment)
     ] @injection.content
-    (#match? @injection.content "(SELECT|INSERT|UPDATE|DELETE).+(FROM|INTO|VALUES|SET).*(WHERE|GROUP BY)?")
+    (#match? @injection.content "(\n)?(SELECT|INSERT|UPDATE|DELETE).+(FROM|INTO|VALUES|SET).*(WHERE|GROUP BY)?")
+    (#offset! @injection.content 0 0 0 0)
     (#set! injection.language "sql")
 )

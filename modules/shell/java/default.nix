@@ -9,6 +9,7 @@
       };
       home.packages = with pkgs; [
         jdt-language-server
+        groovy
       ];
       home.sessionVariables = {
         JDTLS="${pkgs.jdt-language-server}";
