@@ -22,7 +22,7 @@ layout {
     }
   }
   pane_template name="Maven_Command" {
-    command "mvnd"
+    command "mvn"
   }
   tab name="Services (QA-BelkAP)" {
     pane split_direction="vertical" {
