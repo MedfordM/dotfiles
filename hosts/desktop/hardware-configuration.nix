@@ -17,7 +17,18 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "nvidia"
+    "nvidia_modeset"
+    "nvidia_uvm"
+    "nvidia_drm"
+  ];
+  boot.extraModprobeConfig = 
+  ''
+    options nvidia_drm modeset=1 fbdev=1  
+  '';
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
@@ -57,7 +68,7 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    powerManagement.enable = true;
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;

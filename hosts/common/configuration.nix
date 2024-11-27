@@ -86,9 +86,16 @@
     environment.variables.EDITOR = "nvim";
     # environment.pathsToLink = [ "/share/zsh" ];
 
-    nix.settings = {
-      warn-dirty = false;
-      experimental-features = "nix-command flakes";
+    nix = {
+      settings = {
+        warn-dirty = false;
+        experimental-features = "nix-command flakes";
+      };
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 30d";
+      };
     };
 
     programs.zsh.enable = true;

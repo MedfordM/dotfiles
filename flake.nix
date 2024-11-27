@@ -22,6 +22,7 @@
 
     homeConfigurations = {
       michaelmedford = darwinConfigurations."Michaels-MacBook-Pro".config.home-manager.users.michaelmedford.home;
+      mike = nixosConfigurations.nixos.config.home-manager.users.mike.home;
     };
   };
 }
