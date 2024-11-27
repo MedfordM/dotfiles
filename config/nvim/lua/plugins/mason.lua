@@ -13,6 +13,16 @@ return {
             capabilities = capabilities
           })
         end,
+        ['clangd'] = function()
+          local capabilities = require('cmp_nvim_lsp').default_capabilities()
+          require('lspconfig').clangd.setup({
+            capabilities = capabilities,
+            cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+            init_options = {
+              fallbackFlags = { '-std=c++17' },
+            },
+          })
+        end,
         ['ts_ls'] = function()
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
           require('lspconfig').ts_ls.setup({
@@ -85,6 +95,7 @@ return {
           end,
         }
       })
+      lspconfig.clangd.setup{}
     end
   },
 }

@@ -16,7 +16,9 @@
   ];
 
   config = {
-    system.stateVersion = "24.05";
+    system.stateVersion = "24.11";
+    system.autoUpgrade.enable = true;
+    system.autoUpgrade.allowReboot  = true;
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     networking.hostName = "nixos"; # Define your hostname.

@@ -104,7 +104,7 @@
     home-manager.useUserPackages = true;
 
     home-manager.users.${config.user} = {
-      home.stateVersion = "24.05";
+      home.stateVersion = "24.11";
       home.username = config.user;
       home.homeDirectory = config.homeDirectory;
       home.packages = [ ];

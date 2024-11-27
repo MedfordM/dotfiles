@@ -4,7 +4,7 @@
   home-manager.users.${config.user} = {
     programs.eza = {
       enable = true;
-      icons = true;
+      icons = "auto";
       git = true;
     };
   };
