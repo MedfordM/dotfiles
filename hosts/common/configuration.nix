@@ -26,12 +26,14 @@
     ../../modules/shell/node
     ../../modules/shell/var
     ../../modules/shell/kube
+    ../../modules/shell/brightnessctl
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
     ../../modules/applications/flameshot
     ../../modules/applications/slack
     ../../modules/applications/discord
+    ../../modules/applications/nwg-look
   ];
 
   options = {

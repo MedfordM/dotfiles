@@ -73,5 +73,7 @@
     spotify.enable = true;
     mission-center.enable = true;
     nvtop.enable = true;
+    brightnessctl.enable = true;
+    nwg-look.enable = true;
   };
 }
