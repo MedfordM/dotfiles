@@ -31,6 +31,7 @@
     ../../modules/applications/firefox
     ../../modules/applications/flameshot
     ../../modules/applications/slack
+    ../../modules/applications/discord
   ];
 
   options = {

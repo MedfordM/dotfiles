@@ -67,11 +67,11 @@
     flameshot.enable = true;
     wl-clipboard.enable = true;
     slack.enable = true;
+    discord.enable = true;
     blueman.enable = true;
     thunar.enable = true;
     spotify.enable = true;
     mission-center.enable = true;
     nvtop.enable = true;
-
   };
 }
