@@ -1,7 +1,8 @@
 local project_name = vim.fn.getcwd()
-local workspace_dir = '/home/mike/.cache/jdtls/workspace/' .. project_name
+local home = vim.fn.getenv('HOME')
+local workspace_dir = home ..  '/.cache/jdtls/workspace/' .. project_name
 local javaBin = 'jdtls'
-local jdtlsLocation = vim.fn.getenv('JDTLS') .. '/share/java/jdtls/'
+local jdtlsLocation = vim.fn.getenv('JDTLS')-- .. '/share/java/jdtls/'
 
 return
   {
@@ -16,7 +17,7 @@ return
       opts = function()
         return {
           cmd = {
-            javaBin,
+            jdtlsLocation .. '/bin/' .. javaBin,
             '-Dlog.protocol=true',
             '-Dlog.level=ALL',
             '-XX:+UseParallelGC',
@@ -114,8 +115,8 @@ return
           },
           init_options = {
             bundles = {
-              vim.fn.glob('/home/mike/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
-              vim.fn.glob("/home/mike/.local/share/vscode-java-test/server/*.jar", true)
+              vim.fn.glob(home .. '/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
+              vim.fn.glob(home .. "/.local/share/vscode-java-test/server/*.jar", true)
             };
           },
         }
