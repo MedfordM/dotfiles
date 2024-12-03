@@ -25,7 +25,6 @@
     ../../modules/shell/wl-clipboard
     ../../modules/shell/node
     ../../modules/shell/var
-    ../../modules/shell/kube
     ../../modules/shell/brightnessctl
 
     ../../modules/applications/kitty
@@ -93,7 +92,6 @@
       };
       gc = {
         automatic = true;
-        dates = "weekly";
         options = "--delete-older-than 30d";
       };
     };
