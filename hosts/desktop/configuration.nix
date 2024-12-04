@@ -78,5 +78,6 @@
     nvtop.enable = true;
     brightnessctl.enable = true;
     nwg-look.enable = true;
+    obs.enable = true;
   };
 }

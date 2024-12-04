@@ -32,6 +32,7 @@
     ../../modules/applications/flameshot
     ../../modules/applications/slack
     ../../modules/applications/discord
+    ../../modules/applications/obs
     ../../modules/applications/nwg-look
   ];
 
