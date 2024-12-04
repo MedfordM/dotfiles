@@ -13,6 +13,7 @@
     };
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
     home-manager.users.${config.user} = {
+      wayland.windowManager.hyprland.systemd.enable = false;
       services.mako = {
         enable = true;
         defaultTimeout = 3500;
