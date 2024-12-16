@@ -29,6 +29,7 @@
 
     ../../modules/applications/kitty
     ../../modules/applications/firefox
+    ../../modules/applications/vscode
     ../../modules/applications/flameshot
     ../../modules/applications/slack
     ../../modules/applications/discord
