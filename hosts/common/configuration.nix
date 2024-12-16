@@ -106,7 +106,12 @@
       home.stateVersion = "24.11";
       home.username = config.user;
       home.homeDirectory = config.homeDirectory;
-      home.packages = [ ];
+      home.packages = with pkgs; [
+        noto-fonts
+        noto-fonts-extra
+        noto-fonts-emoji
+      ];
+      fonts.fontconfig.enable = true;
       programs.home-manager.enable = true;
       programs.nix-index = {
         enable = true;
