@@ -1,14 +1,14 @@
 #!/bin/bash
 
-HEADPHONES='alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0'
+HEADPHONES='alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.analog-stereo'
 SPEAKERS='alsa_output.usb-Generic_USB_Audio-00.HiFi__Speaker__sink'
 
 # Get current default
 if [[ -z $1 ]]; then
   CURRENT=$(pactl get-default-sink)
-  if [ "$CURRENT" = "alsa_output.usb-Schiit_Audio_Schiit_Modi_3E-00.pro-output-0" ]; then
+  if [ "$CURRENT" = $HEADPHONES ]; then
     echo "Headphones"
-  elif [ "$CURRENT" = "alsa_output.usb-Generic_USB_Audio-00.HiFi__Speaker__sink" ]; then
+  elif [ "$CURRENT" = $SPEAKERS ]; then
     echo "Speakers"
   fi
   return

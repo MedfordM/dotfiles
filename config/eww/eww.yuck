@@ -483,7 +483,6 @@
       :halign "end" 
       :spacing 15
       (label :text {workspaces_1} )
-      (time)
     )
 	)
 )
@@ -522,6 +521,7 @@
       :halign "end" 
       :spacing 15
       (label :text {workspaces_3})
+      (time)
     )
   )
 )

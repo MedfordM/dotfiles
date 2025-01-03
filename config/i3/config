@@ -38,7 +38,7 @@ for_window [title="Welcome"] floating enable
 no_focus [class="eww-bar"]
 
 # Launch terminal
-bindsym $mod+Return exec ~/Source/scripts/kitty_theme.sh
+bindsym $mod+Return exec kitty
 
 # Search applications
 bindsym $mod+space exec --no-startup-id .config/rofi/launchers/type-1/launcher.sh

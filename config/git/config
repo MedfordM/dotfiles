@@ -1,5 +1,6 @@
 [user]
-  name = Mike Medford
+	name = Mike Medford
+	email = mike@medford.dev
 [core]
 	autocrlf = input
 [init]

@@ -6,8 +6,8 @@
 
 @import 'includes/cascade-config.css';
 @import 'includes/cascade-tabs.css';
-@import 'includes/round_ui_items.css';
-@import 'includes/rounded_menupopups.css';
+/* @import 'includes/round_ui_items.css'; */
+/* @import 'includes/rounded_menupopups.css'; */
 @import 'includes/autohide_bookmarks_and_main_toolbars.css';
 @import 'includes/hide_tabs_with_one_tab.css';
 
