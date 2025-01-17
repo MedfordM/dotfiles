@@ -14,6 +14,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export THEME=mocha
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 alias ls="exa -1 --git --icons --group-directories-first"
 alias lst="exa -1 -D --tree -D --level=2 --icons"
