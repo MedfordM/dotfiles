@@ -1,8 +1,6 @@
 local project_name = vim.fn.getcwd()
 local home = vim.fn.getenv('HOME')
 local workspace_dir = home ..  '/.cache/jdtls/workspace/' .. project_name
-local javaBin = 'jdtls'
--- local jdtlsLocation = vim.fn.getenv('JDTLS')-- .. '/share/java/jdtls/'
 
 return
   {
@@ -17,16 +15,11 @@ return
       opts = function()
         return {
           cmd = {
-            -- jdtlsLocation .. '/bin/' .. javaBin,
-            javaBin,
-            '-Dlog.protocol=true',
-            '-Dlog.level=ALL',
-            '-XX:+UseParallelGC',
-            '-XX:GCTimeRatio=4',
-            '-XX:AdaptiveSizePolicyWeight=90',
-            '-Dsun.zip.disableMemoryMapping=true',
-            '-Djava.import.generatesMetadataFilesAtProjectRoot=false',
-            '-Xmx16G',
+            'jdtls',
+            '--jvm-arg=-Dlog.protocol=true',
+            '--jvm-arg=-Dlog.level=ALL',
+            -- '--jvm-arg=-Xmx16G',
+            -- '-Djava.import.generatesMetadataFilesAtProjectRoot=false',
             '-data', workspace_dir
           },
 
@@ -125,7 +118,7 @@ return
       config = function(_, opts)
         opts['on_attach'] = function(_, _)
           require("jdtls").setup_dap({ hotcodereplace = "auto" })
-          vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
+          -- vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
         end
 
         local startJdtls = function(config)

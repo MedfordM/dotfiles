@@ -95,7 +95,6 @@ return {
           end,
         }
       })
-      lspconfig.clangd.setup{}
     end
   },
 }

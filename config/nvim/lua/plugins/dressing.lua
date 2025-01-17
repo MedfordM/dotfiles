@@ -86,7 +86,7 @@ return {
             filetype = "DressingSelect",
           },
           get_config = function(opts)
-            vim.print(vim.inspect(opts))
+            -- vim.print(vim.inspect(opts))
             if opts.kind == 'codeaction' then
               return {
                 backend = 'nui',
