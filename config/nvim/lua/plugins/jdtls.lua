@@ -2,7 +2,7 @@ local project_name = vim.fn.getcwd()
 local home = vim.fn.getenv('HOME')
 local workspace_dir = home ..  '/.cache/jdtls/workspace/' .. project_name
 local javaBin = 'jdtls'
-local jdtlsLocation = vim.fn.getenv('JDTLS')-- .. '/share/java/jdtls/'
+-- local jdtlsLocation = vim.fn.getenv('JDTLS')-- .. '/share/java/jdtls/'
 
 return
   {
@@ -17,7 +17,8 @@ return
       opts = function()
         return {
           cmd = {
-            jdtlsLocation .. '/bin/' .. javaBin,
+            -- jdtlsLocation .. '/bin/' .. javaBin,
+            javaBin,
             '-Dlog.protocol=true',
             '-Dlog.level=ALL',
             '-XX:+UseParallelGC',
