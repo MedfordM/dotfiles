@@ -110,15 +110,15 @@ return
           init_options = {
             bundles = {
               vim.fn.glob(home .. '/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
-              vim.fn.glob(home .. "/.local/share/vscode-java-test/server/*.jar", true)
             };
           },
         }
       end,
       config = function(_, opts)
         opts['on_attach'] = function(_, _)
-          require("jdtls").setup_dap({ hotcodereplace = "auto" })
+          require("jdtls").setup_dap()
           -- vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
+          vim.keymap.set('n', '<leader>ct', function() require('jdtls').test_nearest_method() end, {desc = 'Run nearest test'})
         end
 
         local startJdtls = function(config)
@@ -129,6 +129,7 @@ return
           config.capabilities = capabilities
           config.init_options.extendedClientCapabilities = require 'jdtls'.extendedClientCapabilities
           config.init_options.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true;
+          vim.list_extend(config.init_options.bundles, vim.split(vim.fn.glob(home .. '/.local/share/vscode-java-test/server/*.jar'), '\n'))
           require('jdtls').start_or_attach(config)
         end
 
