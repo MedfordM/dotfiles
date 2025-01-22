@@ -7,6 +7,22 @@ return {
       {'<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Search in files'},
       {'<leader>m', function() require('telescope.builtin').marks() end, desc = 'Show marks'},
       {'<leader>cs', function() require('telescope.builtin').lsp_document_symbols({symbols = 'method', symbol_width = 40}) end, desc = 'File Symbols'},
+      {'gr', function() require('telescope.builtin').lsp_incoming_calls({
+          initial_mode = 'normal',
+          prompt_title = 'References',
+          path_display = {'tail'},
+          layout_config = {
+            height = 20,
+            width = 200
+          },
+          layout_strategy = "cursor",
+          results_title = false,
+          sorting_strategy = "ascending",
+          theme = "cursor",
+          include_declaration = false,
+          include_current_line = false,
+          file_encoding = 'utf-8'
+      }) end, desc = 'References'},
       -- {'<leader>gc', function() require('telescope.builtin').git_bcommits() end, desc = 'File Commits'},
       -- {'<leader>cs', function() require('telescope.builtin').lsp_document_symbols({symbols = 'method', symbol_width = 40}) end, desc = 'File Symbols'},
       -- {'gr', function()

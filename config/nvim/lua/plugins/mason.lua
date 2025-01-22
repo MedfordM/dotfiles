@@ -23,17 +23,6 @@ return {
             },
           })
         end,
-        ['ts_ls'] = function()
-          local capabilities = require('cmp_nvim_lsp').default_capabilities()
-          require('lspconfig').ts_ls.setup({
-            capabilities = capabilities,
-            settings = {
-              completions = {
-                completeFunctionCalls = true
-              }
-            }
-          })
-        end,
         ['lua_ls'] = function()
           local capabilities = require('cmp_nvim_lsp').default_capabilities()
           require 'lspconfig'.lua_ls.setup {
@@ -80,6 +69,15 @@ return {
     end,
     config = function()
       local lspconfig = require('lspconfig')
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      require('lspconfig').ts_ls.setup({
+        capabilities = capabilities,
+        settings = {
+          completions = {
+            completeFunctionCalls = true
+          }
+        }
+      })
       lspconfig.util.default_config = vim.tbl_extend( "force", lspconfig.util.default_config, {
         autostart = true,
         handlers = {
