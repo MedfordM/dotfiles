@@ -25,3 +25,5 @@
     path = config-work
 [includeIf "hasconfig:remote.*.url:git@github.com:denverpierce/**"]
     path = config-work
+[includeIf "hasconfig:remote.*.url:git@github.com:mrtdd/**"]
+    path = config-work
