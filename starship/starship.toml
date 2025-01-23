@@ -1,7 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """$hostname$directory ${custom.git_branch}${git_branch}${git_status}\n$os$character"""
+format = """$hostname$directory ${git_branch}${git_status}\n$os$character"""
 right_format = """\n${env_var.DEPLOYMENT_ID}"""
 
 # Inserts a blank line between shell prompts
@@ -24,10 +24,10 @@ disabled = true
 [directory]
 truncation_length = 6
 style = 'bold blue'
-truncate_to_repo = true
+truncate_to_repo = false
 format = '[ $path]($style)[$read_only]($read_only_style) '
-repo_root_format = '[$path]($style)'
-repo_root_style = '$style'
+# repo_root_format = '[$path]($style)'
+# repo_root_style = '$style'
 
 [lua]
 disabled = true
