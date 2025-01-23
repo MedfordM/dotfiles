@@ -20,7 +20,7 @@ local config = {
       enabled = true,
       notify = false, -- get a notification when changes are found
     },
-    lockfile = vim.fn.getenv('HOME') .. '/Source/dotfiles/config/nvim/lazy-lock.json'
+    lockfile = vim.fn.getenv('HOME') .. '/Source/dotfiles/nvim/lazy-lock.json'
 }
 
 require("lazy").setup("plugins", config)
