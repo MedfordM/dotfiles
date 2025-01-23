@@ -23,51 +23,6 @@ return {
           include_current_line = false,
           file_encoding = 'utf-8'
       }) end, desc = 'References'},
-      -- {'<leader>gc', function() require('telescope.builtin').git_bcommits() end, desc = 'File Commits'},
-      -- {'<leader>cs', function() require('telescope.builtin').lsp_document_symbols({symbols = 'method', symbol_width = 40}) end, desc = 'File Symbols'},
-      -- {'gr', function()
-      --   require('telescope.builtin').lsp_references({
-      --     initial_mode = 'normal',
-      --     prompt_title = 'References',
-      --     path_display = {'tail'},
-      --     dynamic_preview_title = true,
-      --     borderchars = {
-      --       preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      --       prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
-      --       results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" }
-      --     },
-      --     layout_config = {
-      --       height = 12,
-      --       width = 80
-      --     },
-      --     layout_strategy = "cursor",
-      --     results_title = false,
-      --     sorting_strategy = "ascending",
-      --     theme = "cursor",
-      --     include_declaration = false,
-      --     include_current_line = false
-      -- }) end, desc = 'Incoming Calls'},
-      -- {'gi', function() require('telescope.builtin').lsp_implementations({
-      --     initial_mode = 'normal',
-      --     prompt_title = 'Implementations',
-      --     path_display = {'tail'},
-      --     dynamic_preview_title = true,
-      --     borderchars = {
-      --       preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      --       prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
-      --       results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" }
-      --     },
-      --     layout_config = {
-      --       height = 12,
-      --       width = 80
-      --     },
-      --     layout_strategy = "cursor",
-      --     results_title = false,
-      --     sorting_strategy = "ascending",
-      --     theme = "cursor",
-      --     include_declaration = false,
-      --     include_current_line = false
-      -- }) end, desc = 'Implementations'},
       {'<leader>T', function() require('telescope.builtin').resume() end, desc = 'Resume telescope search'},
     },
     opts = function()

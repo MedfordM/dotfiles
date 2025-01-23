@@ -40,8 +40,8 @@ local cmp_kinds = {
 
 return {
   {
-    -- 'MedfordM/nvim-cmp',
     'hrsh7th/nvim-cmp',
+    version = false,
     event = {'BufEnter', 'CmdlineEnter'},
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
@@ -126,7 +126,7 @@ return {
               else
                 fallback()
               end
-            end, {'i'}),
+            end, {'i', 's'}),
             ['<S-Tab>'] = cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_prev_item()
@@ -135,10 +135,26 @@ return {
               else
                 fallback()
               end
-            end, {'i'}),
+            end, {'i', 's'}),
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<CR>']  = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+            ['<CR>']  = cmp.mapping(function()
+              if luasnip.in_snippet(fallback) then
+                if cmp.visible() then
+                  cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }, function() 
+                    if luasnip.jumpable(1) then
+                      vim.print(luasnip.jump(1))
+                    end
+                  end)
+                end
+              else
+                if cmp.visible() then
+                  cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace })
+                else
+                  fallback()
+                end
+              end
+            end, {'i', 's'}),
             ['<C-e>']   = cmp.mapping(function()
               if cmp.visible() then
                 cmp.abort()
@@ -178,12 +194,6 @@ return {
       cmp.setup(opts.default)
       cmp.setup.cmdline(':', opts.command)
       cmp.setup.cmdline({ '/', '?' }, opts.search)
-      -- cmp.setup.filetype('lua', {
-      --   sources = {
-      --     { name = 'nvim_lua', group_index = 1 },
-      --     { name = 'nvim_lsp', group_index = 1 },
-      --   }
-      -- })
     end
   }
 }

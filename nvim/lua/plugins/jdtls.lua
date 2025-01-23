@@ -123,6 +123,7 @@ return
 
         local startJdtls = function(config)
           local capabilities = vim.lsp.protocol.make_client_capabilities()
+          -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
           local cmpCapabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
           capabilities.textDocument.completion.completionItem = cmpCapabilities.textDocument.completion.completionItem
           capabilities.textDocument.completion.completionItem.snippetSupport = true

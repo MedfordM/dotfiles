@@ -1,0 +1,105 @@
+return {
+  -- 'saghen/blink.cmp',
+  -- event = {'BufEnter', 'CmdlineEnter'},
+  -- -- optional: provides snippets for the snippet source
+  -- dependencies = 'rafamadriz/friendly-snippets',
+  --
+  -- -- use a release tag to download pre-built binaries
+  -- version = '*',
+  --
+  -- ---@module 'blink.cmp'
+  -- ---@type blink.cmp.Config
+  -- opts = {
+  --   -- 'default' for mappings similar to built-in completion
+  --   -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+  --   -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+  --   -- See the full "keymap" documentation for information on defining your own keymap.
+  --   keymap = {
+  --     preset = 'none',
+  --     ['<S-Tab>'] = {
+  --       function(cmp)
+  --         if cmp.snippet_active() then return cmp.snippet_backward()
+  --         end
+  --       end,
+  --       'select_prev',
+  --       'fallback'
+  --     },
+  --     ['<Tab>'] = {
+  --       function(cmp)
+  --         if cmp.snippet_active() then return cmp.snippet_forward()
+  --         end
+  --       end,
+  --       'select_next',
+  --       'fallback'
+  --     },
+  --     ['<CR>'] = {
+  --       function(cmp)
+  --         if cmp.snippet_active() then return cmp.accept()
+  --         else return cmp.select_and_accept() end
+  --       end,
+  --       'accept',
+  --       'fallback'
+  --     },
+  --     ['<C-e>'] = { 'hide', 'fallback' },
+  --     ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+  --     ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+  --   },
+  --
+  --   signature = {
+  --     enabled = true,
+  --     trigger = {
+  --       blocked_trigger_characters = {},
+  --       blocked_retrigger_characters = {},
+  --       -- When true, will show the signature help window when the cursor comes after a trigger character when entering insert mode
+  --       show_on_insert_on_trigger_character = true,
+  --     },
+  --   },
+  --
+  --   snippets = {
+  --     preset = 'luasnip',
+  --   },
+  --
+  --   completion = {
+  --     menu = {
+  --       draw = {
+  --         columns = {
+  --           { "label", "label_description", gap = 1 },
+  --           { "kind_icon", gap = 1, "kind" }
+  --         },
+  --       }
+  --     },
+  --     keyword = {
+  --       range = 'full',
+  --     },
+  --     list = {
+  --       selection = {
+  --         preselect = true,
+  --         auto_insert = false
+  --       }
+  --     },
+  --     ghost_text = {
+  --       enabled = true
+  --     },
+  --     documentation = {
+  --       auto_show = true,
+  --     },
+  --   },
+  --
+  --   appearance = {
+  --     -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+  --     -- Useful for when your theme doesn't support blink.cmp
+  --     -- Will be removed in a future release
+  --     use_nvim_cmp_as_default = true,
+  --     -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+  --     -- Adjusts spacing to ensure icons are aligned
+  --     nerd_font_variant = 'mono'
+  --   },
+  --
+  --   -- Default list of enabled providers defined so that you can extend it
+  --   -- elsewhere in your config, without redefining it, due to `opts_extend`
+  --   sources = {
+  --     default = { 'lsp', 'path', 'snippets', 'buffer' },
+  --   },
+  -- },
+  -- opts_extend = { "sources.default" }
+}
