@@ -138,8 +138,8 @@ return {
             end, {'i', 's'}),
             ['<C-b>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
-            ['<CR>']  = cmp.mapping(function()
-              if luasnip.in_snippet(fallback) then
+            ['<CR>']  = cmp.mapping(function(fallback)
+              if luasnip.in_snippet() then
                 if cmp.visible() then
                   cmp.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }, function() 
                     if luasnip.jumpable(1) then
