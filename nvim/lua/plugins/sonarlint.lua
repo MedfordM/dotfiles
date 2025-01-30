@@ -7,13 +7,6 @@ return {
   },
   config = function()
     require('sonarlint').setup({
-      handlers = {
-        ["sonarlint/shouldAnalyseFile"] = function(err, uri)
-          return {
-            shouldBeAnalysed = true,
-          }
-        end
-      },
       server = {
         cmd = {
           'sonarlint-ls',
