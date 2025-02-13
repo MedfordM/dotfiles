@@ -2,6 +2,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'hrsh7th/nvim-cmp' },
+    event = 'VeryLazy',
     init = function()
       require('config.lsp')
     end,
@@ -11,6 +12,8 @@ return {
       vim.lsp.config('*', {
         capabilities = capabilities
       })
+      local configs = require 'lspconfig.configs'
+      lspconfig.ts_ls.setup{}
     end
   },
 }
