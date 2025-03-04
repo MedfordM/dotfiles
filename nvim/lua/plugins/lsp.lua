@@ -14,6 +14,8 @@ return {
       })
       local configs = require 'lspconfig.configs'
       lspconfig.ts_ls.setup{}
+      lspconfig.clangd.setup{}
+      lspconfig.gopls.setup{}
     end
   },
 }
