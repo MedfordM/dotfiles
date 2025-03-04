@@ -146,6 +146,8 @@ return {
                       vim.print(luasnip.jump(1))
                     end
                   end)
+                else 
+                  fallback()
                 end
               else
                 if cmp.visible() then
