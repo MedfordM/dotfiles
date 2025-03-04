@@ -9,6 +9,7 @@ export TERM="xterm-kitty"
 export TRACING_ENABLED=false
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/zookeeper/bin:$PATH"
+export PATH="$HOME/Source/s5-cli/main/bin:$PATH"
 export EDITOR=nvim
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -28,6 +29,9 @@ alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/l
 alias zt='zellij action new-tab -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
 
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+eval "$(s5data completion zsh)"
+eval "$(s5auth completion zsh)"
 
 source /usr/share/nvm/init-nvm.sh
 source $HOME/.sdkman/bin/sdkman-init.sh
