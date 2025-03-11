@@ -39,3 +39,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+source /usr/lib/python3.13/site-packages/oci_cli/bin/oci_autocomplete.sh
