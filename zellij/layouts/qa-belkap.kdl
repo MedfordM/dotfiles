@@ -57,7 +57,7 @@ layout {
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-api.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-asst.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belkap-planner.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-dev-planner.sh"
 }
