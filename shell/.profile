@@ -19,9 +19,12 @@ export THEME=mocha
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 alias ls="exa -1 --git --icons --group-directories-first"
+alias lsa="ls -a"
 alias lst="exa -1 -D --tree -D --level=2 --icons"
 alias grep='grep -i --color=auto'
 alias k="kubectl"
+alias gpu="git pull upstream main"
+alias gru="git rebase upstream/main"
 
 # Select a layout and create a new session
 alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
