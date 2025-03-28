@@ -217,3 +217,7 @@ DevController
 nullaway
 uber
 flakey
+bucketName
+configBase
+rebase
+superset
