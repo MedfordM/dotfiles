@@ -11,22 +11,22 @@ layout {
   }
   pane_template stacked=true name="Proxies" {
     GCloud_Function name="Postgres Proxy" {
-      args "proxy" "postgres" "qa"
+      args "proxy" "postgres" "dev"
     }
     GCloud_Function name="Clickhouse Proxy" {
-      args "proxy" "clickhouse" "s5-qa"
+      args "proxy" "clickhouse" "dev"
     }
     GCloud_Function name="Zookeeper Proxy" {
-      args "proxy" "zookeeper" "qa"
+      args "proxy" "zookeeper" "dev"
     }
     GCloud_Function name="UI Proxy" {
-      args "proxy" "ui" "qa-trd"
+      args "proxy" "ui" "dev-demo"
     }
   }
   pane_template name="Maven_Command" {
     command "mvn"
   }
-  tab name="Services (QA-Trd)" {
+  tab name="Services (Dev-Demo)" {
     pane split_direction="vertical" {
       pane split_direction="horizontal" size="80%"{
         pane split_direction="vertical" size="34%"{
@@ -59,7 +59,7 @@ layout {
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-trd-asst.sh"
-  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-trd-mfp.sh"
-  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-dev-planner.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-demo-asst.sh"
+  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-demo-mfp.sh"
+  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-demo-planner.sh"
 }

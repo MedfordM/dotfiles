@@ -56,7 +56,7 @@ layout {
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/knitwell-up-staging-loft-api.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/knit-up-staging-loft-asst.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/knitwell-up-staging-loft-planner.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/knitwell-up-staging-loft-mfp.sh"
 }

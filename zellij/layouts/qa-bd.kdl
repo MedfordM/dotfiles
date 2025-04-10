@@ -14,7 +14,7 @@ layout {
       args "proxy" "postgres" "qa"
     }
     GCloud_Function name="Clickhouse Proxy" {
-      args "proxy" "clickhouse" "qa"
+      args "proxy" "clickhouse" "s5-qa"
     }
     GCloud_Function name="Zookeeper Proxy" {
       args "proxy" "zookeeper" "qa"

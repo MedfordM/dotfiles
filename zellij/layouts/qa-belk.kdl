@@ -15,7 +15,7 @@ layout {
       args "proxy" "postgres" "qa"
     }
     GCloud_Function name="Clickhouse Proxy" {
-      args "proxy" "clickhouse" "qa"
+      args "proxy" "clickhouse" "s5-qa"
     }
     GCloud_Function name="UI Proxy" {
       args "proxy" "ui" "qa-belk"
@@ -57,7 +57,7 @@ layout {
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belk-api.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belk-asst.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-belk-planner.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-dev-planner.sh"
 }

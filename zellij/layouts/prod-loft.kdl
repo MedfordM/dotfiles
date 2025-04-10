@@ -11,22 +11,19 @@ layout {
   }
   pane_template stacked=true name="Proxies" {
     GCloud_Function name="Postgres Proxy" {
-      args "proxy" "postgres" "qa"
+      args "proxy" "postgres" "knit-2-prod"
     }
     GCloud_Function name="Clickhouse Proxy" {
-      args "proxy" "clickhouse" "s5-qa"
-    }
-    GCloud_Function name="Zookeeper Proxy" {
-      args "proxy" "zookeeper" "qa"
+      args "proxy" "clickhouse" "2-prod"
     }
     GCloud_Function name="UI Proxy" {
-      args "proxy" "ui" "qa-trd"
+      args "proxy" "ui" "knit-2-prod-loft"
     }
   }
   pane_template name="Maven_Command" {
     command "mvn"
   }
-  tab name="Services (QA-Trd)" {
+  tab name="Services (Prod-Loft)" {
     pane split_direction="vertical" {
       pane split_direction="horizontal" size="80%"{
         pane split_direction="vertical" size="34%"{
@@ -52,14 +49,12 @@ layout {
         pane {
           name "Clickhouse"
           command "bash"
-          args "-c" "sleep 10; clickhouse-client --no-warnings"
+          args "-c" "sleep 10; clickhouse-client"
         }
       }
     }
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-trd-asst.sh"
-  MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-qa-trd-mfp.sh"
-  PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-dev-planner.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/knit-2-prod-loft-asst.sh"
 }
