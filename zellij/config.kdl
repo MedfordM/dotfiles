@@ -1,7 +1,17 @@
 theme "catppuccin-mocha"
-copy_clipboard "system"
+copy_command "xclip -selection clipboard"
+copy_clipboard "primary"
 copy_on_select true
 scroll_buffer_size 100000
+show_startup_tips false
+show_release_notes false
+mirror_session true
+
+ui {
+  pane_frames {
+    hide_session_name true
+  }
+}
 
 keybinds clear-defaults=true {
     normal {
@@ -33,6 +43,7 @@ keybinds clear-defaults=true {
         bind "c" { NewTab; SwitchToMode "Normal"; }
         bind "q" { CloseFocus; SwitchToMode "Normal"; }
         bind "Q" { CloseTab; SwitchToMode "Normal"; }
+        bind "Ctrl Alt q" { Quit; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
         bind "Z" { TogglePaneFrames; SwitchToMode "Normal"; }
         bind "f" { ToggleFloatingPanes; SwitchToMode "Normal"; }
@@ -45,6 +56,7 @@ keybinds clear-defaults=true {
         bind "s" { GoToTab 3; SwitchToMode "Normal"; }
         bind "t" { GoToTab 4; SwitchToMode "Normal"; }
         bind "d" { GoToTab 5; SwitchToMode "Normal"; }
+        bind "L" { Clear; SwitchToMode "Normal"; }
     }
     scroll {
         bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }

@@ -59,7 +59,7 @@ layout {
   }
 }
 env {
-  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-api.sh"
+  API_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-asst.sh"
   MFP_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-mfp.sh"
   PLANNER_ENV "/home/mike/Source/darwin/localFiles/shell/s5-dev-eve-planner.sh"
 }

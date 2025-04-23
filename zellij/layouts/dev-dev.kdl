@@ -7,7 +7,8 @@ layout {
   }
   pane_template name="GCloud_Function" {
     cwd "/home/mike/Source/scripts"
-    command "./gcloud-functions.sh"
+    command "echo"
+    // command "./gcloud-functions.sh"
   }
   pane_template stacked=true name="Proxies" {
     GCloud_Function name="Postgres Proxy" {
@@ -23,34 +24,44 @@ layout {
   pane_template name="Maven_Command" {
     command "mvn"
   }
-  tab name="Services (Dev-Dev)" {
-    pane split_direction="vertical" {
-      pane split_direction="horizontal" size="80%"{
-        pane split_direction="vertical" size="34%"{
-          Maven_Command {
-            name "Maven Install"
-            args "clean" "install" "-DskipTests" "-o"
-          }
-          Maven_Command {
-            name "Maven Test"
-            args "surefire:test"
-            start_suspended true
-          }
-        }
-        pane name="Shell" focus=true
+  tab name="Shell" focus=true {
+  }
+  tab name="Maven" {
+    pane stacked=true {
+      Maven_Command {
+        name "Maven Install"
+        args "clean" "install" "-DskipTests" "-o"
+        start_suspended true
+        expanded true
       }
-      pane split_direction="horizontal" {
-        Proxies
-        pane {
-          name "Postgres"
-            command "bash"
-            args "-c" "source $API_ENV; sleep 3; psql -h localhost"
-        }
-        pane {
-          name "Clickhouse"
-          command "bash"
-          args "-c" "sleep 10; clickhouse-client"
-        }
+      Maven_Command {
+        name "Maven Test"
+        args "surefire:test"
+        start_suspended true
+      }
+    }
+  }
+  tab name="Postgres" {
+    pane stacked=true {
+      GCloud_Function name="proxy" {
+        args "proxy" "postgres" "dev"
+      }
+      pane {
+        name "psql"
+        command "bash"
+        args "-c" "source $API_ENV; sleep 5; psql -h localhost"
+      }
+    }
+  }
+  tab name="Clickhouse" {
+    pane stacked=true {
+      GCloud_Function name="proxy" {
+        args "proxy" "clickhouse" "dev"
+      }
+      pane {
+        name "clickhouse-client"
+        command "bash"
+        args "-c" "sleep 10; clickhouse-client"
       }
     }
   }
