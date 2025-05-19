@@ -12,6 +12,15 @@ return {
       vim.lsp.config('*', {
         capabilities = capabilities
       })
+      vim.lsp.config('eslint', {
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      })
+      vim.lsp.enable('eslint')
       local configs = require 'lspconfig.configs'
       lspconfig.ts_ls.setup{}
       lspconfig.clangd.setup{}
