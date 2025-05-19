@@ -7,8 +7,7 @@ layout {
   }
   pane_template name="GCloud_Function" {
     cwd "/home/mike/Source/scripts"
-    command "echo"
-    // command "./gcloud-functions.sh"
+    command "./gcloud-functions.sh"
   }
   pane_template stacked=true name="Proxies" {
     GCloud_Function name="Postgres Proxy" {
