@@ -16,6 +16,7 @@ ui {
 keybinds clear-defaults=true {
     normal {
         bind "Ctrl Space" { SwitchToMode "tmux"; }
+        bind "Alt Space" { SwitchToMode "locked"; }
         // Resize Pane
         bind "Alt h" { Resize "Increase Left"; }
         bind "Alt n" { Resize "Increase Down"; }
@@ -33,7 +34,15 @@ keybinds clear-defaults=true {
         // bind "Ctrl I" { MovePane "Right"; }
     }
     locked {
-        bind "Ctrl Space" { SwitchToMode "Normal"; }
+        bind "Ctrl Space" { SwitchToMode "tab"; }
+        bind "Alt Space" { SwitchToMode "Normal"; }
+    }
+    tab {
+        bind "a" { GoToTab 1; SwitchToMode "locked"; }
+        bind "r" { GoToTab 2; SwitchToMode "locked"; }
+        bind "s" { GoToTab 3; SwitchToMode "locked"; }
+        bind "t" { GoToTab 4; SwitchToMode "locked"; }
+        bind "d" { GoToTab 5; SwitchToMode "locked"; }
     }
     tmux {
         bind "Ctrl Space" { SwitchToMode "Locked"; }
