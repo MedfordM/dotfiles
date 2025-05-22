@@ -5,8 +5,9 @@ exec_always --no-startup-id /home/mike/Source/scripts/i3Start.sh
 font pango:Droid Sans 8
 floating_modifier $mod
 tiling_drag modifier
-default_border none
+default_border pixel 3
 default_floating_border none
+hide_edge_borders smart
 show_marks no
 gaps outer 0
 gaps inner 0
