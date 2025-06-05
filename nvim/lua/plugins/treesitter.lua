@@ -155,7 +155,7 @@ return {
           end
       end)
 
-      local nextDiagnosticRepeat, prevDiagnosticRepeat = tsRepeat.make_repeatable_move_pair(function() vim.diagnostic.jump({count = 1, float=true}) end, function() vim.diagnostic.jump({count = -1, float=true}) end)
+      local nextDiagnosticRepeat, prevDiagnosticRepeat = tsRepeat.make_repeatable_move_pair(function() vim.diagnostic.jump({count = 1, float=false}) end, function() vim.diagnostic.jump({count = -1, float=true}) end)
       vim.keymap.set({ "n", "x", "o" }, "]d", nextDiagnosticRepeat)
       vim.keymap.set({ "n", "x", "o" }, "[d", prevDiagnosticRepeat)
     end

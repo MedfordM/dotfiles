@@ -4,7 +4,7 @@ return {
     ft = "lua", -- only load on lua files
     opts = {
       integrations = {
-        lspconfig = true,
+        lspconfig = false,
         cmp = true,
         coq = false
       }
