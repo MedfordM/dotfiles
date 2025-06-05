@@ -22,6 +22,7 @@ export SDKMAN_DIR="$HOME/.sdkman"
 export PYENV_ROOT="$HOME/.pyenv"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
+export GOPATH="$HOME/.config/go"
 
 alias ls="exa -1 --git --icons --group-directories-first"
 alias lsa="ls -a"
