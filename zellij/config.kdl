@@ -38,11 +38,18 @@ keybinds clear-defaults=true {
         bind "Alt Space" { SwitchToMode "Normal"; }
     }
     tab {
+        bind "q" { CloseTab; SwitchToMode "locked"; }
+        bind "c" { NewTab; SwitchToMode "locked"; }
+        bind "R" { SwitchToMode "RenameTab"; TabNameInput 0; }
+        // Goto
         bind "a" { GoToTab 1; SwitchToMode "locked"; }
         bind "r" { GoToTab 2; SwitchToMode "locked"; }
         bind "s" { GoToTab 3; SwitchToMode "locked"; }
         bind "t" { GoToTab 4; SwitchToMode "locked"; }
         bind "d" { GoToTab 5; SwitchToMode "locked"; }
+        // Move
+        bind "<" { MoveTab "Left"; SwitchToMode "locked"; }
+        bind ">" { MoveTab "Right"; SwitchToMode "locked"; }
     }
     tmux {
         bind "Ctrl Space" { SwitchToMode "Locked"; }
