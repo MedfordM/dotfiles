@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ] && [ "$IS_SSH" != "true" ]; then
-  source ~/.xinitrc
+  [[ -s "$HOME/.xinitrc" ]] && source ~/.xinitrc
 fi
 
 source $HOME/Source/scripts/gcloud-functions.sh
@@ -24,9 +24,9 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 export GOPATH="$HOME/.config/go"
 
-alias ls="exa -1 --git --icons --group-directories-first"
+alias ls="eza -1 --git --icons --group-directories-first"
 alias lsa="ls -a"
-alias lst="exa -1 -D --tree -D --level=2 --icons"
+alias lst="eza -1 -D --tree -D --level=2 --icons"
 alias grep='grep -i --color=auto'
 alias k="kubectl"
 alias gpu="git pull upstream main"
