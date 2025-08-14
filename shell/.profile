@@ -5,6 +5,7 @@ fi
 
 source $HOME/Source/scripts/gcloud-functions.sh
 
+export LAYOUT="QWERTY"
 export TERM="xterm-kitty"
 export TRACING_ENABLED=false
 export PATH="$HOME/.local/bin:$PATH"
@@ -46,6 +47,9 @@ eval "$(pyenv init - zsh)"
 eval "$(s5data completion zsh)"
 eval "$(s5auth completion zsh)"
 
-source /usr/share/nvm/init-nvm.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
 source $HOME/.sdkman/bin/sdkman-init.sh
-source /etc/profile.d/google-cloud-cli.sh
+[[ -d /etc/profile.d/google-cloud-cli.sh ]] && source /etc/profile.d/google-cloud-cli.sh
