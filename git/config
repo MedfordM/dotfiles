@@ -13,17 +13,17 @@
 [remote]
   pushDefault = origin
 
-[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+[includeIf "hasconfig:remote.*.url:**MedfordM/**"]
     path = config-personal
-[includeIf "hasconfig:remote.*.url:git@github.com:MedfordMS5/**"]
+[includeIf "hasconfig:remote.*.url:**MedfordMS5/**"]
     path = config-work
-[includeIf "hasconfig:remote.*.url:git@github.com:s5-stratos/**"]
+[includeIf "hasconfig:remote.*.url:**s5-stratos/**"]
     path = config-work
-[includeIf "hasconfig:remote.*.url:git@github.com:rzeigler/**"]
+[includeIf "hasconfig:remote.*.url:**rzeigler/**"]
     path = config-work
-[includeIf "hasconfig:remote.*.url:git@github.com:munkith-abid/**"]
+[includeIf "hasconfig:remote.*.url:**munkith-abid/**"]
     path = config-work
-[includeIf "hasconfig:remote.*.url:git@github.com:denverpierce/**"]
+[includeIf "hasconfig:remote.*.url:**denverpierce/**"]
     path = config-work
-[includeIf "hasconfig:remote.*.url:git@github.com:mrtdd/**"]
+[includeIf "hasconfig:remote.*.url:**mrtdd/**"]
     path = config-work
