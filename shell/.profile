@@ -31,6 +31,7 @@ alias grep='grep -i --color=auto'
 alias k="kubectl"
 alias gpu="git pull upstream main"
 alias gru="git rebase upstream/main"
+alias ssh="TERM=xterm-256color ssh"
 
 # Select a layout and create a new session
 alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
