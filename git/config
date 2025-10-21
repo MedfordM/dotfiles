@@ -12,6 +12,8 @@
   parallel = 0
 [remote]
   pushDefault = origin
+[remote "origin"]
+  fetch = +refs/heads/*:refs/remotes/origin/*
 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
     path = config-personal
