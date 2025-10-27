@@ -32,24 +32,24 @@ alias grep='grep -i --color=auto'
 alias k="kubectl"
 alias gpu="git pull upstream main"
 alias gru="git rebase upstream/main"
+alias ssh="TERM=xterm-256color ssh"
 
 # Select a layout and create a new session
 alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
 # Select a layout and open a new tab in the current session
 alias zt='zellij action new-tab -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
 
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "/Users/mike/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/mike/.sdkman/bin/sdkman-init.sh"
 
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 [[ -e "/home/mike/.local/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/mike/.local/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh"
 
-eval "$(s5data completion zsh)"
-eval "$(s5auth completion zsh)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
-source $HOME/.sdkman/bin/sdkman-init.sh
+eval "$(s5data completion zsh)"
+eval "$(s5auth completion zsh)"
+
 [[ -d /etc/profile.d/google-cloud-cli.sh ]] && source /etc/profile.d/google-cloud-cli.sh
