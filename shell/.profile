@@ -3,8 +3,6 @@ if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ] && [ -z "$SSH_CONNECTION" ] && [ "$
   [[ -s "$HOME/.xinitrc" ]] && source ~/.xinitrc
 fi
 
-source $HOME/Source/scripts/gcloud-functions.sh
-
 export TERM="xterm-kitty"
 export TRACING_ENABLED=false
 export PATH="$HOME/.local/bin:$PATH"
@@ -18,7 +16,7 @@ export LANG=en_US.UTF-8
 export LC_TYPE=en_US.UTF-8
 export THEME=mocha
 export CLOUDSDK_PYTHON_SITEPACKAGES=1
-export SDKMAN_DIR="$HOME/.sdkman"
+export SDKMAN_DIR="/usr/lib/sdkman/libexec"
 export PYENV_ROOT="$HOME/.pyenv"
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
@@ -38,15 +36,14 @@ alias zl='zellij -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/l
 # Select a layout and open a new tab in the current session
 alias zt='zellij action new-tab -l $(fd --format='{/.}' --base-directory=$HOME/.config/zellij/layouts | fzf)'
 
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[[ -s "/usr/lib/sdkman/libexec/bin/sdkman-init.sh" ]] && source "/usr/lib/sdkman/libexec/bin/sdkman-init.sh"
 
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 [[ -e "/home/mike/.local/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/mike/.local/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh"
 
-eval "$(s5data completion zsh)"
-eval "$(s5auth completion zsh)"
+#eval "$(s5data completion zsh)"
+#eval "$(s5auth completion zsh)"
 
 source /usr/share/nvm/init-nvm.sh
-source $HOME/.sdkman/bin/sdkman-init.sh
-source /etc/profile.d/google-cloud-cli.sh
+#source /etc/profile.d/google-cloud-cli.sh
