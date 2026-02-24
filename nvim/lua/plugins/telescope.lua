@@ -3,7 +3,7 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
       {'<leader>ff', function() require('telescope.builtin').find_files() end, desc = 'Search for files'},
-      {'<leader>fC', function() require('telescope.builtin').find_files({cwd = '/home/mike/.config/nvim'}) end, desc = 'Edit Neovim Conf'},
+      {'<leader>fC', function() require('telescope.builtin').find_files({cwd = '/home/mike/Source/dotfiles/nvim'}) end, desc = 'Edit Neovim Conf'},
       {'<leader>fg', function() require('telescope.builtin').live_grep() end, desc = 'Search in files'},
       {'<leader>m', function() require('telescope.builtin').marks() end, desc = 'Show marks'},
       {'<leader>cs', function() require('telescope.builtin').lsp_document_symbols({symbols = 'method', symbol_width = 40}) end, desc = 'File Symbols'},
