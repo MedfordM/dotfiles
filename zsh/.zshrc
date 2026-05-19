@@ -26,5 +26,6 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 
 eval "$(zoxide init --cmd cd zsh)"
+eval "$(pyenv init - zsh)"
 
 source $HOME/.profile

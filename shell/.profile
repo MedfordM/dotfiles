@@ -39,8 +39,7 @@ alias zt='zellij action new-tab -l $(fd --format='{/.}' --base-directory=$HOME/.
 [[ -s "/usr/lib/sdkman/libexec/bin/sdkman-init.sh" ]] && source "/usr/lib/sdkman/libexec/bin/sdkman-init.sh"
 
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-[[ -e "/home/mike/.local/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/mike/.local/lib/oracle-cli/lib/python3.12/site-packages/oci_cli/bin/oci_autocomplete.sh"
+pyenv shell 3.12.0
 
 #eval "$(s5data completion zsh)"
 #eval "$(s5auth completion zsh)"
