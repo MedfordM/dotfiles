@@ -18,19 +18,24 @@ vim.opt.termguicolors  = true
 vim.opt.completeopt    = { 'menu', 'menuone', 'preview' }
 vim.opt.cmdheight      = 0
 vim.opt.showmode       = false
-vim.opt.foldmethod     = 'expr'
 vim.opt.splitright     = true
 vim.opt.splitbelow     = true
 vim.opt.signcolumn     = 'yes'
 vim.opt.cursorline     = true
-vim.opt.foldlevel      = 99
-vim.opt.foldlevelstart = 99
+-- vim.opt.foldmethod     = 'expr'
+-- vim.opt.foldlevel      = 99
+-- vim.opt.foldlevelstart = 0
+-- vim.opt.foldnestmax =  2
+-- vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
+-- vim.opt.foldtext = ""
 vim.opt.signcolumn     = 'auto'
 vim.opt.clipboard      = 'unnamedplus'
 vim.opt.conceallevel   = 2
 vim.opt.mousemodel     = 'extend'
-vim.opt.fillchars:append { diff = "╱" }
+vim.opt.fillchars:append { diff = "╱", fold = " " }
 vim.opt.spell = true
 vim.opt.spelllang = { 'en_us' }
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+
+

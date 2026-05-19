@@ -1,3 +1,6 @@
+require('config.include.foldExpr')
+require('config.include.foldText')
+
 -- function _G.put(...)
 --   local objects = {}
 --   for i = 1, select('#', ...) do

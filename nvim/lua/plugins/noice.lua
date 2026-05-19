@@ -23,6 +23,12 @@ return {
       lsp_doc_border = true, -- add a border to hover docs and signature help
     },
   },
+  config = function(_, opts)
+    require("notify").setup({
+      background_colour = "#000000",
+    })
+    require("noice").setup(opts)
+  end,
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",

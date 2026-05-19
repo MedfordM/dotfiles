@@ -9,57 +9,57 @@ return {
       {'<F2>', function() require('dap').set_breakpoint(vim.fn.input('Condition: '), nil, nil) end, desc = 'Conditional Breakpoint'},
       {'<M-q>', function() require('dap').terminate() end, desc = 'Terminate Dap'},
     },
-    opts = function()
-      return {
-        configurations = {
-          java = {
-            {
-              projectName = "assortment-api",
-              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
-              mainClass = "com.darwin.web.Main",
-              vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
-              name = "assortment-api",
-              request = "launch",
-              type = "java",
-              cwd = vim.fn.getcwd()
-            },
-            {
-              projectName = "assortment-planner",
-              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
-              mainClass = "com.darwin.service.planningService.Main",
-              vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
-              name = "assortment-planner",
-              request = "launch",
-              type = "java",
-              cwd = vim.fn.getcwd()
-            },
-            {
-              projectName = "mfp-api",
-              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
-              mainClass = "com.s5stratos.mfp.api.Main",
-              -- vmArgs = '-Dconfig.file=/home/mike/Source/mfp-server/localFiles/local.conf',
-              name = "mfp-api",
-              request = "launch",
-              type = "java",
-              cwd = vim.fn.getcwd()
-            },
-            {
-              projectName = "mfp-maintenance",
-              javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
-              mainClass = "com.s5stratos.mfp.maintenance.Main",
-              vmArgs = '-Dexec.args="db migrate"',
-              name = "mfp-maintenance",
-              request = "launch",
-              type = "java",
-              cwd = vim.fn.getcwd()
-            }
-          }
-        }
-      }
-    end,
+    -- opts = function()
+    --   return {
+    --     configurations = {
+    --       java = {
+    --         {
+    --           projectName = "assortment-api",
+    --           javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
+    --           mainClass = "com.darwin.web.Main",
+    --           vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
+    --           name = "assortment-api",
+    --           request = "launch",
+    --           type = "java",
+    --           cwd = vim.fn.getcwd()
+    --         },
+    --         {
+    --           projectName = "assortment-planner",
+    --           javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
+    --           mainClass = "com.darwin.service.planningService.Main",
+    --           vmArgs = '-Dconfig.file=/home/mike/Source/darwin/localFiles/local.conf',
+    --           name = "assortment-planner",
+    --           request = "launch",
+    --           type = "java",
+    --           cwd = vim.fn.getcwd()
+    --         },
+    --         {
+    --           projectName = "mfp-api",
+    --           javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
+    --           mainClass = "com.s5stratos.mfp.api.Main",
+    --           -- vmArgs = '-Dconfig.file=/home/mike/Source/mfp-server/localFiles/local.conf',
+    --           name = "mfp-api",
+    --           request = "launch",
+    --           type = "java",
+    --           cwd = vim.fn.getcwd()
+    --         },
+    --         {
+    --           projectName = "mfp-maintenance",
+    --           javaExec = vim.fn.getenv('JAVA_HOME') .. "/bin/java",
+    --           mainClass = "com.s5stratos.mfp.maintenance.Main",
+    --           vmArgs = '-Dexec.args="db migrate"',
+    --           name = "mfp-maintenance",
+    --           request = "launch",
+    --           type = "java",
+    --           cwd = vim.fn.getcwd()
+    --         }
+    --       }
+    --     }
+    --   }
+    -- end,
     config = function(_, opts)
       local dap = require("dap")
-      dap.configurations = opts.configurations
+      -- dap.configurations = opts.configurations
     end
   }
 }

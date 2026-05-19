@@ -109,8 +109,8 @@ return
           },
           init_options = {
             bundles = {
-              vim.fn.glob(home .. '/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
-            };
+              '/usr/share/java-debug/com.microsoft.java.debug.plugin.jar'
+            }
           },
         }
       end,
@@ -119,6 +119,13 @@ return
           require("jdtls").setup_dap()
           -- vim.keymap.set('n', '<leader>cf', function() vim.cmd('%!google-java-format -') end, {desc = 'Format file'})
           vim.keymap.set('n', '<leader>ct', function() require('jdtls').test_nearest_method() end, {desc = 'Run nearest test'})
+          -- vim.opt.foldlevel = 0
+          vim.opt_local.foldmethod  = "expr"
+          vim.opt_local.foldexpr    = "v:lua.JavaFoldExpr()"
+          vim.opt_local.foldtext    = "v:lua.JavaFoldText()"
+          vim.opt_local.foldlevel   = 0      -- all folds matching level 1 start closed
+          vim.opt_local.foldminlines = 3
+          -- vim.opt_local.foldlevelstart = 0
         end
 
         local startJdtls = function(config)
@@ -138,8 +145,11 @@ return
 
         vim.api.nvim_create_autocmd("FileType", {
           pattern = 'java',
-          callback = function() startJdtls(opts) end
+          callback = function()
+            startJdtls(opts)
+          end
         })
+
         require('jdtls.ui').pick_many = function(items, prompt, label_f, _)
           local co = coroutine.running()
           vim.ui.select(items, {prompt=prompt, format_item=label_f, kind='jdtls.multi'}, function(_)
@@ -148,6 +158,7 @@ return
           end)
           return coroutine.yield()
         end
-      end,
+
+    end,
     }
   }
